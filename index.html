@@ -566,12 +566,109 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .gcard-desc{min-height:48px}
 }
 
+
+/* ===== WELCOME / PROFILE / WORKSHEET CSS ===== */
+.welcome{text-align:center;background:linear-gradient(160deg,#6c5ce7,#4dabf7);border-radius:26px;padding:30px 22px;color:#fff;box-shadow:var(--sh);position:relative;overflow:hidden;margin-top:10px}
+.welcome-art{max-width:300px;margin:0 auto 4px}.welcome-art svg{width:100%;border-radius:16px}
+.welcome-mascot{width:90px;margin:-46px auto 6px;position:relative;z-index:2}
+.welcome h1{font-family:var(--f-d);font-size:24px;margin:6px 0}
+.welcome p{opacity:.95;margin:0 0 18px}
+.name-input{width:100%;max-width:340px;padding:15px 18px;border:0;border-radius:16px;font-family:var(--f-b);font-size:18px;text-align:center;color:var(--ink);box-shadow:var(--sh2)}
+.name-input:focus{outline:3px solid #ffce3d}
+.start-btn{display:block;width:100%;max-width:340px;margin:14px auto 0;background:linear-gradient(120deg,#ff6b9d,#f5a623);color:#fff;border:0;border-radius:16px;padding:16px;font-family:var(--f-d);font-size:19px;cursor:pointer;box-shadow:var(--sh2)}
+.welcome-back{background:transparent;border:0;color:#fff;opacity:.85;margin-top:14px;cursor:pointer;font-family:var(--f-b);font-size:14px}
+.shake{animation:shake .45s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+.hero-profile{margin-top:12px;background:rgba(255,255,255,.22);border:0;color:#fff;border-radius:20px;padding:9px 16px;font-family:var(--f-b);font-weight:700;font-size:13.5px;cursor:pointer}
+
+/* profile */
+.profile{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--sh)}
+.prof-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.prof-avatar{width:78px;flex:none}.prof-avatar svg{width:78px;height:78px}
+.prof-id{flex:1;min-width:140px}
+.prof-id h1{font-family:var(--f-d);font-size:24px;color:var(--ink);margin:0}
+.prof-level{display:inline-block;background:linear-gradient(120deg,#6c5ce7,#4dabf7);color:#fff;font-family:var(--f-d);font-size:14px;padding:5px 14px;border-radius:20px;margin-top:6px}
+.prof-edit{background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:9px 14px;cursor:pointer;font-family:var(--f-b);font-weight:700;color:var(--ink2);font-size:13.5px}
+.prof-levelbar{margin:18px 0}
+.plb-top{display:flex;justify-content:space-between;font-family:var(--f-d);color:var(--ink2);font-size:14px;margin-bottom:6px}
+.plb{height:14px;background:var(--bg);border-radius:10px;overflow:hidden}
+.plb span{display:block;height:100%;background:linear-gradient(90deg,#6c5ce7,#4dabf7);border-radius:10px;transition:width .6s}
+.plb-next{font-size:13px;color:var(--muted);margin-top:6px;text-align:center}
+.prof-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ps{background:var(--bg);border-radius:14px;padding:14px 8px;text-align:center}
+.ps-n{font-family:var(--f-d);font-size:20px;color:var(--ink)}
+.ps-l{font-size:12.5px;color:var(--muted)}
+.prof-last{background:var(--soft,#eef);border-radius:14px;padding:13px 16px;margin:16px 0;color:var(--ink2);font-size:14.5px}
+.prof-btns{display:flex;gap:10px}
+.prof-btns button{flex:1;border:0;border-radius:14px;padding:14px;font-family:var(--f-d);font-size:15px;cursor:pointer;color:#fff}
+.pb1{background:linear-gradient(120deg,#5b8def,#a259ff)}.pb2{background:linear-gradient(120deg,#f5a623,#f59e0b)}
+
+/* worksheet card */
+.sheet-card{background:var(--card);border:1.5px solid var(--line);border-right:6px solid #16a06a;border-radius:20px;padding:18px;box-shadow:var(--sh2)}
+.sc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.sc-emoji{font-size:34px;width:54px;height:54px;display:grid;place-items:center;background:#e3f7ee;border-radius:14px;flex:none}
+.sc-top b{font-family:var(--f-d);color:var(--ink);font-size:16px}
+.sc-meta{font-size:13px;color:var(--muted);margin-top:3px}
+.sc-skills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.sc-best{font-family:var(--f-d);color:#16a06a;margin-bottom:12px}
+.sc-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
+.sc-btns button{border:0;border-radius:13px;padding:13px 8px;font-family:var(--f-d);font-size:14px;cursor:pointer}
+.scb-start{background:linear-gradient(120deg,#16a06a,#37b24d);color:#fff}
+.scb-review{background:var(--bg);color:var(--ink2)}
+.scb-retry{background:var(--bg);color:var(--ink2)}
+.sc-btns button:disabled{opacity:.45;cursor:not-allowed}
+
+/* worksheet run */
+.ws-run{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh)}
+.ws-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.ws-count{font-family:var(--f-d);color:var(--ink)}
+.ws-skill{font-size:12.5px;background:var(--soft,#eef);color:var(--wc);padding:5px 12px;border-radius:20px;font-weight:700}
+.ws-q{font-family:var(--f-d);font-size:21px;color:var(--ink);line-height:1.7;margin:16px 0 18px}
+.ws-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ws-opt{background:#fff;border:2px solid var(--line);border-radius:14px;padding:15px;font-family:var(--f-b);font-weight:700;font-size:17px;color:var(--ink);cursor:pointer;direction:ltr}
+.ws-opt:hover:not(:disabled){border-color:var(--wc);background:var(--bg)}
+.ws-ok{background:#d3f9d8!important;border-color:#2f9e44!important;color:#2b8a3e!important}
+.ws-bad{background:#ffe3e3!important;border-color:#e03131!important;color:#c92a2a!important}
+.fill-in{width:100%;padding:15px 18px;border:2px solid var(--line);border-radius:14px;font-family:var(--f-d);font-size:20px;text-align:center;color:var(--ink);direction:ltr}
+.fill-in:focus{outline:0;border-color:var(--wc)}
+.fill-check{display:block;width:100%;margin-top:12px;background:var(--wc);color:#fff;border:0;border-radius:14px;padding:14px;font-family:var(--f-d);font-size:17px;cursor:pointer}
+.ws-fb{margin-top:14px}
+.fb-hint{background:#fff8e1;border:1.5px solid #ffe08a;color:#a06a00;border-radius:12px;padding:12px 14px;font-weight:600}
+.fb-ok{background:var(--okbg);color:var(--ok);border-radius:12px;padding:12px 14px;font-family:var(--f-d)}
+.fb-bad{background:var(--badbg);color:var(--bad);border-radius:12px;padding:12px 14px;font-family:var(--f-d)}
+.fb-explain{background:var(--bg);border-radius:12px;padding:12px 14px;margin-top:8px;color:var(--ink2);line-height:1.7}
+.fb-link{margin-top:8px}
+.fb-link button{background:#e7f1fc;color:#1971c2;border:0;border-radius:12px;padding:10px 16px;font-family:var(--f-b);font-weight:700;cursor:pointer}
+.ws-next{display:block;width:100%;margin-top:12px;background:linear-gradient(120deg,var(--wc),#4dabf7);color:#fff;border:0;border-radius:14px;padding:14px;font-family:var(--f-d);font-size:17px;cursor:pointer}
+
+/* report extras */
+.report-mascot{width:90px;margin:0 auto 4px}.report-mascot svg{width:90px;height:90px}
+.report-name{font-family:var(--f-d);color:var(--ink2);margin-bottom:14px}
+.report-rewards{font-family:var(--f-d);color:var(--gold);margin:10px 0}
+
+/* review */
+.review h1{font-family:var(--f-d);font-size:23px;color:var(--ink);margin:0 0 4px;text-align:center}
+.rev-sub{text-align:center;color:var(--muted);margin:0 0 18px}
+.rev-card{background:var(--card);border:1.5px solid var(--line);border-right:5px solid var(--bad);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--sh2)}
+.rev-q{font-family:var(--f-d);color:var(--ink);margin-bottom:8px;line-height:1.6}
+.rev-ans{color:var(--ok);font-weight:700;margin-bottom:6px}
+.rev-ans b{direction:ltr;display:inline-block}
+.rev-exp{background:var(--bg);border-radius:10px;padding:10px 12px;color:var(--ink2);line-height:1.7;margin-bottom:10px}
+.rev-link{background:#e7f1fc;color:#1971c2;border:0;border-radius:12px;padding:10px 16px;font-family:var(--f-b);font-weight:700;cursor:pointer}
+
+@media(max-width:680px){
+  .ws-opts{grid-template-columns:1fr}
+  .sc-btns{grid-template-columns:1fr}
+  .prof-stats{grid-template-columns:repeat(2,1fr)}
+}
+
 </style>
 </head>
 <body>
 <div class="topbar"><div class="in">
   <div class="brand" onclick="go('home')"><span class="logo">🌍</span><span>عالم الرياضيات</span></div>
   <div class="spacer"></div>
+  <button class="btn-ghost" onclick="go('profile')">👤 ملفي</button>
   <button class="btn-ghost" onclick="go('games')">🎮 الألعاب</button>
   <button class="btn-ghost" onclick="go('badges')">🏆 الإنجازات</button>
   <div class="starcount">⭐ <span id="starTotal">0</span></div>
@@ -1234,7 +1331,7 @@ let S = load();
 function load(){
   let r={};
   try{ r = JSON.parse(localStorage.getItem(SKEY))||{}; }catch(e){}
-  return Object.assign({ lessonsDone:{}, quizScores:{}, stars:0, badges:[], coins:0, xp:0, gameHigh:{}, sound:true }, r);
+  return Object.assign({ lessonsDone:{}, quizScores:{}, stars:0, badges:[], coins:0, xp:0, gameHigh:{}, sound:true, name:"", trophies:0, sheetResults:{}, sheetBadges:[], lastChapter:"" }, r);
 }
 function save(){ try{ localStorage.setItem(SKEY, JSON.stringify(S)); }catch(e){} }
 
@@ -1315,6 +1412,12 @@ function render(){
   if(VIEW.name==="badges") return renderBadges();
   if(VIEW.name==="games") return renderGamesHub();
   if(VIEW.name==="game") return renderGame(VIEW.gid);
+  if(VIEW.name==="welcome") return renderWelcome();
+  if(VIEW.name==="profile") return renderProfile();
+  if(VIEW.name==="sheet") return renderSheet(VIEW.wid);
+  if(VIEW.name==="sheetRun") return sheetRender();
+  if(VIEW.name==="sheetReport") return sheetReport();
+  if(VIEW.name==="sheetReview") return sheetReview(VIEW.wid);
 }
 function setTopbar(){
   const st=$("#starTotal"); if(st) st.textContent = S.stars;
@@ -1344,10 +1447,11 @@ function renderHome(){
   <section class="hero">
     <div class="hero-art">${heroScene()}</div>
     <div class="hero-txt">
-      <div class="hero-badge">رحلة عبدالله 🚀</div>
+      <div class="hero-badge">👋 أهلاً ${nm()}</div>
       <h1>🌍 عالم الرياضيات</h1>
       <p>تعلّم • العب • اربح النجوم</p>
-      <div class="hero-coins"><span>⭐ ${S.stars}</span><span>🪙 ${S.coins}</span><span>⚡ ${S.xp} خبرة</span></div>
+      <div class="hero-coins"><span>⭐ ${S.stars}</span><span>🪙 ${S.coins}</span><span>🏆 ${S.trophies}</span></div>
+      <button class="hero-profile" onclick="go('profile')">👤 ملفي الشخصي • ${studentLevel().name}</button>
     </div>
   </section>
   <button class="games-cta" onclick="go('games')">
@@ -1408,6 +1512,7 @@ function renderWorld(wid){
     <button class="qcard q-mid" onclick="startQuiz('${wid}',20)"><b>اختبار متوسط</b><span>20 سؤال</span></button>
     <button class="qcard q-final" onclick="startQuiz('${wid}',30)"><b>اختبار نهائي</b><span>30 سؤال</span></button>
   </section>
+  ${sheetCard(wid)}
   ${worldGameBtn(wid)}
   `;
 }
@@ -1487,7 +1592,8 @@ function answer(gi, chosen, correct, hint){
 }
 function completeLesson(wid,n){
   const k=lid(wid,n);
-  if(!S.lessonsDone[k]){ S.lessonsDone[k]=true; S.stars+=3; save(); confetti(); toast("⭐⭐⭐ +3 نجوم! أحسنت يا عبدالله"); checkBadges(); }
+  setLastChapter(wid);
+  if(!S.lessonsDone[k]){ S.lessonsDone[k]=true; S.stars+=3; save(); confetti(); toast("⭐⭐⭐ +3 نجوم! "+pick(CHEERS_STAR)); checkBadges(); }
   renderLesson(wid,n);
 }
 
@@ -2277,7 +2383,356 @@ function clockOver(){
     <button class="rb-home" onclick="go('games')">صالة الألعاب</button></div></section>`;
 }
 
+
+/* ================= STUDENT NAME / LEVEL / CHEERS ================= */
+function nm(){ return S.name || "بطل"; }
+function setLastChapter(wid){ const w=WORLDS.find(x=>x.id===wid); if(w){ S.lastChapter=w.name; save(); } }
+const CHEERS_OK=["أحسنت يا %!","ممتاز يا %! 🌟","رائع يا %!","عاش يا %! 👏","برافو %! إجابة صحيحة"];
+const CHEERS_STAR=["ممتاز يا %، حصلت على نجمة جديدة! ⭐","نجمة جديدة يا %! ✨","تستاهل النجمة يا %! ⭐"];
+const CHEERS_NEAR=["واصل يا %، أنت قريب من الإتقان!","استمر يا %، باقي القليل!","أنت بطل يا %، كمّل!"];
+function pick(a){ return a[Math.floor(Math.random()*a.length)].replace("%", nm()); }
+
+const STU_LEVELS=["مستكشف الرياضيات 🌱","متدرب ذكي 🧠","بطل الكسور 🦸","خبير المسائل 🎯","أسطورة الرياضيات 👑"];
+function stuPoints(){ return doneCount()*2 + S.trophies*6 + Math.floor(S.xp/20) + Object.keys(S.quizScores).length*2; }
+const STU_THRESH=[0,12,28,50,80];
+function studentLevel(){
+  const p=stuPoints(); let idx=0;
+  for(let i=0;i<STU_THRESH.length;i++){ if(p>=STU_THRESH[i]) idx=i; }
+  const next = idx<4 ? STU_THRESH[idx+1] : STU_THRESH[4];
+  const base = STU_THRESH[idx];
+  const pct = idx>=4 ? 100 : Math.min(100, Math.round((p-base)/(next-base)*100));
+  return { name:STU_LEVELS[idx], idx, pct, p, next };
+}
+
+/* ================= WELCOME SCREEN ================= */
+function renderWelcome(){
+  const editing = !!S.name;
+  app().innerHTML=`
+  <section class="welcome">
+    <div class="welcome-art">${heroScene()}</div>
+    <div class="welcome-mascot">${mascot("happy")}</div>
+    <h1>مرحباً بك في 🌍 عالم الرياضيات</h1>
+    <p>اكتب اسمك ونبدأ مغامرة الأرقام معاً!</p>
+    <input id="nameInput" class="name-input" type="text" placeholder="اكتب اسمك هنا" value="${(S.name||'').replace(/"/g,'&quot;')}" maxlength="20" onkeydown="if(event.key==='Enter')startJourney()">
+    <button class="start-btn" onclick="startJourney()">🚀 ابدأ رحلتي</button>
+    ${editing?`<button class="welcome-back" onclick="go('home')">‹ رجوع بدون تغيير</button>`:''}
+  </section>`;
+  setTimeout(()=>{ const el=document.getElementById("nameInput"); if(el) el.focus(); },60);
+}
+function startJourney(){
+  const el=document.getElementById("nameInput");
+  const val=(el&&el.value||"").trim();
+  if(!val){ if(el){ el.classList.add("shake"); setTimeout(()=>el.classList.remove("shake"),500);} toast("اكتب اسمك أول 🙂"); return; }
+  S.name=val; save(); sfxWin(); confetti();
+  toast(`أهلاً ${val}! 🎉 يلا نبدأ المغامرة`);
+  go('home');
+}
+function changeName(){ go('welcome'); }
+
+/* ================= PROFILE ================= */
+function renderProfile(){
+  const lv=studentLevel();
+  const pct = Math.round(doneCount()/totalLessons()*100);
+  app().innerHTML=`
+  <button class="back" onclick="go('home')">‹ العودة</button>
+  <section class="profile">
+    <div class="prof-top">
+      <div class="prof-avatar">${mascot("happy")}</div>
+      <div class="prof-id">
+        <h1>${nm()}</h1>
+        <div class="prof-level">${lv.name}</div>
+      </div>
+      <button class="prof-edit" onclick="changeName()">✏️ تغيير الاسم</button>
+    </div>
+    <div class="prof-levelbar">
+      <div class="plb-top"><span>المستوى ${lv.idx+1} من 5</span><span>${lv.pct}%</span></div>
+      <div class="plb"><span style="width:${lv.pct}%"></span></div>
+      ${lv.idx<4?`<div class="plb-next">المستوى القادم: ${STU_LEVELS[lv.idx+1]}</div>`:`<div class="plb-next">🏆 وصلت لأعلى مستوى!</div>`}
+    </div>
+    <div class="prof-stats">
+      <div class="ps"><div class="ps-n">⭐ ${S.stars}</div><div class="ps-l">نجمة</div></div>
+      <div class="ps"><div class="ps-n">🏆 ${S.trophies}</div><div class="ps-l">كأس</div></div>
+      <div class="ps"><div class="ps-n">🪙 ${S.coins}</div><div class="ps-l">ذهب</div></div>
+      <div class="ps"><div class="ps-n">🎖️ ${S.sheetBadges.length}</div><div class="ps-l">شارة إتقان</div></div>
+      <div class="ps"><div class="ps-n">${avgMastery()}%</div><div class="ps-l">الإتقان</div></div>
+      <div class="ps"><div class="ps-n">${pct}%</div><div class="ps-l">الإنجاز</div></div>
+    </div>
+    <div class="prof-last">📖 آخر فصل تدربت عليه: <b>${S.lastChapter||"لم تبدأ بعد"}</b></div>
+    <div class="prof-btns">
+      <button class="pb1" onclick="go('games')">🎮 الألعاب</button>
+      <button class="pb2" onclick="go('badges')">🏆 الشارات</button>
+    </div>
+  </section>`;
+}
+
+/* ================= WORKSHEET DATA (من أوراق العمل الرسمية) ================= */
+const SHEETS={
+ w7:{ title:"ورقة عمل الفصل 7 — القسمة على رقم واحد",
+  skills:["القسمة مع باق","التحقق من القسمة","قسمة المضاعفات","خطة حل المسألة","تقدير ناتج القسمة","الناتج من رقمين","استقصاء حل المسألة","الناتج من ثلاثة أرقام"],
+  items:[
+   {type:"mcq",q:"سرعة حشرة 3 كم/ساعة، قطعت 32 كم. كم ساعة استغرقت؟",opts:["ساعة","أكثر من 10 ساعات","4 ساعات","7 ساعات"],c:1,sk:"القسمة مع باق",lesson:1,hint:"اقسم 32 ÷ 3 وانظر للباقي.",explain:"32 ÷ 3 = 10 والباقي 2، أي أكثر من 10 ساعات."},
+   {type:"mcq",q:"ناتج القسمة 26 ÷ 2 =",opts:["13","30","14","12 والباقي 1"],c:0,sk:"القسمة مع باق",lesson:1,hint:"كم مرة يدخل 2 في 26؟",explain:"26 ÷ 2 = 13 بالضبط بدون باقٍ."},
+   {type:"mcq",q:"إذا كان 22 ÷ 7 = 3 والباقي 1، فالعبارة المناسبة للتحقق هي:",opts:["3×7+1","7×1+3","1×3+7","22×3+1"],c:0,sk:"التحقق من القسمة",lesson:1,hint:"التحقق: (الناتج × المقسوم عليه) + الباقي.",explain:"3 × 7 + 1 = 22، وهي القاعدة الصحيحة للتحقق."},
+   {type:"mcq",q:"ثمن ثلاجة 3200 ريال بالتقسيط على 8 شهور. كم القسط الشهري؟",opts:["120 ريال","100 ريال","400 ريال","611 ريال"],c:2,sk:"قسمة المضاعفات",lesson:2,hint:"3200 ÷ 8 = 32 ÷ 8 ثم أضف صفرين.",explain:"3200 ÷ 8 = 400 ريال."},
+   {type:"mcq",q:"ناتج القسمة 4000 ÷ 5 =",opts:["350","440","600","800"],c:3,sk:"قسمة المضاعفات",lesson:2,hint:"40 ÷ 5 = 8 ثم أضف الأصفار.",explain:"4000 ÷ 5 = 800."},
+   {type:"mcq",q:"مع سعيد 15 ريالاً زيادة على نواف، ومعهما معاً 55 ريالاً. كم مع سعيد؟",opts:["10","20","35","40"],c:2,sk:"خطة حل المسألة",lesson:3,hint:"اطرح 15 من 55 ثم اقسم على 2 لنواف.",explain:"نواف = (55−15) ÷ 2 = 20، وسعيد = 20 + 15 = 35 ريالاً."},
+   {type:"mcq",q:"زار واحة العلوم 1164 طالباً خلال 4 أيام بالتساوي. كم زائر تقريباً في اليوم؟",opts:["100","300","500","900"],c:1,sk:"تقدير ناتج القسمة",lesson:4,hint:"قرّب 1164 إلى 1200 ثم اقسم على 4.",explain:"1200 ÷ 4 = 300 زائر تقريباً."},
+   {type:"mcq",q:"قدّر ناتج القسمة 162 ÷ 8 ≈",opts:["20","60","90","120"],c:0,sk:"تقدير ناتج القسمة",lesson:4,hint:"قرّب 162 إلى 160 ثم اقسم على 8.",explain:"160 ÷ 8 = 20 تقريباً."},
+   {type:"mcq",q:"ذهب 78 كشافاً، كل 6 منهم في خيمة. كم عدد الخيام؟",opts:["13","16","22","56"],c:0,sk:"الناتج من رقمين",lesson:5,hint:"اقسم 78 ÷ 6.",explain:"78 ÷ 6 = 13 خيمة."},
+   {type:"mcq",q:"ناتج القسمة 53 ÷ 3 =",opts:["17 والباقي 2","11 والباقي 2","13","21"],c:0,sk:"الناتج من رقمين",lesson:5,hint:"3 × 17 = 51، والباقي؟",explain:"53 ÷ 3 = 17 والباقي 2."},
+   {type:"mcq",q:"أكمل النمط: 2، 5، 11، 23، ...",opts:["24","36","44","47"],c:3,sk:"استقصاء حل المسألة",lesson:6,hint:"كل عدد = السابق × 2 + 1.",explain:"23 × 2 + 1 = 47."},
+   {type:"mcq",q:"وزّعت جمعية 784 ريالاً بالتساوي على 7 فقراء. كم أخذ كل فقير؟",opts:["232","112","432","567"],c:1,sk:"الناتج من ثلاثة أرقام",lesson:7,hint:"اقسم 784 ÷ 7 خانة خانة.",explain:"784 ÷ 7 = 112 ريالاً."},
+   {type:"fill",q:"اقسم ثم تحقق: 84 ÷ 4 = ؟",ans:"21",sk:"القسمة مع باق",lesson:1,hint:"8 ÷ 4 = 2، ثم 4 ÷ 4 = 1.",explain:"84 ÷ 4 = 21، والتحقق 21 × 4 = 84."},
+   {type:"fill",q:"أكمل: 28 ÷ 7 = ؟",ans:"4",sk:"قسمة المضاعفات",lesson:2,hint:"حقيقة الضرب 7 × 4 = 28.",explain:"28 ÷ 7 = 4."},
+   {type:"fill",q:"أكمل: 8000 ÷ 4 = ؟",ans:"2000",sk:"قسمة المضاعفات",lesson:2,hint:"8 ÷ 4 = 2 ثم أضف الأصفار الثلاثة.",explain:"8000 ÷ 4 = 2000."},
+   {type:"fill",q:"أكمل: 1500 ÷ 3 = ؟",ans:"500",sk:"قسمة المضاعفات",lesson:2,hint:"15 ÷ 3 = 5 ثم أضف صفرين.",explain:"1500 ÷ 3 = 500."},
+   {type:"mcq",q:"في مزرعة طيور وخراف عددها 20 وأرجلها 64. كم عدد الخراف؟",opts:["8","10","12","14"],c:2,sk:"خطة حل المسألة",lesson:3,hint:"لو كلها طيور = 40 رِجلاً؛ الزيادة من أرجل الخراف.",explain:"الزيادة 64−40=24، كل خروف يزيد رِجلين: 24÷2=12 خروفاً (و8 طيور)."},
+   {type:"mcq",q:"قدّر ناتج القسمة 345 ÷ 7 ≈",opts:["40","50","60","70"],c:1,sk:"تقدير ناتج القسمة",lesson:4,hint:"قرّب 345 إلى 350.",explain:"350 ÷ 7 = 50 تقريباً."},
+   {type:"fill",q:"اقسم ثم تحقق: 64 ÷ 4 = ؟",ans:"16",sk:"الناتج من رقمين",lesson:5,hint:"6 ÷ 4 = 1 والباقي 2، أنزل 4.",explain:"64 ÷ 4 = 16، والتحقق 16 × 4 = 64."},
+   {type:"mcq",q:"يقطع منصور 5 كم في كل زيارة لعمه (ذهاباً وإياباً). إذا قطع 20 كم فكم مرة زاره؟",opts:["2","4","5","10"],c:1,sk:"استقصاء حل المسألة",lesson:6,hint:"اقسم 20 ÷ 5.",explain:"20 ÷ 5 = 4 مرات."},
+   {type:"fill",q:"أجد ناتج القسمة: 324 ÷ 2 = ؟",ans:"162",sk:"الناتج من ثلاثة أرقام",lesson:7,hint:"3 ÷ 2 = 1 والباقي 1، أنزل 2 ...",explain:"324 ÷ 2 = 162."}
+  ]},
+ w11:{ title:"ورقة عمل الفصل 11 — الكسور العشرية",
+  skills:["الأعشار","الأجزاء من المئة","التحويل بين الكسور","الأعداد الكسرية","خط الأعداد","المقارنة والترتيب","تكافؤ الكسور"],
+  items:[
+   {type:"mcq",q:"يُكتب الكسر الاعتيادي 7/10 على صورة كسر عشري:",opts:["0.7","7","0.77","0.70"],c:0,sk:"الأعشار",lesson:1,hint:"المقام 10 → خانة واحدة بعد الفاصلة.",explain:"7/10 = 0.7."},
+   {type:"mcq",q:"يُكتب الكسر العشري 0.5 على صورة كسر اعتيادي:",opts:["5/100","4/10","5/10","10/5"],c:2,sk:"الأعشار",lesson:1,hint:"خانة الأعشار → المقام 10.",explain:"0.5 = 5/10."},
+   {type:"mcq",q:"أكلت وفاء ستة أعشار الرغيف. ما الكسر العشري الذي يمثل ما أكلته؟",opts:["6.0","0.06","6.6","0.6"],c:3,sk:"الأعشار",lesson:1,hint:"ستة أعشار = 6/10.",explain:"6/10 = 0.6."},
+   {type:"mcq",q:"يُكتب الكسر الاعتيادي 4/100 على صورة كسر عشري:",opts:["0.04","0.4","4.0","40.0"],c:0,sk:"الأجزاء من المئة",lesson:2,hint:"المقام 100 → خانتان بعد الفاصلة.",explain:"4/100 = 0.04."},
+   {type:"mcq",q:"قرأت فاطمة 100 كتاب، منها 35 في التاريخ. ما الكسر الذي يمثل غير التاريخية؟",opts:["35","0.65","0.35","56.00"],c:1,sk:"الأجزاء من المئة",lesson:2,hint:"غير التاريخية = 100 − 35 = 65 من 100.",explain:"65/100 = 0.65."},
+   {type:"mcq",q:"يُكتب العدد الكسري 5 4/10 على صورة كسر عشري:",opts:["5.4","4.05","4.5","5.04"],c:0,sk:"الأعداد الكسرية",lesson:3,hint:"العدد الصحيح 5، والكسر 4/10 = 0.4.",explain:"5 4/10 = 5.4."},
+   {type:"mcq",q:"الكسر العشري لـ (اثنا عشر وثلاثة أعشار) هو:",opts:["12.13","12.3","3.12","12.03"],c:1,sk:"الأعداد الكسرية",lesson:3,hint:"الجزء الصحيح 12، والأعشار 3.",explain:"اثنا عشر وثلاثة أعشار = 12.3."},
+   {type:"mcq",q:"في شركة 12 مكتباً، يصل ربع المكاتب مجلة واحدة والباقي مجلتان. كم مجلة تصل يومياً؟",opts:["21","25","30","44"],c:0,sk:"خطة حل المسألة",lesson:4,hint:"ربع 12 = 3 مكاتب (مجلة)، الباقي 9 مكاتب (مجلتان).",explain:"3×1 + 9×2 = 3 + 18 = 21 مجلة."},
+   {type:"mcq",q:"العدد الأكبر من 1.45 هو:",opts:["0.87","1.09","1.3","1.54"],c:3,sk:"المقارنة والترتيب",lesson:6,hint:"قارن خانة الآحاد ثم الأعشار.",explain:"1.54 > 1.45."},
+   {type:"mcq",q:"الإشارة المناسبة: 16.3 ___ 16.33",opts:["<",">","=","+"],c:0,sk:"المقارنة والترتيب",lesson:6,hint:"16.3 = 16.30، قارن أجزاء المئة.",explain:"16.30 < 16.33 إذن الإشارة <."},
+   {type:"mcq",q:"يُكتب الكسر الاعتيادي 2/5 على صورة كسر عشري:",opts:["0.4","5.6","0.7","0.6"],c:0,sk:"تكافؤ الكسور",lesson:7,hint:"وحّد المقام إلى 10: 2/5 = 4/10.",explain:"2/5 = 4/10 = 0.4."},
+   {type:"mcq",q:"يُكتب الكسر الاعتيادي 2/4 على صورة كسر عشري:",opts:["0.8","0.5","0.43","0.2"],c:1,sk:"تكافؤ الكسور",lesson:7,hint:"2/4 = 1/2.",explain:"2/4 = 1/2 = 0.5."},
+   {type:"mcq",q:"الكسر العشري الأكبر من 1 ¼ (=1.25) هو:",opts:["0.87","1.2","1.0","1.67"],c:3,sk:"المقارنة والترتيب",lesson:8,hint:"حوّل 1¼ إلى 1.25 ثم قارن.",explain:"1.67 > 1.25."},
+   {type:"mcq",q:"رتّب من الأصغر إلى الأكبر: 5.2، 6.8، 4.3، 4.7، 5.7",opts:["4.3، 4.7، 5.2، 5.7، 6.8","6.8، 5.7، 5.2، 4.7، 4.3","4.3، 5.2، 4.7، 5.7، 6.8","5.2، 4.3، 4.7، 6.8، 5.7"],c:0,sk:"المقارنة والترتيب",lesson:6,hint:"قارن خانة الآحاد أولاً.",explain:"الترتيب: 4.3 ثم 4.7 ثم 5.2 ثم 5.7 ثم 6.8."},
+   {type:"mcq",q:"يركض رياض 3200 م حول ملعب محيطه 400 م. كم دورة يركض؟",opts:["6","8","10","12"],c:1,sk:"خطة حل المسألة",lesson:4,hint:"اقسم 3200 ÷ 400.",explain:"3200 ÷ 400 = 8 دورات."},
+   {type:"fill",q:"اكتب الكسر العشري للكسر الاعتيادي: 3/10 = ؟",ans:"0.3",sk:"الأعشار",lesson:1,hint:"المقام 10 → خانة واحدة.",explain:"3/10 = 0.3."},
+   {type:"fill",q:"اكتب الكسر العشري الذي يمثّل تظليل عمود واحد كامل من شبكة 100 (10 مربعات):",ans:"0.1",sk:"الأجزاء من المئة",lesson:2,hint:"10/100 = عُشر.",explain:"10/100 = 0.1."},
+   {type:"mcq",q:"قارن: 2 5/100 ___ 2.05",opts:["<",">","="],c:2,sk:"المقارنة والترتيب",lesson:8,hint:"2 5/100 = 2.05.",explain:"2 5/100 = 2.05 إذن =."},
+   {type:"mcq",q:"قارن: 3 ¼ ___ 3.12",opts:["<",">","="],c:1,sk:"المقارنة والترتيب",lesson:8,hint:"3¼ = 3.25.",explain:"3.25 > 3.12 إذن >."},
+   {type:"mcq",q:"رتّب من الأصغر إلى الأكبر: 6.1، 6 1/5، 6 4/10، 6.48",opts:["6.1، 6 1/5، 6 4/10، 6.48","6.48، 6 4/10، 6 1/5، 6.1","6 1/5، 6.1، 6.48، 6 4/10","6.1، 6.48، 6 1/5، 6 4/10"],c:0,sk:"المقارنة والترتيب",lesson:8,hint:"حوّل الكل لعشري: 6.2 و6.4.",explain:"6.1 < 6.2 (=6 1/5) < 6.4 (=6 4/10) < 6.48."}
+  ]},
+ w12:{ title:"ورقة عمل الفصل 12 — جمع وطرح الكسور العشرية",
+  skills:["تقريب الكسور العشرية","التقدير","الحل العكسي","جمع العشرية","طرح العشرية","مسائل لفظية"],
+  items:[
+   {type:"mcq",q:"قرّب العدد 8.49 إلى أقرب عُشر =",opts:["8.4","8.5","8","9"],c:1,sk:"تقريب الكسور العشرية",lesson:1,hint:"انظر لخانة أجزاء المئة (9).",explain:"9 ≥ 5 → نقرّب لأعلى: 8.49 ≈ 8.5."},
+   {type:"mcq",q:"اشترت نورة كتاباً بـ 6.15 ريالاً ومعها 9.35 ريالاً. كم بقي معها تقريباً؟",opts:["1 ريال","2 ريال","3 ريال","4 ريال"],c:2,sk:"التقدير",lesson:2,hint:"قرّب: 9 − 6.",explain:"9.35 ≈ 9 و6.15 ≈ 6، الباقي ≈ 3 ريال."},
+   {type:"mcq",q:"قرّب العدد 5.63 إلى أقرب عدد صحيح =",opts:["4","5","6","7"],c:2,sk:"تقريب الكسور العشرية",lesson:1,hint:"انظر لخانة الأعشار (6).",explain:"6 ≥ 5 → نقرّب لأعلى: 5.63 ≈ 6."},
+   {type:"mcq",q:"تقريب الكسر العشري 3.25 إلى أقرب عدد صحيح =",opts:["3","4","5","6"],c:0,sk:"تقريب الكسور العشرية",lesson:1,hint:"خانة الأعشار 2.",explain:"2 < 5 → نترك: 3.25 ≈ 3."},
+   {type:"mcq",q:"ناتج تقريب العدد 4.12 إلى أقرب عُشر =",opts:["4.1","4.2","4.3","4.4"],c:0,sk:"تقريب الكسور العشرية",lesson:1,hint:"خانة أجزاء المئة 2.",explain:"2 < 5 → 4.12 ≈ 4.1."},
+   {type:"mcq",q:"طول سيارة 514.58 سم. ما طولها لأقرب عدد صحيح؟",opts:["500 سم","515 سم","514 سم","550 سم"],c:1,sk:"تقريب الكسور العشرية",lesson:1,hint:"خانة الأعشار 5.",explain:"5 ≥ 5 → 514.58 ≈ 515 سم."},
+   {type:"mcq",q:"قدّر ناتج الطرح 9.7 − 7.2 (لأقرب عدد صحيح) =",opts:["2","3","4","5"],c:1,sk:"التقدير",lesson:2,hint:"قرّب: 10 − 7.",explain:"9.7 ≈ 10 و7.2 ≈ 7 → 10 − 7 = 3."},
+   {type:"mcq",q:"قدّر ناتج الجمع 8.5 + 11.7 (لأقرب عدد صحيح) =",opts:["17","19","20","21"],c:3,sk:"التقدير",lesson:2,hint:"قرّب: 9 + 12.",explain:"8.5 ≈ 9 و11.7 ≈ 12 → 21."},
+   {type:"mcq",q:"قدّر ناتج الجمع 1.5 + 2.3 (لأقرب عدد صحيح) =",opts:["3","4","5","6"],c:1,sk:"التقدير",lesson:2,hint:"قرّب: 2 + 2.",explain:"1.5 ≈ 2 و2.3 ≈ 2 → 4."},
+   {type:"mcq",q:"قدّر المسافة: 166.5 + 68.4 + 72.75 (لأقرب عدد صحيح) =",opts:["200 كلم","300 كلم","208 كلم","308 كلم"],c:3,sk:"التقدير",lesson:2,hint:"167 + 68 + 73.",explain:"≈ 167 + 68 + 73 = 308 كلم."},
+   {type:"mcq",q:"ضُرب عدد في 3، ثم طُرح 8، ثم قُسم على 4 فكان الناتج 7. ما العدد؟",opts:["11","12","13","14"],c:1,sk:"الحل العكسي",lesson:3,hint:"ابدأ من 7 واعكس: ×4 ثم +8 ثم ÷3.",explain:"7×4=28، +8=36، ÷3=12."},
+   {type:"mcq",q:"اشترى أحمد تذكرة بـ 16 ريالاً وأقرض صديقه 23 ريالاً وبقي معه 8. كم كان معه بالبداية؟",opts:["39","31","47","46"],c:2,sk:"الحل العكسي",lesson:3,hint:"اجمع رجوعاً: 8 + 23 + 16.",explain:"8 + 23 + 16 = 47 ريالاً."},
+   {type:"mcq",q:"جمعت هند 18 صورة: 2 جمال، وضعفها (4) نعام، و6 زرافات، والباقي خيل. كم صورة خيل؟",opts:["2","4","6","12"],c:2,sk:"الحل العكسي",lesson:3,hint:"18 − (2 + 4 + 6).",explain:"18 − 12 = 6 صور خيل."},
+   {type:"mcq",q:"0.75 + 0.62 =",opts:["0.137","1.37","7.13","37.1"],c:1,sk:"جمع العشرية",lesson:4,hint:"حاذِ الفاصلة واجمع من اليمين.",explain:"0.75 + 0.62 = 1.37."},
+   {type:"mcq",q:"اشترى سالم تفاحاً بـ 12.5 ريالاً وموزاً بـ 7.2 ريالاً. كم دفع؟",opts:["19.7 ريال","18.7 ريال","19 ريال","20 ريال"],c:0,sk:"جمع العشرية",lesson:4,hint:"12.5 + 7.2.",explain:"12.5 + 7.2 = 19.7 ريالاً."},
+   {type:"mcq",q:"قطع فهد 16.72 كم ثم 11.35 كم. ما مجموع المسافة؟",opts:["70.28","28.07","7.028","280.7"],c:1,sk:"جمع العشرية",lesson:4,hint:"حاذِ الفاصلة: 16.72 + 11.35.",explain:"= 28.07 كم."},
+   {type:"mcq",q:"طول البايثون 7.38 م والكوبرا 5.31 م. كم يزيد البايثون؟",opts:["12.79","12.69","7.02","2.07"],c:3,sk:"طرح العشرية",lesson:5,hint:"اطرح: 7.38 − 5.31.",explain:"7.38 − 5.31 = 2.07 م."},
+   {type:"mcq",q:"مع فهد 25 ريالاً، أنفق 16.75. كم الباقي؟",opts:["25.8","8.25","8.52","41.75"],c:1,sk:"طرح العشرية",lesson:5,hint:"25.00 − 16.75.",explain:"= 8.25 ريالاً."},
+   {type:"mcq",q:"مع أحمد 16 ريالاً، أنفق 4.75 ثم 8.5. كم الباقي؟",opts:["11.25","25.11","13.25","2.75"],c:3,sk:"طرح العشرية",lesson:5,hint:"16 − 4.75 − 8.5.",explain:"16 − 13.25 = 2.75 ريالاً."},
+   {type:"fill",q:"أوجد الناتج عمودياً: 4.72 + 3.9 = ؟",ans:"8.62",sk:"جمع العشرية",lesson:4,hint:"3.9 = 3.90، حاذِ الفاصلة.",explain:"4.72 + 3.90 = 8.62."},
+   {type:"fill",q:"أوجد الناتج: 4.6 − 1.45 = ؟",ans:"3.15",sk:"طرح العشرية",lesson:5,hint:"4.60 − 1.45.",explain:"4.60 − 1.45 = 3.15."},
+   {type:"fill",q:"قرّب إلى أقرب عدد صحيح: 13.2 = ؟",ans:"13",sk:"تقريب الكسور العشرية",lesson:1,hint:"خانة الأعشار 2 < 5.",explain:"13.2 ≈ 13."},
+   {type:"fill",q:"أوجد الناتج: 24.9 + 9.8 = ؟",ans:"34.7",sk:"جمع العشرية",lesson:4,hint:"حاذِ الفاصلة واحمل عند اللزوم.",explain:"24.9 + 9.8 = 34.7."}
+  ]}
+};
+function sheetCount(wid){ return SHEETS[wid]? SHEETS[wid].items.length : 0; }
+
+/* ================= WORKSHEET CARD (in world) ================= */
+function sheetCard(wid){
+  if(!SHEETS[wid]) return "";
+  const sh=SHEETS[wid]; const res=S.sheetResults[wid];
+  const skills=sh.skills.map(s=>`<span class="chip">${s}</span>`).join("");
+  const best = res? `🏅 أفضل نتيجة: ${res.best}%` : "لم تبدأ بعد";
+  return `<h2 class="sec-title">📄 ورقة عمل الفصل</h2>
+  <section class="sheet-card">
+    <div class="sc-top"><div class="sc-emoji">📄</div>
+      <div><b>${sh.title}</b><div class="sc-meta">${sh.items.length} سؤال • تصحيح فوري وتلميح وشرح</div></div>
+    </div>
+    <div class="sc-skills">${skills}</div>
+    <div class="sc-best">${best}</div>
+    <div class="sc-btns">
+      <button class="scb-start" onclick="sheetStart('${wid}')">▶ ابدأ التدريب</button>
+      <button class="scb-review" onclick="go('sheetReview',{wid:'${wid}'})" ${res&&res.wrong.length?'':'disabled'}>🔍 راجع أخطائي</button>
+      <button class="scb-retry" onclick="sheetStart('${wid}')" ${res?'':'disabled'}>🔁 أعد المحاولة</button>
+    </div>
+  </section>`;
+}
+
+/* ================= WORKSHEET ENGINE ================= */
+let WS={};
+function normNum(s){
+  if(s==null) return "";
+  s=(""+s).trim();
+  const map={'٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9','٫':'.','،':'',',':''};
+  s=s.replace(/[٠-٩٫،,]/g,c=>map[c]!==undefined?map[c]:c);
+  s=s.replace(/\s+/g,'');
+  s=s.replace(/ريالات|ريال|سم²|سم|كلم|كم|متر|م|خيمة|مجلة|مرات|مرة|دورات|دورة|زائر|طالب/g,'');
+  if(/^\d+\.\d+$/.test(s)) s=s.replace(/0+$/,'').replace(/\.$/,'');
+  return s;
+}
+function sheetStart(wid){
+  setLastChapter(wid);
+  const sh=SHEETS[wid];
+  WS={wid, items:sh.items.slice(), i:0, score:0, wrong:[], attempt:0, total:sh.items.length};
+  go('sheetRun');
+}
+function sheetRender(){
+  const it=WS.items[WS.i];
+  const w=WORLDS.find(x=>x.id===WS.wid);
+  const pct=Math.round(WS.i/WS.total*100);
+  let body;
+  if(it.type==="fill"){
+    body=`<input id="fillIn" class="fill-in" type="text" placeholder="اكتب الإجابة" onkeydown="if(event.key==='Enter')sheetCheckFill()" autocomplete="off">
+      <button class="fill-check" onclick="sheetCheckFill()">تحقّق ✓</button>`;
+  } else {
+    body=`<div class="ws-opts">${it.opts.map((o,k)=>`<button class="ws-opt" onclick="sheetAnswerMcq(${k})">${o}</button>`).join("")}</div>`;
+  }
+  app().innerHTML=`
+  <button class="back" onclick="if(confirm('إنهاء التدريب؟'))go('sheet',{wid:'${WS.wid}'})">‹ خروج</button>
+  <section class="ws-run" style="--wc:${w.wc}">
+    <div class="ws-head">
+      <div class="ws-count">سؤال ${WS.i+1} من ${WS.total}</div>
+      <div class="ws-skill">${it.sk}</div>
+    </div>
+    <div class="wbar"><span style="width:${pct}%"></span></div>
+    <div class="ws-q">${it.q}</div>
+    ${body}
+    <div class="ws-fb" id="wsFb"></div>
+  </section>`;
+  setTimeout(()=>{ const el=document.getElementById("fillIn"); if(el) el.focus(); },50);
+}
+function sheetAnswerMcq(k){
+  const it=WS.items[WS.i];
+  const opts=document.querySelectorAll(".ws-opt");
+  if(k===it.c){ opts.forEach(o=>o.disabled=true); opts[k].classList.add("ws-ok"); sheetCorrect(); }
+  else {
+    opts[k].classList.add("ws-bad");
+    WS.attempt++;
+    if(WS.attempt===1){ sfxWrong(); fb(`<div class="fb-hint">💡 تلميح: ${it.hint} — حاول مرة ثانية!</div>`); setTimeout(()=>{opts[k].classList.remove("ws-bad");opts[k].disabled=true;},700); }
+    else { opts.forEach(o=>o.disabled=true); opts[it.c].classList.add("ws-ok"); sheetWrong(); }
+  }
+}
+function sheetCheckFill(){
+  const it=WS.items[WS.i]; const el=document.getElementById("fillIn");
+  const val=el?el.value:"";
+  if(normNum(val)===normNum(it.ans)){ if(el)el.disabled=true; sheetCorrect(); }
+  else {
+    WS.attempt++;
+    if(WS.attempt===1){ sfxWrong(); if(el){el.classList.add("shake");setTimeout(()=>el.classList.remove("shake"),500);} fb(`<div class="fb-hint">💡 تلميح: ${it.hint} — حاول مرة ثانية!</div>`); }
+    else { if(el)el.disabled=true; sheetWrong(); }
+  }
+}
+function fb(html){ const f=document.getElementById("wsFb"); if(f) f.innerHTML=html; }
+function sheetCorrect(){
+  const it=WS.items[WS.i];
+  WS.score++; S.stars++; addCoins(2); save(); sfxRight(); sfxCoin();
+  if(Math.random()<0.5) toast(pick(CHEERS_STAR)); else toast(pick(CHEERS_OK));
+  fb(`<div class="fb-ok">✅ ${pick(CHEERS_OK)}</div><div class="fb-explain">📘 ${it.explain}</div>
+    <button class="ws-next" onclick="sheetNext()">${WS.i+1>=WS.total?'إنهاء ←':'التالي ←'}</button>`);
+}
+function sheetWrong(){
+  const it=WS.items[WS.i];
+  WS.wrong.push({q:it.q, ans:(it.type==="fill"?it.ans:it.opts[it.c]), sk:it.sk, lesson:it.lesson, explain:it.explain});
+  sfxWrong();
+  fb(`<div class="fb-bad">❌ الإجابة الصحيحة: <b>${it.type==="fill"?it.ans:it.opts[it.c]}</b></div>
+    <div class="fb-explain">📘 ${it.explain}</div>
+    <div class="fb-link"><button onclick="go('lesson',{wid:'${WS.wid}',n:${it.lesson}})">📖 راجع الدرس المرتبط</button></div>
+    <button class="ws-next" onclick="sheetNext()">${WS.i+1>=WS.total?'إنهاء ←':'التالي ←'}</button>`);
+}
+function sheetNext(){
+  WS.i++; WS.attempt=0;
+  if(WS.i>=WS.total) sheetFinish();
+  else sheetRender();
+}
+function sheetFinish(){
+  const pct=Math.round(WS.score/WS.total*100);
+  const wid=WS.wid; const prev=S.sheetResults[wid];
+  const firstTime=!prev;
+  const best = prev? Math.max(prev.best, pct) : pct;
+  S.sheetResults[wid]={score:WS.score,total:WS.total,pct,best,wrong:WS.wrong};
+  if(firstTime){ S.trophies++; }            // كأس عند إكمال ورقة العمل أول مرة
+  if(pct>=80 && !S.sheetBadges.includes(wid)){ S.sheetBadges.push(wid); }  // شارة إتقان
+  save(); checkBadges();
+  if(pct>=80) confetti();
+  if(pct===100){ sfxWin(); setTimeout(confetti,300); setTimeout(confetti,700); }
+  else if(WS.score>0) sfxWin();
+  go('sheetReport');
+}
+function sheetReport(){
+  const wid=WS.wid; const w=WORLDS.find(x=>x.id===wid); const r=S.sheetResults[wid];
+  const pct=r.pct;
+  const grade = pct===100?"إتقان كامل 👑": pct>=80?"ممتاز 🎖️": pct>=50?"جيد، واصل 💪":"يحتاج مراجعة 📖";
+  const circ=2*Math.PI*54, off=circ*(1-pct/100);
+  // weak skills
+  const weakSk={}; r.wrong.forEach(x=>{ weakSk[x.sk]=weakSk[x.sk]||x.lesson; });
+  const weakHtml = Object.keys(weakSk).length ? `
+    <div class="weak"><h3>📌 مهارات تحتاج مراجعة</h3>
+    ${Object.keys(weakSk).map(sk=>`<button class="weak-row" onclick="go('lesson',{wid:'${wid}',n:${weakSk[sk]}})"><span>${sk}</span><b>راجع الدرس ›</b></button>`).join("")}</div>`
+    : `<div class="allgood">🎉 ما عندك أخطاء يا ${nm()}! أداء كامل</div>`;
+  const trophyLine = `<div class="report-rewards">${S.trophies?'🏆 كأس ورقة العمل':''} ${pct>=80?'• 🎖️ شارة إتقان':''} ${pct===100?'• 👑 إتقان كامل':''}</div>`;
+  app().innerHTML=`
+  <section class="result" style="--wc:${w.wc}">
+    <div class="report-mascot">${mascot(pct>=50?"happy":"sad")}</div>
+    <h1>تقرير ورقة العمل</h1>
+    <div class="report-name">${nm()} — ${w.name}</div>
+    <div class="donut"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" class="d-bg"/><circle cx="60" cy="60" r="54" class="d-fg" style="stroke-dasharray:${circ};stroke-dashoffset:${off};stroke:${w.wc}"/></svg>
+      <div class="donut-c"><div class="donut-pct">${pct}%</div><div class="donut-sub">${r.score}/${r.total}</div></div></div>
+    <div class="grade">${grade}</div>
+    ${trophyLine}
+    <div class="result-stats">
+      <div><b>${r.score}</b><span>صحيحة</span></div>
+      <div><b>${r.total-r.score}</b><span>خاطئة</span></div>
+      <div><b>${r.best}%</b><span>أفضل نتيجة</span></div>
+    </div>
+    ${weakHtml}
+    <div class="result-btns">
+      <button class="rb-retry" onclick="sheetStart('${wid}')">🔁 أعد المحاولة</button>
+      ${r.wrong.length?`<button class="rb-home" onclick="go('sheetReview',{wid:'${wid}'})">🔍 راجع أخطائي</button>`:''}
+      <button class="rb-home" onclick="go('sheet',{wid:'${wid}'})">عودة</button>
+    </div>
+  </section>`;
+}
+function sheetReview(wid){
+  const w=WORLDS.find(x=>x.id===wid); const r=S.sheetResults[wid];
+  if(!r || !r.wrong.length){ app().innerHTML=`<button class="back" onclick="go('sheet',{wid:'${wid}'})">‹ رجوع</button><section class="result"><div class="allgood">🎉 ما عندك أخطاء محفوظة يا ${nm()}!</div></section>`; return; }
+  const rows=r.wrong.map(x=>`<div class="rev-card">
+    <div class="rev-q">${x.q}</div>
+    <div class="rev-ans">✅ الإجابة الصحيحة: <b>${x.ans}</b></div>
+    <div class="rev-exp">📘 ${x.explain}</div>
+    <button class="rev-link" onclick="go('lesson',{wid:'${wid}',n:${x.lesson}})">📖 راجع الدرس المرتبط</button>
+  </div>`).join("");
+  app().innerHTML=`
+  <button class="back" onclick="go('sheet',{wid:'${wid}'})">‹ رجوع لورقة العمل</button>
+  <section class="review">
+    <h1>🔍 مراجعة أخطاء ${nm()}</h1>
+    <p class="rev-sub">${w.name} • ${r.wrong.length} سؤال للمراجعة</p>
+    ${rows}
+    <button class="pz-check" onclick="sheetStart('${wid}')">🔁 جرّب الورقة مرة ثانية</button>
+  </section>`;
+}
+function renderSheet(wid){
+  const w=WORLDS.find(x=>x.id===wid);
+  app().innerHTML=`
+  <button class="back" onclick="go('world',{wid:'${wid}'})">‹ ${w.name}</button>
+  <section class="wbanner" style="--wc:${w.wc};--wc2:${w.wc2}">
+    <div class="wbanner-scene">${worldScene(wid)}</div>
+    <div class="wbanner-emoji">📄</div>
+    <div><div class="wbanner-ch">${w.ch}</div><h1>ورقة عمل الفصل</h1></div>
+  </section>
+  ${sheetCard(wid)}`;
+}
+
+
 /* ================= BOOT ================= */
-render();</script>
+if(!S.name){ VIEW={name:"welcome"}; render(); } else { render(); }</script>
 </body>
 </html>
