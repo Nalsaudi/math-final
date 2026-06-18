@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>🌍 عالم الرياضيات — رحلة عبدالله</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1d2440; --ink2:#48507a; --muted:#8a90b3;
+  --bg:#eef1fb; --card:#ffffff; --line:#e4e8f7;
+  --ok:#16a06a; --okbg:#e3f7ee; --bad:#e5484d; --badbg:#fdeaea; --warn:#f59e0b;
+  --gold:#f5a623; --star:#ffce3d;
+  --w-accent:#6c5ce7; --w-soft:#efeaff;
+  --r:20px; --sh:0 10px 30px rgba(40,46,90,.10); --sh2:0 4px 14px rgba(40,46,90,.08);
+  --f-d:'Baloo Bhaijaan 2',system-ui; --f-b:'Tajawal',system-ui;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:var(--f-b);background:
+  radial-gradient(1200px 600px at 100% -10%, #e7e0ff 0%, transparent 55%),
+  radial-gradient(1000px 500px at -10% 0%, #dff0ff 0%, transparent 50%),
+  var(--bg);
+  color:var(--ink);line-height:1.7;min-height:100vh}
+img{max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px 90px}
+.hidden{display:none!important}
+
+/* ===== Top bar ===== */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-d);font-weight:800;font-size:1.15rem;cursor:pointer}
+.brand .logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#6c5ce7,#00b4d8);color:#fff;font-size:1.2rem;box-shadow:var(--sh2)}
+.spacer{flex:1}
+.starcount{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:6px 12px;font-weight:800;color:#b8860b;box-shadow:var(--sh2)}
+.btn-ghost{border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;font-weight:700;color:var(--ink2)}
+.btn-ghost:hover{border-color:var(--w-accent);color:var(--w-accent)}
+
+/* ===== Hero / dashboard ===== */
+.hero{position:relative;margin-top:18px;border-radius:28px;overflow:hidden;
+  background:linear-gradient(135deg,#5b4bd6 0%,#7a5cf0 45%,#2aa9e0 100%);
+  color:#fff;padding:30px 26px;box-shadow:var(--sh)}
+.hero h1{font-family:var(--f-d);font-size:2.05rem;margin:.1em 0;line-height:1.25}
+.hero p{opacity:.95;margin:.2em 0 1em;font-size:1.05rem}
+.hero .deco{position:absolute;inset:0;pointer-events:none;opacity:.25;font-size:2rem}
+.dash{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px}
+.dcard{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);
+  border-radius:18px;padding:14px;text-align:center;backdrop-filter:blur(4px)}
+.dcard .n{font-family:var(--f-d);font-size:1.7rem;font-weight:800;line-height:1}
+.dcard .l{font-size:.82rem;opacity:.92;margin-top:4px}
+.progress{margin-top:16px}
+.pbar{height:14px;border-radius:999px;background:rgba(255,255,255,.25);overflow:hidden}
+.pbar>i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#ffe169,#ffb03a);transition:width .6s}
+.plabel{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:6px;opacity:.95}
+
+/* ===== Section title ===== */
+.sec-h{display:flex;align-items:center;gap:10px;margin:26px 4px 14px}
+.sec-h h2{font-family:var(--f-d);font-size:1.45rem;margin:0}
+.sec-h .pill{font-size:.78rem;background:var(--w-soft);color:var(--w-accent);padding:4px 10px;border-radius:999px;font-weight:700}
+
+/* ===== World map ===== */
+.worlds{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.world{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px;box-shadow:var(--sh2);cursor:pointer;transition:transform .15s,box-shadow .2s;overflow:hidden}
+.world:hover{transform:translateY(-4px);box-shadow:var(--sh)}
+.world .tag{position:absolute;top:14px;left:14px;font-size:.72rem;font-weight:700;color:#fff;
+  background:var(--wc);padding:3px 9px;border-radius:999px;opacity:.95}
+.world .emoji{font-size:2.6rem;filter:drop-shadow(0 4px 6px rgba(0,0,0,.12))}
+.world h3{font-family:var(--f-d);font-size:1.18rem;margin:.4em 0 .1em}
+.world .sub{color:var(--muted);font-size:.9rem;min-height:2.6em}
+.world .wbar{height:9px;border-radius:999px;background:#eef1fb;margin-top:12px;overflow:hidden}
+.world .wbar>i{display:block;height:100%;background:var(--wc);width:0;transition:width .5s}
+.world .wmeta{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-top:7px}
+.world .crown{position:absolute;top:12px;right:12px;font-size:1.3rem;opacity:0;transition:.3s}
+.world.done .crown{opacity:1}
+
+/* ===== Buttons ===== */
+.btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;border-radius:14px;
+  padding:12px 20px;font-weight:800;font-family:var(--f-d);font-size:1rem;transition:transform .12s,filter .2s}
+.btn:active{transform:scale(.97)}
+.btn-p{background:linear-gradient(135deg,var(--w-accent),#00b4d8);color:#fff;box-shadow:var(--sh2)}
+.btn-p:hover{filter:brightness(1.05)}
+.btn-o{background:#fff;border:2px solid var(--w-accent);color:var(--w-accent)}
+.btn-g{background:#eef1fb;color:var(--ink2)}
+.btn-lg{padding:14px 26px;font-size:1.08rem}
+.btn-block{display:flex;width:100%}
+
+/* ===== World view ===== */
+.crumbs{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted);margin:18px 4px 6px;flex-wrap:wrap}
+.crumbs a{color:var(--w-accent);font-weight:700;cursor:pointer}
+.wbanner{border-radius:24px;padding:24px;color:#fff;background:linear-gradient(135deg,var(--wc),var(--wc2));box-shadow:var(--sh);position:relative;overflow:hidden}
+.wbanner .be{position:absolute;font-size:8rem;opacity:.16;left:-10px;bottom:-30px}
+.wbanner h2{font-family:var(--f-d);font-size:1.7rem;margin:.1em 0}
+.learn{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-top:16px;box-shadow:var(--sh2)}
+.learn h3{font-family:var(--f-d);margin:.2em 0 .6em;font-size:1.15rem;color:var(--wc)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--w-soft);color:var(--wc);padding:6px 12px;border-radius:999px;font-size:.86rem;font-weight:600}
+.goalbox{background:#fff7 e6}
+.lessons{display:grid;gap:10px;margin-top:16px}
+.lrow{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:14px;cursor:pointer;transition:.15s;box-shadow:var(--sh2)}
+.lrow:hover{border-color:var(--wc);transform:translateX(-3px)}
+.lrow .num{width:40px;height:40px;flex:none;border-radius:12px;display:grid;place-items:center;
+  font-family:var(--f-d);font-weight:800;background:var(--w-soft);color:var(--wc)}
+.lrow.special .num{background:#fff3d6;color:#b8860b}
+.lrow .lt{flex:1}
+.lrow .lt b{font-size:1.02rem}
+.lrow .lt span{display:block;color:var(--muted);font-size:.84rem}
+.lrow .chk{font-size:1.3rem;color:#d4d9ee}
+.lrow.done .chk{color:var(--ok)}
+.quizrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+@media(max-width:560px){.quizrow{grid-template-columns:1fr}}
+.qcard{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;text-align:center;cursor:pointer;transition:.15s}
+.qcard:hover{border-color:var(--wc)}
+.qcard .qi{font-size:1.8rem}
+.qcard b{display:block;font-family:var(--f-d);margin-top:4px}
+.qcard .qn{color:var(--muted);font-size:.85rem}
+.qcard .best{margin-top:6px;font-size:.8rem;font-weight:700;color:var(--ok)}
+
+/* ===== Lesson view ===== */
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh);overflow:hidden;margin-top:14px}
+.lhead{padding:22px;color:#fff;background:linear-gradient(135deg,var(--wc),var(--wc2))}
+.lhead .sk{display:inline-block;background:rgba(255,255,255,.22);padding:4px 10px;border-radius:999px;font-size:.8rem;font-weight:700;margin-bottom:6px}
+.lhead h2{font-family:var(--f-d);margin:0;font-size:1.55rem}
+.tabs{display:flex;gap:6px;padding:12px 14px;overflow-x:auto;border-bottom:1px solid var(--line);background:#fafbff}
+.tab{flex:none;padding:9px 14px;border-radius:12px;font-weight:700;font-size:.9rem;color:var(--ink2);background:#eef1fb;white-space:nowrap}
+.tab.active{background:var(--wc);color:#fff}
+.lbody{padding:22px}
+.block{display:none}
+.block.active{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.block h3{font-family:var(--f-d);color:var(--wc);font-size:1.2rem;margin:.1em 0 .5em;display:flex;align-items:center;gap:8px}
+.block p{margin:.5em 0}
+.note{background:var(--w-soft);border-right:4px solid var(--wc);border-radius:12px;padding:12px 14px;margin:12px 0}
+.ex{background:#f5fff9;border:1px solid #cdeedd;border-radius:14px;padding:16px;margin:12px 0}
+.ex .q{font-weight:800;margin-bottom:8px}
+.ex .step{display:flex;gap:10px;margin:7px 0}
+.ex .step .s{flex:none;width:26px;height:26px;border-radius:8px;background:var(--ok);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.ex .ans{margin-top:10px;font-weight:800;color:var(--ok)}
+.mistake{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:560px){.mistake{grid-template-columns:1fr}}
+.mistake .x,.mistake .v{border-radius:14px;padding:14px}
+.mistake .x{background:var(--badbg);border:1px solid #f5c2c4}
+.mistake .v{background:var(--okbg);border:1px solid #bfe9d4}
+.mistake h4{margin:.1em 0 .4em;font-size:.95rem}
+.summary{background:linear-gradient(135deg,var(--w-soft),#fff);border:1px dashed var(--wc);border-radius:16px;padding:16px}
+.summary li{margin:6px 0}
+.nav-l{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+
+/* practice (جرّب) */
+.pq{background:#fafbff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}
+.pq .qt{font-weight:700;margin-bottom:10px}
+.opts{display:grid;gap:8px}
+.opt{text-align:right;border:2px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;font-weight:600;font-size:.98rem;transition:.12s;display:flex;align-items:center;gap:10px}
+.opt .k{width:26px;height:26px;flex:none;border-radius:8px;background:#eef1fb;color:var(--ink2);display:grid;place-items:center;font-weight:800}
+.opt:hover{border-color:var(--wc)}
+.opt.correct{border-color:var(--ok);background:var(--okbg)}
+.opt.correct .k{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--badbg)}
+.opt.wrong .k{background:var(--bad);color:#fff}
+.opt.lock{pointer-events:none;opacity:.97}
+.fb{margin-top:10px;padding:10px 12px;border-radius:12px;font-weight:700;display:none}
+.fb.show{display:block;animation:fade .2s}
+.fb.ok{background:var(--okbg);color:#0f7a4f}
+.fb.no{background:var(--badbg);color:#b3373b}
+
+/* ===== Interactive tools ===== */
+.tool{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}
+.tool .ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.tool input[type=number]{width:90px;padding:9px;border:2px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem;text-align:center}
+.tool label{font-weight:700;color:var(--ink2)}
+.svgbox{display:grid;place-items:center;padding:6px}
+.divsim{font-family:'Courier New',monospace;font-size:1.25rem;direction:ltr;text-align:center;line-height:1.9}
+.divsim .row{display:flex;justify-content:center;gap:2px}
+.shapegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.shapecard{border:2px solid var(--line);border-radius:14px;padding:12px;text-align:center;cursor:pointer;transition:.15s;background:#fff}
+.shapecard:hover{border-color:var(--wc)}
+.shapecard.on{border-color:var(--wc);background:var(--w-soft)}
+.shapecard .props{font-size:.82rem;color:var(--ink2);text-align:right;margin-top:8px;display:none}
+.shapecard.on .props{display:block}
+.grid10{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;width:230px;margin:auto}
+.grid10 div{aspect-ratio:1;background:#f0f3fc;border-radius:3px;cursor:pointer;transition:.08s}
+.grid10 div.on{background:var(--wc)}
+.cnt{text-align:center;font-weight:800;font-family:var(--f-d);margin-top:10px;font-size:1.1rem}
+
+/* ===== Quiz ===== */
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh);padding:22px;margin-top:14px}
+.qbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.qbar .qprog{flex:1;height:10px;border-radius:999px;background:#eef1fb;overflow:hidden}
+.qbar .qprog>i{display:block;height:100%;background:var(--wc);transition:width .3s}
+.qbar .qn{font-weight:800;color:var(--ink2);font-family:var(--f-d)}
+.qimg{display:grid;place-items:center;margin:10px 0}
+.qtext{font-size:1.18rem;font-weight:800;margin:8px 0 16px;line-height:1.6}
+.qfoot{display:flex;justify-content:space-between;margin-top:16px;gap:10px}
+
+/* ===== Result ===== */
+.result{text-align:center}
+.donut{width:170px;height:170px;margin:6px auto 0}
+.result h2{font-family:var(--f-d);font-size:1.6rem;margin:.3em 0}
+.result .msg{font-size:1.1rem;color:var(--ink2)}
+.weak{background:#fff7e6;border:1px solid #ffe2a8;border-radius:16px;padding:14px;margin:16px 0;text-align:right}
+.weak h4{margin:.1em 0 .5em;color:#b8860b}
+.weak a{display:inline-block;background:#fff;border:1px solid #ffe2a8;border-radius:10px;padding:6px 12px;margin:4px;font-weight:700;color:#a86a00;cursor:pointer}
+
+/* ===== Badges ===== */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.badge{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center;box-shadow:var(--sh2);opacity:.45;filter:grayscale(.8);transition:.3s}
+.badge.earned{opacity:1;filter:none}
+.badge .bi{font-size:2.4rem}
+.badge b{display:block;font-family:var(--f-d);margin-top:6px}
+.badge span{font-size:.8rem;color:var(--muted)}
+
+/* toast / confetti */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);
+  background:var(--ink);color:#fff;padding:13px 22px;border-radius:14px;font-weight:800;font-family:var(--f-d);
+  box-shadow:var(--sh);z-index:200;transition:transform .4s;display:flex;gap:10px;align-items:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.conf{position:fixed;top:-10px;width:10px;height:14px;z-index:150;pointer-events:none;border-radius:2px}
+@media(max-width:560px){.dash{grid-template-columns:1fr 1fr}.hero h1{font-size:1.6rem}}
+.foot{text-align:center;color:var(--muted);font-size:.82rem;margin-top:30px}
+
+/* ===== ENGINE + TOOLS CSS (v1) ===== */
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 60px}
+.back{background:#fff;border:1.5px solid var(--line);color:var(--ink2);font-family:var(--f-b);font-weight:700;font-size:15px;padding:9px 16px;border-radius:14px;cursor:pointer;margin-bottom:14px}
+.back:hover{background:var(--bg)}
+.sec-title{font-family:var(--f-d);font-size:20px;color:var(--ink);margin:26px 0 12px}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#6c5ce7,#4dabf7);border-radius:26px;padding:34px 24px;text-align:center;color:#fff;box-shadow:var(--sh);position:relative;overflow:hidden}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.22);padding:6px 16px;border-radius:30px;font-weight:700;font-size:14px;margin-bottom:10px}
+.hero h1{font-family:var(--f-d);font-size:34px;margin:6px 0}
+.hero p{font-size:16px;opacity:.95;margin:0}
+
+/* dashboard */
+.dash{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.stat{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px 10px;text-align:center;box-shadow:var(--sh2)}
+.stat-n{font-family:var(--f-d);font-size:26px;color:var(--ink)}
+.stat-l{font-size:13px;color:var(--muted);margin-top:2px}
+
+/* journey */
+.journey{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px;margin-top:14px;box-shadow:var(--sh2)}
+.journey-top{display:flex;justify-content:space-between;font-family:var(--f-d);color:var(--ink);margin-bottom:8px}
+.jbar{height:14px;background:var(--bg);border-radius:10px;overflow:hidden}
+.jbar span{display:block;height:100%;background:linear-gradient(90deg,#6c5ce7,#4dabf7);border-radius:10px;transition:width .5s}
+
+/* world grid */
+.wgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.wcard{display:flex;align-items:center;gap:14px;text-align:right;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:16px;cursor:pointer;box-shadow:var(--sh2);transition:transform .15s,box-shadow .15s;border-right:6px solid var(--wc)}
+.wcard:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.wcard-emoji{font-size:38px;width:62px;height:62px;display:grid;place-items:center;background:var(--soft);border-radius:16px;flex:none}
+.wcard-body{flex:1;min-width:0}
+.wcard-ch{font-size:13px;color:var(--muted)}
+.wcard-name{font-family:var(--f-d);font-size:17px;color:var(--ink);margin:2px 0 8px}
+.wbar{height:9px;background:var(--bg);border-radius:8px;overflow:hidden;margin-bottom:6px}
+.wbar span{display:block;height:100%;background:var(--wc);border-radius:8px}
+.wcard-meta{font-size:13px;color:var(--ink2)}
+.wcard-meta .done{color:var(--ok)}
+.wcard-go{font-size:26px;color:var(--muted);flex:none}
+.btn-badges{width:100%;margin-top:22px;background:linear-gradient(135deg,#f5a623,#f59e0b);color:#fff;border:0;border-radius:16px;padding:15px;font-family:var(--f-d);font-size:17px;cursor:pointer;box-shadow:var(--sh2)}
+
+/* world banner + learn */
+.wbanner{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,var(--wc),var(--wc2));color:#fff;border-radius:22px;padding:22px;box-shadow:var(--sh)}
+.wbanner-emoji{font-size:46px}
+.wbanner-ch{opacity:.9;font-size:14px}
+.wbanner h1{font-family:var(--f-d);font-size:26px;margin:2px 0 0}
+.learn-card{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:20px;margin-top:16px;box-shadow:var(--sh2)}
+.learn-card h2{font-family:var(--f-d);color:var(--ink);margin:0 0 12px;font-size:20px}
+.learn-card h3{font-size:15px;color:var(--wc);margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{background:var(--soft);color:var(--ink);padding:7px 13px;border-radius:30px;font-size:13.5px;font-weight:600}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.two-col ul{margin:0;padding-right:18px}
+.two-col li{margin-bottom:6px;color:var(--ink2);font-size:14px}
+
+/* lessons list */
+.lessons{display:flex;flex-direction:column;gap:10px}
+.lrow{display:flex;align-items:center;gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer;text-align:right;box-shadow:var(--sh2);transition:transform .12s}
+.lrow:hover{transform:translateX(-4px)}
+.lrow-n{width:34px;height:34px;border-radius:50%;background:var(--bg);color:var(--ink2);display:grid;place-items:center;font-family:var(--f-d);flex:none}
+.lrow-done .lrow-n{background:var(--okbg);color:var(--ok)}
+.lrow-t{flex:1;font-weight:600;color:var(--ink)}
+.lrow-go{font-size:22px;color:var(--muted)}
+
+/* quiz cards */
+.quizgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.qcard{display:flex;flex-direction:column;gap:4px;border:0;border-radius:18px;padding:18px;cursor:pointer;color:#fff;font-family:var(--f-b);box-shadow:var(--sh2)}
+.qcard b{font-family:var(--f-d);font-size:17px}
+.qcard span{font-size:13px;opacity:.92}
+.q-easy{background:linear-gradient(135deg,#16a06a,#37b24d)}
+.q-mid{background:linear-gradient(135deg,#1971c2,#4dabf7)}
+.q-final{background:linear-gradient(135deg,#e8590c,#f08c00)}
+
+/* lesson head + tabs */
+.lhead{background:var(--card);border:1.5px solid var(--line);border-right:6px solid var(--wc);border-radius:18px;padding:18px;box-shadow:var(--sh2)}
+.lhead-n{font-size:13px;color:var(--muted)}
+.lhead h1{font-family:var(--f-d);font-size:24px;color:var(--ink);margin:3px 0}
+.lhead-skill{font-size:13.5px;color:var(--wc);font-weight:700}
+.tabs{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}
+.tab{background:var(--card);border:1.5px solid var(--line);color:var(--ink2);padding:8px 14px;border-radius:30px;cursor:pointer;font-family:var(--f-b);font-weight:700;font-size:13.5px}
+.tab-on{background:var(--wc);color:#fff;border-color:var(--wc)}
+.tabbody{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;min-height:160px;box-shadow:var(--sh2)}
+
+/* lesson sections */
+.explain p{font-size:16px;line-height:1.9;color:var(--ink);margin:0 0 12px}
+.example .ex-q{font-weight:700;color:var(--ink);background:var(--soft);padding:12px 14px;border-radius:12px;margin-bottom:12px}
+.ex-steps{margin:0;padding-right:20px}
+.ex-steps li{margin-bottom:9px;color:var(--ink2);line-height:1.7}
+.ex-ans{margin-top:14px;background:var(--okbg);color:var(--ok);font-weight:700;padding:12px 14px;border-radius:12px}
+.ch-intro{font-weight:700;color:var(--ink2);margin:0 0 14px}
+.pq{background:var(--bg);border-radius:14px;padding:14px;margin-bottom:12px}
+.pq-q{font-weight:700;color:var(--ink);margin-bottom:10px}
+.pq-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px;cursor:pointer;font-family:var(--f-b);font-weight:600;font-size:15px;color:var(--ink)}
+.opt:hover:not(:disabled){border-color:var(--wc)}
+.opt-ok{background:var(--okbg)!important;border-color:var(--ok)!important;color:var(--ok)!important}
+.opt-bad{background:var(--badbg)!important;border-color:var(--bad)!important;color:var(--bad)!important}
+.pq-fb{margin-top:10px;font-weight:700;font-size:14px}
+.pq-fb .ok{color:var(--ok)}.pq-fb .bad{color:var(--bad)}
+.mistakes{display:flex;flex-direction:column;gap:12px}
+.mrow{border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+.mx{background:var(--badbg);color:var(--bad);padding:11px 14px;font-weight:600}
+.mv{background:var(--okbg);color:var(--ok);padding:11px 14px;font-weight:600}
+.sum-card{background:var(--soft);border-radius:14px;padding:16px}
+.sum-card h3{margin:0 0 10px;color:var(--ink);font-size:17px}
+.sum-card ul{margin:0;padding-right:20px}
+.sum-card li{margin-bottom:7px;color:var(--ink2);font-weight:600}
+.btn-complete{width:100%;margin-top:18px;background:linear-gradient(135deg,var(--wc,#6c5ce7),#4dabf7);color:#fff;border:0;border-radius:16px;padding:16px;font-family:var(--f-d);font-size:17px;cursor:pointer;box-shadow:var(--sh2)}
+.btn-complete.done{background:var(--okbg);color:var(--ok)}
+
+/* quiz running */
+.quiz-head{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--sh2)}
+.quiz-title{font-family:var(--f-d);font-size:19px;color:var(--ink)}
+.quiz-count{font-size:14px;color:var(--muted);margin:4px 0 10px}
+.qbar{height:12px;background:var(--bg);border-radius:8px;overflow:hidden}
+.qbar span{display:block;height:100%;background:var(--wc);border-radius:8px;transition:width .3s}
+.quiz-q{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:22px;margin-top:14px;box-shadow:var(--sh2)}
+.qq{font-family:var(--f-d);font-size:20px;color:var(--ink);margin-bottom:18px;line-height:1.6}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qopt{background:#fff;border:2px solid var(--line);border-radius:14px;padding:15px;cursor:pointer;font-family:var(--f-b);font-weight:700;font-size:17px;color:var(--ink)}
+.qopt:hover:not(:disabled){border-color:var(--wc);background:var(--bg)}
+.qopt-ok{background:var(--okbg)!important;border-color:var(--ok)!important;color:var(--ok)!important}
+.qopt-bad{background:var(--badbg)!important;border-color:var(--bad)!important;color:var(--bad)!important}
+
+/* result */
+.result{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:26px;text-align:center;box-shadow:var(--sh)}
+.result h1{font-family:var(--f-d);font-size:24px;color:var(--ink);margin:0 0 16px}
+.donut{position:relative;width:160px;height:160px;margin:0 auto}
+.donut svg{transform:rotate(-90deg);width:160px;height:160px}
+.d-bg{fill:none;stroke:var(--bg);stroke-width:12}
+.d-fg{fill:none;stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset .8s}
+.donut-c{position:absolute;inset:0;display:grid;place-content:center}
+.donut-pct{font-family:var(--f-d);font-size:34px;color:var(--ink)}
+.donut-sub{font-size:14px;color:var(--muted)}
+.grade{font-family:var(--f-d);font-size:20px;color:var(--ink);margin:14px 0}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.result-stats div{background:var(--bg);border-radius:14px;padding:12px}
+.result-stats b{display:block;font-family:var(--f-d);font-size:22px;color:var(--ink)}
+.result-stats span{font-size:13px;color:var(--muted)}
+.weak{text-align:right;margin-top:16px}
+.weak h3{font-size:16px;color:var(--ink);margin:0 0 10px}
+.weak-row{width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--badbg);border:1.5px solid #f5c2c7;border-radius:12px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font-family:var(--f-b);color:var(--ink)}
+.weak-row b{color:var(--bad);font-size:13px}
+.allgood{background:var(--okbg);color:var(--ok);font-weight:700;padding:14px;border-radius:14px;margin-top:14px}
+.result-btns{display:flex;gap:10px;margin-top:18px}
+.rb-retry,.rb-home{flex:1;border:0;border-radius:14px;padding:14px;font-family:var(--f-d);font-size:16px;cursor:pointer}
+.rb-retry{background:var(--wc);color:#fff}
+.rb-home{background:var(--bg);color:var(--ink2)}
+
+/* badges */
+.badges-head{text-align:center;margin-bottom:18px}
+.badges-head h1{font-family:var(--f-d);font-size:26px;color:var(--ink);margin:0}
+.badges-head p{color:var(--muted);margin:6px 0 0}
+.badges-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.badge{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px 10px;text-align:center;box-shadow:var(--sh2)}
+.badge-ic{font-size:36px}
+.badge-t{font-family:var(--f-d);font-size:14px;color:var(--ink);margin:6px 0 2px}
+.badge-s{font-size:11.5px;color:var(--muted)}
+.badge-off{opacity:.55;filter:grayscale(.6)}
+.badge-on{border-color:var(--gold);background:linear-gradient(180deg,#fffbeb,#fff)}
+
+/* tools */
+.tool-card{background:var(--soft,#f3f0ff);border-radius:16px;padding:18px}
+.tool-card h4{margin:0 0 14px;color:var(--ink);font-size:16px}
+.tool-note{font-size:13.5px;color:var(--ink2);background:#fff;border-radius:10px;padding:10px 12px;margin:10px 0 0;line-height:1.6}
+.tool-btn,.tool-row{margin-top:12px}
+.tool-btn{background:var(--wc,#6c5ce7);color:#fff;border:0;border-radius:12px;padding:10px 18px;font-family:var(--f-b);font-weight:700;cursor:pointer}
+.divsim{background:#fff;border-radius:12px;padding:16px}
+.div-grid{font-family:'Courier New',monospace;font-size:26px;text-align:center;color:var(--ink);direction:ltr}
+.div-quot{font-weight:700;color:var(--wc,#6c5ce7);min-height:30px}
+.div-line{font-weight:700;border-top:2px solid var(--ink);display:inline-block;padding-top:4px}
+.div-steps{margin:14px 0 0;padding-right:20px}
+.div-steps li{margin-bottom:7px;color:var(--ink2);line-height:1.6}
+.shape3d-grid,.poly-grid,.lines-grid,.ang-grid,.tri-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.shape3d{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;text-align:center}
+.s3-svg{width:64px;height:64px;margin:0 auto}
+.s3-name{font-family:var(--f-d);color:var(--ink);margin-top:6px}
+.s3-props{font-size:12.5px;color:var(--ink2);max-height:0;overflow:hidden;transition:max-height .25s,margin .25s;margin:0}
+.shape3d.open .s3-props{max-height:60px;margin-top:8px}
+.poly,.lined,.angd,.trid{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px;text-align:center;font-size:13px;color:var(--ink2)}
+.poly-svg,.lined svg,.angd svg,.trid svg{width:60px;height:60px}
+.poly b,.lined b,.angd b,.trid b{color:var(--ink);font-family:var(--f-d);display:block;margin-top:4px}
+.lined span,.angd span,.trid span{font-size:12px;color:var(--muted);display:block}
+.nl-svg,.coord-svg,.meas-svg{width:100%;background:#fff;border-radius:12px;padding:8px;max-width:340px;display:block;margin:0 auto}
+.coord-svg{max-width:260px}
+.clock-row{display:flex;align-items:center;justify-content:center;gap:16px}
+.clockf{text-align:center}
+.clockf svg{width:80px;height:80px}
+.clockf b{display:block;font-family:var(--f-d);color:var(--ink);margin-top:4px}
+.clock-arrow{font-size:28px;color:var(--wc,#6c5ce7)}
+.fb-wrap{display:flex;gap:6px;background:#fff;padding:12px;border-radius:12px}
+.fb-cell{flex:1;height:54px;border:2px solid #c9b8ff;border-radius:8px;background:#fff;cursor:pointer}
+.fb-cell.on{background:var(--wc,#6c5ce7)}
+.fb-read{text-align:center;font-family:var(--f-d);font-size:20px;color:var(--ink);margin-top:10px}
+.g10{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;background:#fff;padding:12px;border-radius:12px}
+.g10c{aspect-ratio:1;border:1.5px solid #74c0fc;border-radius:5px;background:#fff;cursor:pointer}
+.g10c.on{background:#1971c2}
+.g100{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;background:#fff;padding:10px;border-radius:12px;max-width:280px;margin:0 auto}
+.g100c{aspect-ratio:1;border:.5px solid #c5e0fb;background:#fff;cursor:pointer;border-radius:2px}
+.g100c.on{background:#1971c2}
+.round-ex,.align-demo,.div-grid{background:#fff;border-radius:12px;padding:16px}
+.re-row{padding:10px 0;border-bottom:1px solid var(--line);color:var(--ink2);line-height:1.7}
+.re-row:last-child{border-bottom:0}
+.re-ans{background:var(--okbg);color:var(--ok);font-weight:700;padding:2px 10px;border-radius:8px}
+.align-demo{text-align:center;direction:ltr;font-family:'Courier New',monospace;font-size:24px;color:var(--ink);width:fit-content;margin:0 auto}
+.ad-num{letter-spacing:3px;padding:3px 0}
+.ad-line{border-top:2px solid var(--ink);margin:4px 0}
+.ad-res{color:var(--e8590c,#e8590c);font-weight:700;color:#e8590c}
+.visual{display:block}
+
+/* toast + confetti */
+#toast,.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:13px 22px;border-radius:30px;font-family:var(--f-d);font-size:15px;box-shadow:var(--sh);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:200;max-width:90%;text-align:center}
+#toast.show,.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:300;overflow:hidden}
+.confetti i{position:absolute;top:-12px;width:10px;height:14px;border-radius:2px;animation:fall 2.2s linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.2}}
+
+/* responsive */
+@media(max-width:680px){
+  .dash{grid-template-columns:repeat(2,1fr)}
+  .wgrid{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .quizgrid{grid-template-columns:1fr}
+  .badges-grid{grid-template-columns:repeat(2,1fr)}
+  .pq-opts,.qopts{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+  .result-stats{grid-template-columns:repeat(3,1fr)}
+}
+
+
+/* ===== ILLUSTRATIONS + GAMES CSS ===== */
+.hero{display:flex;align-items:center;gap:18px;text-align:right}
+.hero-art{flex:none;width:300px;max-width:46%}
+.hero-svg{width:100%;height:auto;display:block;border-radius:16px}
+.hero-txt{flex:1}
+.hero-coins{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.hero-coins span{background:rgba(255,255,255,.22);padding:6px 12px;border-radius:20px;font-weight:700;font-size:14px}
+.mascot-svg{width:92px;height:92px;display:block;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* games CTA on home */
+.games-cta{display:flex;align-items:center;gap:14px;width:100%;margin-top:16px;text-align:right;background:linear-gradient(120deg,#ff6b9d,#a259ff,#5b8def);background-size:200% 200%;animation:flow 5s ease infinite;border:0;border-radius:20px;padding:18px;cursor:pointer;color:#fff;box-shadow:var(--sh)}
+@keyframes flow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.gc-emoji{font-size:40px;flex:none;animation:bob 2.2s ease-in-out infinite}
+.gc-txt{flex:1}.gc-txt b{font-family:var(--f-d);font-size:19px;display:block}.gc-txt span{font-size:13.5px;opacity:.95}
+.gc-go{font-size:30px;flex:none}
+
+/* world banner scene */
+.wbanner{position:relative;overflow:hidden}
+.wbanner-scene{position:absolute;inset:0;opacity:.9;z-index:0}
+.wbanner-scene svg{width:100%;height:100%;object-fit:cover}
+.wbanner-emoji,.wbanner>div:last-child{position:relative;z-index:1}
+.wbanner-emoji{filter:drop-shadow(0 2px 4px rgba(0,0,0,.25))}
+.wbanner h1,.wbanner-ch{text-shadow:0 2px 8px rgba(0,0,0,.3)}
+
+/* world game button */
+.world-game{display:flex;align-items:center;gap:14px;width:100%;text-align:right;background:linear-gradient(120deg,var(--gc),var(--gc2));border:0;border-radius:18px;padding:16px;cursor:pointer;color:#fff;box-shadow:var(--sh2)}
+.wg-emoji{font-size:34px;flex:none}
+.wg-txt{flex:1}.wg-txt b{font-family:var(--f-d);font-size:17px;display:block}.wg-txt small{font-size:13px;opacity:.95}
+.wg-go{font-size:22px;flex:none;background:rgba(255,255,255,.25);width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+
+/* games hub */
+.games-head{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#5b8def,#a259ff);color:#fff;border-radius:22px;padding:18px;box-shadow:var(--sh);margin-bottom:18px}
+.gh-mascot{flex:none;width:72px}.gh-mascot svg{width:72px;height:72px}
+.games-head h1{font-family:var(--f-d);font-size:23px;margin:0}
+.games-head p{margin:4px 0 0;font-size:14px;opacity:.95}
+.sound-btn{margin-inline-start:auto;background:rgba(255,255,255,.25);border:0;width:46px;height:46px;border-radius:50%;font-size:22px;cursor:pointer;flex:none}
+.gcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gcard{position:relative;text-align:center;border:0;border-radius:20px;padding:20px 14px;cursor:pointer;color:#fff;background:linear-gradient(150deg,var(--gc),var(--gc2));box-shadow:var(--sh2);transition:transform .15s,box-shadow .15s;overflow:hidden}
+.gcard:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--sh)}
+.gcard-emoji{font-size:46px;animation:bob 2.6s ease-in-out infinite}
+.gcard-name{font-family:var(--f-d);font-size:18px;margin:8px 0 4px}
+.gcard-desc{font-size:12.5px;opacity:.95;line-height:1.5;min-height:36px}
+.gcard-hi{font-size:12px;background:rgba(255,255,255,.22);border-radius:20px;padding:4px 10px;display:inline-block;margin-top:8px}
+.gcard-play{margin-top:10px;font-family:var(--f-d);background:#fff;color:var(--gc);border-radius:20px;padding:7px;font-size:14px}
+
+/* arcade */
+.arcade{background:linear-gradient(180deg,var(--gc),var(--gc2));border-radius:22px;padding:18px;color:#fff;box-shadow:var(--sh)}
+.arc-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--f-d)}
+.arc-lives{font-size:20px;letter-spacing:2px}
+.arc-score b{font-size:20px}
+.arc-combo{text-align:center;height:24px;font-family:var(--f-d);font-size:16px;color:#fff3bf}
+.arc-stage{position:relative;height:120px;margin:6px 0 14px;background:rgba(255,255,255,.12);border-radius:16px;overflow:hidden}
+.arc-fuelwrap{position:absolute;left:14px;top:10px;bottom:10px;width:12px;background:rgba(0,0,0,.18);border-radius:8px;overflow:hidden;transform:rotate(180deg)}
+.arc-fuel{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(#ffd43b,#ff922b);transition:width .4s;height:100%}
+.arc-rocket{position:absolute;left:50%;transform:translateX(-50%);font-size:42px;transition:bottom .5s cubic-bezier(.3,1.4,.5,1);filter:drop-shadow(0 4px 6px rgba(0,0,0,.3))}
+.arc-q{background:#fff;color:var(--ink);font-family:var(--f-d);font-size:28px;text-align:center;padding:18px;border-radius:16px;direction:ltr;margin-bottom:14px}
+.arc-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.arc-opt{background:rgba(255,255,255,.95);color:var(--ink);border:2px solid transparent;border-radius:14px;padding:15px;font-family:var(--f-d);font-size:19px;cursor:pointer;direction:ltr;transition:transform .1s}
+.arc-opt:hover:not(:disabled){transform:scale(1.04)}
+.arc-ok{background:#d3f9d8!important;border-color:#2f9e44!important;color:#2b8a3e!important}
+.arc-bad{background:#ffe3e3!important;border-color:#e03131!important;color:#c92a2a!important}
+
+/* game over */
+.gover{background:var(--card);border:1.5px solid var(--line);border-top:8px solid var(--gc);border-radius:22px;padding:30px 22px;text-align:center;box-shadow:var(--sh)}
+.gover-mascot{width:110px;margin:0 auto 6px}.gover-mascot svg{width:110px;height:110px}
+.gover h1{font-family:var(--f-d);font-size:26px;color:var(--ink);margin:0 0 10px}
+.gover-score{font-family:var(--f-d);font-size:46px;color:var(--gc)}
+.gover-hi{display:inline-block;background:var(--gold);color:#fff;font-family:var(--f-d);padding:7px 18px;border-radius:24px;margin-top:10px}
+.gover-sub{color:var(--muted);margin-top:8px}
+.gover-coins{margin-top:10px;font-weight:700;color:var(--ink2)}
+.gover-btns{display:flex;gap:10px;margin-top:20px}
+.gover-btns .rb-retry{background:var(--gc)}
+
+/* pizza */
+.pizza,.match,.clockg{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--sh);text-align:center}
+.pz-head{display:flex;justify-content:space-between;font-family:var(--f-d);color:var(--ink);margin-bottom:10px}
+.pz-target{font-family:var(--f-d);font-size:22px;color:var(--ink);background:var(--soft,#ffe8f0);border-radius:14px;padding:12px;margin-bottom:12px}
+.pz-target b{color:#c2255c;font-size:26px;direction:ltr;display:inline-block}
+.pz-svg{width:100%;max-width:280px;height:auto;margin:0 auto;display:block}
+.pz-read{font-family:var(--f-d);font-size:18px;color:var(--ink2);margin:12px 0}
+.pz-read b{color:#c2255c;direction:ltr;display:inline-block}
+.pz-check{background:linear-gradient(120deg,#c2255c,#f06595);color:#fff;border:0;border-radius:14px;padding:14px 30px;font-family:var(--f-d);font-size:18px;cursor:pointer;box-shadow:var(--sh2)}
+
+/* match */
+.match-hint{color:var(--muted);margin:0 0 14px;font-size:14px}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:420px;margin:0 auto}
+.mcard{aspect-ratio:3/4;border:0;background:transparent;cursor:pointer;perspective:600px;padding:0}
+.mcard-in{position:relative;width:100%;height:100%;transition:transform .4s;transform-style:preserve-3d}
+.mcard.up .mcard-in{transform:rotateY(180deg)}
+.mcard-back,.mcard-front{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;display:grid;place-items:center;border:2px solid var(--line)}
+.mcard-back{background:linear-gradient(150deg,#51cf66,#2f9e44);color:#fff;font-size:28px}
+.mcard-front{background:#fff;transform:rotateY(180deg)}
+.mcard-front svg{width:70%;height:70%}
+.mcard-name{font-family:var(--f-d);font-size:16px;color:var(--ink)}
+.mcard.matched .mcard-front{background:#d3f9d8;border-color:#2f9e44}
+
+/* clock game */
+.clockg-faces{display:flex;align-items:center;justify-content:center;gap:14px;margin:10px 0 18px}
+.cgf{text-align:center}.cgf svg{width:100px;height:100px}.cgf span{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.cg-arrow{font-size:30px;color:#1971c2}
+.clockg .arc-opt{background:var(--bg);color:var(--ink);border:2px solid var(--line);font-size:16px;direction:rtl}
+.clockg .arc-opt:hover:not(:disabled){border-color:#1971c2}
+
+@media(max-width:680px){
+  .hero{flex-direction:column;text-align:center}
+  .hero-art{width:100%;max-width:320px}
+  .gcards{grid-template-columns:1fr 1fr}
+  .mgrid{grid-template-columns:repeat(3,1fr)}
+  .arc-q{font-size:24px}
+  .gcard-desc{min-height:48px}
+}
+
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in">
+  <div class="brand" onclick="go('home')"><span class="logo">🌍</span><span>عالم الرياضيات</span></div>
+  <div class="spacer"></div>
+  <button class="btn-ghost" onclick="go('games')">🎮 الألعاب</button>
+  <button class="btn-ghost" onclick="go('badges')">🏆 الإنجازات</button>
+  <div class="starcount">⭐ <span id="starTotal">0</span></div>
+</div></div>
+<div class="wrap" id="app"></div>
+<div class="toast" id="toast"></div>
+<script>
+/* ============================================================
+   عالم الرياضيات — بيانات المنهج (الصف الرابع — الفصل الثاني)
+   المصادر: الدليل الإرشادي + أوراق العمل + الكتاب المدرسي
+   ============================================================ */
+const WORLDS = [
+/* ===================== الفصل 7 — القسمة ===================== */
+{
+ id:"w7", ch:"الفصل السابع", emoji:"🏰", name:"مدينة القسمة",
+ tag:"القسمة على رقم واحد", wc:"#6c5ce7", wc2:"#a55eea", soft:"#efeaff",
+ intro:{
+   skills:["أقسم وأجد الباقي","أتحقق من القسمة","أقسم مضاعفات 10 و100 و1000","أقدّر ناتج القسمة","أقسم وأجد ناتجاً من رقمين أو ثلاثة","أختار خطة لحل المسألة"],
+   concepts:["المقسوم","المقسوم عليه","الناتج (خارج القسمة)","الباقي","التحقق: المقسوم عليه × الناتج + الباقي = المقسوم"],
+   exam:["إجراء القسمة مع باقٍ أو بدون","استعمال حقائق القسمة والأنماط للقسمة ذهنياً","تقدير ناتج القسمة","حل مسائل ناتجها من رقمين ومن ثلاثة أرقام","اختيار الخطة المناسبة"]
+ },
+ lessons:[
+  {n:1,title:"القسمة مع باقٍ",skill:"القسمة مع باقٍ",tool:"divsim",
+   explain:["لما نقسم، أحياناً ما تنقسم الأعداد بالضبط ويبقى عدد صغير اسمه <b>الباقي</b>.","الباقي دائماً <b>أصغر</b> من المقسوم عليه."],
+   example:{q:"اقسم: 53 ÷ 3",steps:["3 تقسم 5 = 1 (نكتب 1)، 1×3=3، 5−3=2","ننزل 3 لتصير 23","3 تقسم 23 = 7، 7×3=21، 23−21=2","الباقي = 2"],ans:"53 ÷ 3 = 17 والباقي 2"},
+   mistakes:[{x:"يكتب الباقي 5 وهو أكبر من المقسوم عليه 3.",v:"الباقي لازم أصغر من المقسوم عليه. لو طلع أكبر، نكمل القسمة."}],
+   summary:["الباقي = ما تبقّى بعد القسمة","الباقي أصغر من المقسوم عليه دائماً","نتحقق: المقسوم عليه × الناتج + الباقي = المقسوم"],
+   practice:[
+    {q:"ناتج القسمة 26 ÷ 2 =",opts:["13","30","14","12 والباقي 1"],c:0,hint:"2×13=26 بالضبط، بدون باقٍ."},
+    {q:"سرعة حشرة 3 كم في الساعة، قطعت 32 كم. كم ساعة استغرقت؟",opts:["ساعة","أكثر من 10 ساعات","4 ساعات","7 ساعات"],c:1,hint:"32÷3 = 10 والباقي 2، يعني أكثر من 10 ساعات."},
+    {q:"ناتج القسمة 84 ÷ 4 =",opts:["21","19","24","12"],c:0,hint:"8÷4=2، 4÷4=1 → 21 بدون باقٍ."}
+   ]},
+  {n:2,title:"قسمة مضاعفات 10 و100 و1000",skill:"قسمة المضاعفات",
+   explain:["نستعمل حقائق القسمة البسيطة ثم نضيف الأصفار.","مثال: 28 ÷ 7 = 4 إذاً 2800 ÷ 7 = 400."],
+   example:{q:"اقسم: 4000 ÷ 5",steps:["نفكر: 40 ÷ 5 = 8","نرجّع الأصفار: 4000 ÷ 5 = 800"],ans:"4000 ÷ 5 = 800"},
+   mistakes:[{x:"يقسم 4000÷5 ويكتب 80.",v:"40÷5=8 ومعنا صفران زيادة → 800، انتبه لعدد الأصفار."}],
+   summary:["أقسم الأرقام الأساسية أولاً","أضيف الأصفار حسب المقسوم","القسمة الذهنية أسرع مع المضاعفات"],
+   practice:[
+    {q:"3200 ÷ 8 =",opts:["120","100","400","611"],c:2,hint:"32÷8=4 ومعنا صفران → 400."},
+    {q:"8000 ÷ 4 =",opts:["200","2000","20","400"],c:1,hint:"8÷4=2 وثلاثة أصفار → 2000."},
+    {q:"280 ÷ 7 =",opts:["4","40","400","14"],c:1,hint:"28÷7=4 وصفر واحد → 40."}
+   ]},
+  {n:3,title:"خطة حل المسألة: التخمين والتحقق",skill:"خطة حل المسألة",special:false,
+   explain:["نخمّن إجابة معقولة، نتحقق منها، وإذا ما ضبطت نعدّل تخميننا.","مفيدة لما يكون عندنا مجموع وفرق بين عددين."],
+   example:{q:"مع سعيد ريالات أكثر من نواف بـ15، ومعهما معاً 55 ريالاً. كم مع سعيد؟",steps:["نخمّن: لو مع نواف 20 فمع سعيد 35، المجموع 55 ✓","الفرق 35−20=15 ✓"],ans:"مع سعيد 35 ريالاً"},
+   mistakes:[{x:"يقسم 55÷2 ويعطي 27 للاثنين.",v:"فيه فرق 15 بينهما، فلازم التخمين يحقق الشرطين: المجموع والفرق."}],
+   summary:["خمّن إجابة","تحقّق من الشرطين","عدّل وكرّر حتى تضبط"],
+   practice:[
+    {q:"في مزرعة طيور وخراف عددها 20 وأرجلها 64. كم عدد الخراف؟ (الخروف 4 أرجل والطائر رجلان)",opts:["8","10","12","14"],c:2,hint:"12 خروف=48 رجل، 8 طيور=16 رجل، المجموع 64 ✓"},
+    {q:"عددان مجموعهما 30 والفرق بينهما 6. العدد الأكبر هو:",opts:["18","12","15","20"],c:0,hint:"18+12=30 و18−12=6."}
+   ]},
+  {n:4,title:"تقدير ناتج القسمة",skill:"تقدير ناتج القسمة",
+   explain:["نقرّب المقسوم إلى عدد قريب يقبل القسمة بسهولة، ثم نقسم ذهنياً.","التقدير يعطينا إجابة قريبة بسرعة."],
+   example:{q:"قدّر ناتج: 1164 ÷ 4",steps:["نقرّب 1164 إلى 1200","1200 ÷ 4 = 300"],ans:"التقدير ≈ 300"},
+   mistakes:[{x:"يقرّب 1164 إلى 1000 ويقسم.",v:"نختار عدداً قريباً يقبل القسمة على 4 بسهولة مثل 1200."}],
+   summary:["قرّب المقسوم لعدد سهل","اقسم ذهنياً","الناتج تقدير قريب مش دقيق"],
+   practice:[
+    {q:"قدّر ناتج القسمة 162 ÷ 8 ≈",opts:["20","60","90","120"],c:0,hint:"نقرّب 162 إلى 160 ÷ 8 = 20."},
+    {q:"قدّر ناتج 345 ÷ 7 ≈",opts:["50","40","60","30"],c:0,hint:"350 ÷ 7 = 50."}
+   ]},
+  {n:5,title:"القسمة (الناتج من رقمين)",skill:"القسمة الناتج من رقمين",tool:"divsim",
+   explain:["نقسم خانة خانة من اليسار، ننزل الرقم التالي ونكمل.","نتحقق دائماً في النهاية."],
+   example:{q:"اقسم: 78 ÷ 6",steps:["7 ÷ 6 = 1 والباقي 1","ننزل 8 → 18","18 ÷ 6 = 3"],ans:"78 ÷ 6 = 13"},
+   mistakes:[{x:"ينسى ينزّل الرقم التالي.",v:"بعد كل خطوة ننزّل الرقم اللي بعده ونكمل القسمة."}],
+   summary:["اقسم من اليسار","نزّل الرقم التالي","تحقّق من الناتج"],
+   practice:[
+    {q:"ذهب 78 كشافاً، كل 6 في خيمة. كم خيمة؟",opts:["13","16","22","56"],c:0,hint:"78 ÷ 6 = 13."},
+    {q:"64 ÷ 4 =",opts:["16","14","18","12"],c:0,hint:"6÷4=1 باقي 2 → 24÷4=6 → 16."}
+   ]},
+  {n:6,title:"استقصاء حل المسألة",skill:"استقصاء حل المسألة",
+   explain:["نقرأ المسألة بتأنّي، ننتبه للكلمات المهمة (ذهاباً وإياباً، لكل، معاً).","ثم نختار العملية المناسبة."],
+   example:{q:"منصور يقطع 5 كم ذهاباً وإياباً لزيارة عمه. لو قطع 20 كم، كم مرة زار عمه؟",steps:["كل زيارة = 5 كم","20 ÷ 5 = 4"],ans:"زار عمه 4 مرات"},
+   mistakes:[{x:"يقسم 20 ÷ 10.",v:"الذهاب والإياب معاً = 5 كم للزيارة الواحدة، مش 10."}],
+   summary:["اقرأ بتأنّي","حدّد الكلمات المفتاحية","اختر العملية الصحيحة"],
+   practice:[
+    {q:"فهد يقطع 10 كم ذهاباً وإياباً لزيارة عمه. لو قطع 50 كم، كم مرة زاره؟",opts:["1","2","3","5"],c:3,hint:"50 ÷ 10 = 5."}
+   ]},
+  {n:7,title:"القسمة (الناتج من ثلاثة أرقام)",skill:"القسمة الناتج من ثلاثة أرقام",tool:"divsim",
+   explain:["نفس خطوات القسمة الطويلة لكن المقسوم أكبر، فالناتج من ثلاث خانات.","نكمل خطوة خطوة من اليسار."],
+   example:{q:"اقسم: 916 ÷ 3",steps:["9 ÷ 3 = 3","1 ÷ 3 = 0 والباقي 1، ننزل 6 → 16","16 ÷ 3 = 5 والباقي 1"],ans:"916 ÷ 3 = 305 والباقي 1"},
+   mistakes:[{x:"يتخطّى خانة فيها ناتج صفر.",v:"إذا الخانة ما تقبل القسمة نكتب 0 وننزّل التالي، ما نتخطّاها."}],
+   summary:["نفس القسمة الطويلة","الناتج من ثلاث خانات","لا تنسَ خانة الصفر"],
+   practice:[
+    {q:"وُزّع 784 ريالاً بالتساوي على 7 فقراء. كم أخذ كل فقير؟",opts:["232","112","432","567"],c:1,hint:"784 ÷ 7 = 112."},
+    {q:"324 ÷ 2 =",opts:["162","152","172","124"],c:0,hint:"3÷2=1 باقي1 →12÷2=6 →4÷2=2 → 162."}
+   ]}
+ ],
+ bank:[
+  {q:"ناتج القسمة 26 ÷ 2 =",opts:["13","30","14","12 والباقي 1"],c:0,sk:"القسمة مع باقٍ"},
+  {q:"سرعة حشرة 3 كم/س، قطعت 32 كم. كم ساعة؟",opts:["ساعة","أكثر من 10 ساعات","4 ساعات","7 ساعات"],c:1,sk:"القسمة مع باقٍ"},
+  {q:"ناتج القسمة 53 ÷ 3 =",opts:["17 والباقي 2","11 والباقي 2","13","21"],c:0,sk:"القسمة مع باقٍ"},
+  {q:"للتحقق من 22 ÷ 7 = 3 والباقي 1 نستعمل:",opts:["3×7+1","7×1+3","1×3+7","22×3+1"],c:0,sk:"التحقق من القسمة"},
+  {q:"ثمن ثلاجة 3200 ريال بالتقسيط على 8 شهور. القسط الشهري =",opts:["120","100","400","611"],c:2,sk:"قسمة المضاعفات"},
+  {q:"4000 ÷ 5 =",opts:["350","440","600","800"],c:3,sk:"قسمة المضاعفات"},
+  {q:"2800 ÷ 7 =",opts:["4","40","400","14"],c:2,sk:"قسمة المضاعفات"},
+  {q:"1500 ÷ 3 =",opts:["50","500","5000","15"],c:1,sk:"قسمة المضاعفات"},
+  {q:"مع سعيد 15 ريالاً زيادة عن نواف، ومعهما 55. كم مع سعيد؟",opts:["10","20","35","40"],c:2,sk:"خطة حل المسألة"},
+  {q:"طيور وخراف عددها 20 وأرجلها 64. عدد الخراف =",opts:["8","10","12","14"],c:2,sk:"خطة حل المسألة"},
+  {q:"زار الواحة 1164 طالباً في 4 أيام متساوية. الزوار في اليوم تقريباً =",opts:["100","300","500","900"],c:1,sk:"تقدير ناتج القسمة"},
+  {q:"قدّر ناتج القسمة 162 ÷ 8 ≈",opts:["20","60","90","120"],c:0,sk:"تقدير ناتج القسمة"},
+  {q:"قدّر ناتج 2135 ÷ 5 ≈",opts:["400","40","4000","450"],c:0,sk:"تقدير ناتج القسمة"},
+  {q:"78 كشافاً، كل 6 في خيمة. عدد الخيام =",opts:["13","16","22","56"],c:0,sk:"القسمة الناتج من رقمين"},
+  {q:"52 ÷ 5 =",opts:["10 والباقي 2","11","12","10"],c:0,sk:"القسمة الناتج من رقمين"},
+  {q:"نمط: 2، 5، 11، 23، __ (×2+1)",opts:["24","36","44","47"],c:3,sk:"استقصاء حل المسألة"},
+  {q:"منصور يقطع 5 كم ذهاباً وإياباً. قطع 20 كم، كم زيارة؟",opts:["2","3","4","5"],c:2,sk:"استقصاء حل المسألة"},
+  {q:"وُزّع 784 ريالاً على 7 فقراء. نصيب كل فقير =",opts:["232","112","432","567"],c:1,sk:"القسمة الناتج من ثلاثة أرقام"},
+  {q:"324 ÷ 2 =",opts:["162","152","172","124"],c:0,sk:"القسمة الناتج من ثلاثة أرقام"},
+  {q:"916 ÷ 3 =",opts:["305 والباقي 1","35 والباقي 1","350","305"],c:0,sk:"القسمة الناتج من ثلاثة أرقام"},
+  {q:"84 ÷ 4 =",opts:["21","19","24","12"],c:0,sk:"القسمة مع باقٍ"},
+  {q:"36 ÷ 5 =",opts:["7 والباقي 1","6 والباقي 6","8","7"],c:0,sk:"القسمة مع باقٍ"}
+ ]
+},
+/* ===================== الفصل 8 — الأشكال الهندسية ===================== */
+{
+ id:"w8", ch:"الفصل الثامن", emoji:"🧩", name:"جزيرة الأشكال الهندسية",
+ tag:"الأشكال والاستدلال المكاني", wc:"#0ca678", wc2:"#22c1a8", soft:"#e3f8f1",
+ intro:{
+   skills:["أتعرّف المجسمات وأصفها (أوجه، أحرف، رؤوس)","أتعرّف المضلعات وأصنّفها","أميّز المستقيمات: متقاطعة، متعامدة، متوازية","أصنّف الزوايا والمثلثات","أتعرّف التماثل الدوراني","أمثّل النقاط على خط الأعداد والمستوى الإحداثي"],
+   concepts:["الوجه — الحرف — الرأس","المضلع (شكل مغلق بأضلاع مستقيمة)","الزاوية: حادة، قائمة، منفرجة","المثلث حسب الأضلاع والزوايا","الزوج المرتب (س، ص)"],
+   exam:["وصف المجسمات وعدّ أوجهها وأحرفها ورؤوسها","تصنيف المضلعات","تمييز ورسم المستقيمات","تصنيف الزوايا والمثلثات","إيجاد النقاط على المستوى الإحداثي وتسميتها"]
+ },
+ lessons:[
+  {n:1,title:"الأشكال الثلاثية الأبعاد (المجسمات)",skill:"المجسمات",tool:"shapes3d",
+   explain:["المجسم له <b>أوجه</b> (سطوح مستوية)، <b>أحرف</b> (خطوط لقاء الوجهين)، <b>رؤوس</b> (نقاط لقاء الأحرف).","الكرة مميّزة: ما لها أوجه ولا أحرف ولا رؤوس."],
+   example:{q:"المنشور الرباعي (متوازي المستطيلات): كم وجهاً وحرفاً ورأساً؟",steps:["الأوجه = 6","الأحرف = 12","الرؤوس = 8"],ans:"6 أوجه، 12 حرفاً، 8 رؤوس"},
+   mistakes:[{x:"يقول الكرة لها وجه واحد.",v:"الكرة سطحها منحنٍ، وما لها أوجه مستوية ولا أحرف ولا رؤوس."}],
+   summary:["وجه = سطح","حرف = لقاء وجهين","رأس = لقاء أحرف","الكرة بلا أوجه/أحرف/رؤوس","الهرم الثلاثي كل أوجهه مثلثات"],
+   practice:[
+    {q:"الشكل الذي ليس له أوجه أو أحرف أو رؤوس هو:",opts:["مكعب","أسطوانة","منشور ثلاثي","كرة"],c:3,hint:"الكرة سطحها منحنٍ بالكامل."},
+    {q:"المجسم الذي جميع أوجهه مثلثات هو:",opts:["مكعب","أسطوانة","منشور ثلاثي","هرم ثلاثي"],c:3,hint:"الهرم الثلاثي قاعدته وأوجهه مثلثات."},
+    {q:"كم رأساً للمكعب؟",opts:["6","8","12","4"],c:1,hint:"المكعب له 8 رؤوس و12 حرفاً و6 أوجه."}
+   ]},
+  {n:2,title:"الأشكال الثنائية الأبعاد (المضلعات)",skill:"المضلعات",tool:"polygons",
+   explain:["المضلع شكل مغلق أضلاعه خطوط مستقيمة.","نسمّيه حسب عدد أضلاعه: ثلاثي، رباعي، خماسي، سداسي، سباعي، ثماني."],
+   example:{q:"كم ضلعاً للمضلع الثماني؟",steps:["ثماني = 8","عدد الأضلاع = 8"],ans:"8 أضلاع"},
+   mistakes:[{x:"يعدّ الدائرة مضلعاً.",v:"الدائرة ليست مضلعاً لأن حدّها منحنٍ وليس أضلاعاً مستقيمة."}],
+   summary:["المضلع: مغلق + أضلاع مستقيمة","خماسي=5، سداسي=6، ثماني=8","الدائرة والبيضوي ليست مضلعات"],
+   practice:[
+    {q:"المضلع الخماسي عدد أضلاعه:",opts:["4","5","6","7"],c:1,hint:"خماسي = خمسة أضلاع."},
+    {q:"أيّها ليس مضلعاً؟",opts:["مثلث","مستطيل","شكل بيضوي","خماسي"],c:2,hint:"البيضوي حدّه منحنٍ."}
+   ]},
+  {n:3,title:"خطة حل المسألة: البحث عن نمط",skill:"البحث عن نمط",
+   explain:["نلاحظ العلاقة بين الأعداد المتتالية لإيجاد القاعدة، ثم نكمل النمط."],
+   example:{q:"أكمل النمط: 2، 4، 8، __، 32",steps:["كل عدد = السابق × 2","8 × 2 = 16"],ans:"العدد المفقود = 16"},
+   mistakes:[{x:"يجمع 4 كل مرة فيكتب 12.",v:"القاعدة هنا ضرب ×2 وليست جمع، تأكد من العلاقة."}],
+   summary:["لاحظ العلاقة","اكتشف القاعدة","أكمل النمط"],
+   practice:[
+    {q:"وجد فريد 8 ثم 20 ثم 32 صدفة (+12). في اليوم الخامس يجد:",opts:["40","56","68","80"],c:1,hint:"8، 20، 32، 44، 56."},
+    {q:"النمط: 5، 10، 20، 40، __ (×2)",opts:["60","80","45","50"],c:1,hint:"40×2=80."}
+   ]},
+  {n:4,title:"المستقيمات",skill:"المستقيمات",tool:"lines",
+   explain:["المتوازيان لا يتقاطعان أبداً.","المتقاطعان يلتقيان في نقطة.","المتعامدان يتقاطعان ويصنعان زاوية قائمة (90°)."],
+   example:{q:"مستقيمان يلتقيان ويصنعان زاوية قائمة. ماذا نسمّيهما؟",steps:["زاوية قائمة عند التقاطع","إذاً متعامدان"],ans:"مستقيمان متعامدان"},
+   mistakes:[{x:"يخلط بين المتقاطعين والمتعامدين.",v:"كل متعامدين متقاطعان، لكن المتعامدين يصنعان زاوية قائمة بالتحديد."}],
+   summary:["متوازيان: لا يلتقيان","متقاطعان: يلتقيان بنقطة","متعامدان: زاويتهما قائمة"],
+   practice:[
+    {q:"مستقيمان لا يلتقيان أبداً هما:",opts:["متقاطعان","متعامدان","متوازيان","خط أعداد"],c:2,hint:"المتوازيان يبقيان على نفس المسافة."},
+    {q:"مستقيمان يصنعان زاوية 90° هما:",opts:["متقاطعان","متعامدان","متوازيان","منحنيان"],c:1,hint:"الزاوية القائمة = متعامدان."}
+   ]},
+  {n:5,title:"الزوايا",skill:"الزوايا",tool:"angles",
+   explain:["الزاوية <b>الحادة</b> أقل من 90°.","الزاوية <b>القائمة</b> = 90°.","الزاوية <b>المنفرجة</b> أكبر من 90° وأقل من 180°."],
+   example:{q:"زاوية قياسها 120°. ما نوعها؟",steps:["120 أكبر من 90","إذاً منفرجة"],ans:"زاوية منفرجة"},
+   mistakes:[{x:"يقول زاوية 90° حادة.",v:"الـ90° قائمة بالضبط، والحادة أقل من 90."}],
+   summary:["حادة < 90°","قائمة = 90°","منفرجة > 90°"],
+   practice:[
+    {q:"الزاوية التي قياسها أقل من 90° تسمى:",opts:["حادة","قائمة","منفرجة","مستقيمة"],c:0,hint:"أقل من 90 = حادة."},
+    {q:"الزاوية القائمة قياسها:",opts:["50°","90°","100°","180°"],c:1,hint:"القائمة = 90 درجة."},
+    {q:"أيّ زاوية منفرجة؟",opts:["80°","90°","120°","45°"],c:2,hint:"المنفرجة بين 90 و180."}
+   ]},
+  {n:6,title:"المثلث",skill:"المثلث",tool:"triangles",
+   explain:["نصنّف المثلث حسب <b>الأضلاع</b>: متطابق الأضلاع، متطابق الضلعين، مختلف الأضلاع.","وحسب <b>الزوايا</b>: حاد الزوايا، قائم الزاوية، منفرج الزاوية."],
+   example:{q:"مثلث به زاوية قياسها 90°. صنّفه حسب الزوايا.",steps:["فيه زاوية قائمة","إذاً قائم الزاوية"],ans:"مثلث قائم الزاوية"},
+   mistakes:[{x:"يصنّف المثلث بطريقة واحدة فقط.",v:"نصنّفه مرتين: مرة بالأضلاع ومرة بالزوايا."}],
+   summary:["بالأضلاع: متطابق الأضلاع/الضلعين/مختلف","بالزوايا: حاد/قائم/منفرج","المثلث المتطابق الأضلاع حاد الزوايا"],
+   practice:[
+    {q:"مثلث به زاوية 98°، صنّفه حسب الزوايا:",opts:["حاد","قائم","منفرج","متطابق"],c:2,hint:"98 أكبر من 90 → منفرج الزاوية."},
+    {q:"مثلث أطواله 7، 7، 7 سم، حسب الأضلاع هو:",opts:["مختلف الأضلاع","متطابق الضلعين","متطابق الأضلاع","قائم"],c:2,hint:"كل الأضلاع متساوية."}
+   ]},
+  {n:7,title:"التماثل الدوراني",skill:"التماثل الدوراني",
+   explain:["الشكل له تماثل دوراني إذا انطبق على نفسه عند الدوران أقل من دورة كاملة (360°).","المستطيل ينطبق على نفسه عند الدوران 180°."],
+   example:{q:"عند أيّ زاوية ينطبق المستطيل على نفسه؟",steps:["نصف دورة","180°"],ans:"عند 180°"},
+   mistakes:[{x:"يظن كل شكل له تماثل دوراني.",v:"بعض الأشكال (مثل شبه المنحرف العام) لا تنطبق إلا عند 360° فقط."}],
+   summary:["ينطبق عند الدوران قبل 360°","المستطيل عند 180°","المربع عند 90°"],
+   practice:[
+    {q:"المستطيل ينطبق على نفسه عند زاوية:",opts:["90°","180°","270°","360°"],c:1,hint:"نصف دورة = 180."},
+    {q:"المربع له تماثل دوراني عند:",opts:["45°","90°","120°","200°"],c:1,hint:"ربع دورة = 90°."}
+   ]},
+  {n:8,title:"تمثيل النقاط على خط الأعداد",skill:"خط الأعداد",tool:"numline",
+   explain:["نقسم خط الأعداد إلى أجزاء متساوية، ونعدّ من بداية الخط لنحدّد موقع النقطة."],
+   example:{q:"خط من 62 إلى 77 مقسّم لخمسة أجزاء (كل جزء 3). النقطة بعد جزأين هي:",steps:["62 + 3 = 65","65 + 3 = 68"],ans:"النقطة = 68"},
+   mistakes:[{x:"يعدّ النقاط بدل المسافات.",v:"نحسب طول كل جزء أولاً ثم نضيفه."}],
+   summary:["جزّئ الخط بالتساوي","احسب طول الجزء","عُدّ من البداية"],
+   practice:[
+    {q:"خط من 1200 إلى 2000 (كل علامة 200). النقطة عند العلامة الثانية:",opts:["1400","1600","1500","1300"],c:1,hint:"1200، 1400، 1600."}
+   ]},
+  {n:9,title:"المستوى الإحداثي",skill:"المستوى الإحداثي",tool:"coord",
+   explain:["نحدّد موقع أي نقطة بزوج مرتب (س، ص): نتحرك أفقياً (س) أولاً ثم رأسياً (ص).","مثال: (4، 2) يعني 4 يميناً ثم 2 لأعلى."],
+   example:{q:"الزوج المرتب (4، 2) كيف نصل إليه؟",steps:["نتحرك 4 على المحور الأفقي","ثم 2 على المحور الرأسي"],ans:"النقطة عند (4، 2)"},
+   mistakes:[{x:"يبدأ بالحركة الرأسية قبل الأفقية.",v:"الترتيب مهم: الأفقي (س) أولاً، ثم الرأسي (ص)."}],
+   summary:["الزوج المرتب (س، ص)","تحرّك أفقياً ثم رأسياً","الترتيب يغيّر الموقع"],
+   practice:[
+    {q:"في الزوج المرتب (5، 3) العدد 5 يمثّل الحركة:",opts:["الرأسية","الأفقية","القُطرية","لا شيء"],c:1,hint:"العدد الأول دائماً أفقي (س)."}
+   ]}
+ ],
+ bank:[
+  {q:"المجسم الذي ليس له أوجه أو أحرف أو رؤوس:",opts:["مكعب","أسطوانة","منشور ثلاثي","كرة"],c:3,sk:"المجسمات"},
+  {q:"المجسم الذي جميع أوجهه مثلثات:",opts:["مكعب","أسطوانة","منشور ثلاثي","هرم ثلاثي"],c:3,sk:"المجسمات"},
+  {q:"عدد أوجه المكعب:",opts:["4","6","8","12"],c:1,sk:"المجسمات"},
+  {q:"عدد أحرف المنشور الرباعي:",opts:["6","8","12","4"],c:2,sk:"المجسمات"},
+  {q:"المضلع الخماسي عدد أضلاعه:",opts:["4","5","6","7"],c:1,sk:"المضلعات"},
+  {q:"المضلع الثماني يتكون من:",opts:["6","7","8","9"],c:2,sk:"المضلعات"},
+  {q:"أيّ الأشكال ليس مضلعاً؟",opts:["مثلث","مستطيل","شكل بيضوي","خماسي"],c:2,sk:"المضلعات"},
+  {q:"النمط: 2، 4، 8، __، 32",opts:["5","16","25","28"],c:1,sk:"البحث عن نمط"},
+  {q:"8، 20، 32 (+12)، في اليوم الخامس:",opts:["40","56","68","80"],c:1,sk:"البحث عن نمط"},
+  {q:"مستقيمان لا يلتقيان أبداً:",opts:["متقاطعان","متعامدان","متوازيان","خط أعداد"],c:2,sk:"المستقيمات"},
+  {q:"مستقيمان يصنعان زاوية قائمة:",opts:["متقاطعان","متعامدان","متوازيان","منحنيان"],c:1,sk:"المستقيمات"},
+  {q:"مستقيمان يلتقيان بنقطة (تقاطع X):",opts:["متقاطعان","متعامدان","متوازيان","خط أعداد"],c:0,sk:"المستقيمات"},
+  {q:"الزاوية أقل من 90° تسمى:",opts:["حادة","قائمة","منفرجة","مستقيمة"],c:0,sk:"الزوايا"},
+  {q:"الزاوية القائمة قياسها:",opts:["50°","90°","100°","180°"],c:1,sk:"الزوايا"},
+  {q:"الزاوية المنفرجة قياسها:",opts:["80°","90°","120°","45°"],c:2,sk:"الزوايا"},
+  {q:"مثلث به زاوية 98° هو منفرج الزاوية. مثلث به زاوية 90° هو:",opts:["حاد","قائم","منفرج","متطابق"],c:1,sk:"المثلث"},
+  {q:"مثلث أطواله 7، 7، 7 سم حسب الأضلاع:",opts:["مختلف الأضلاع","متطابق الضلعين","متطابق الأضلاع","قائم"],c:2,sk:"المثلث"},
+  {q:"المستطيل ينطبق على نفسه عند زاوية:",opts:["90°","180°","270°","360°"],c:1,sk:"التماثل الدوراني"},
+  {q:"خط من 62 إلى 77 (كل جزء 3)، النقطة بعد جزأين:",opts:["67","68","69","71"],c:1,sk:"خط الأعداد"},
+  {q:"خط من 1200 إلى 2000، النقطة الثانية (كل علامة 200):",opts:["1300","1400","1500","1600"],c:3,sk:"خط الأعداد"},
+  {q:"في الزوج المرتب (س، ص) العدد الأول يمثّل الحركة:",opts:["الرأسية","الأفقية","القطرية","العشوائية"],c:1,sk:"المستوى الإحداثي"},
+  {q:"للوصول إلى (3، 5) نتحرك:",opts:["5 يميناً ثم 3 لأعلى","3 يميناً ثم 5 لأعلى","3 لأعلى فقط","5 لأعلى فقط"],c:1,sk:"المستوى الإحداثي"}
+ ]
+},
+/* ===================== الفصل 9 — القياس ===================== */
+{
+ id:"w9", ch:"الفصل التاسع", emoji:"📏", name:"وادي القياس",
+ tag:"القياس", wc:"#2f9e44", wc2:"#74c365", soft:"#e6f6e9",
+ intro:{
+   skills:["أقدّر الطول وأقيسه بوحدات الطول المترية","أقدّر وأجد المحيط","أقدّر وأجد مساحة المستطيل والمربع","أقدّر السعة وأقيسها","أقدّر الكتلة وأقيسها","أقدّر الحجم وأقيسه بالوحدات المكعبة","أحلّ مسائل الزمن المنقضي"],
+   concepts:["ملم، سم، م، كم","المحيط = مجموع الأضلاع","المساحة = الطول × العرض","السعة (مل، ل)","الكتلة (جم، كجم)","الحجم = طول × عرض × ارتفاع"],
+   exam:["اختيار الوحدة المناسبة","إيجاد المحيط والمساحة","تقدير السعة والكتلة","حساب الحجم بالوحدات المكعبة","حساب الزمن المنقضي"]
+ },
+ lessons:[
+  {n:1,title:"وحدات الطول المترية",skill:"وحدات الطول",
+   explain:["نختار الوحدة المناسبة حسب حجم الشيء: ملم للصغير جداً، سم للصغير، م للمتوسط، كم للمسافات الطويلة."],
+   example:{q:"ما الوحدة المناسبة للمسافة بين مدينتين؟",steps:["المسافة كبيرة جداً","الكيلومتر هو الأنسب"],ans:"الكيلومتر (كم)"},
+   mistakes:[{x:"يقيس المسافة بين مدينتين بالسنتيمتر.",v:"المسافات الكبيرة نقيسها بالكيلومتر."}],
+   summary:["ملم: صغير جداً","سم: قلم، دفتر","م: غرفة، باب","كم: بين المدن"],
+   practice:[
+    {q:"الوحدة المناسبة لقياس المسافة بين الدمام والرياض:",opts:["الكيلومتر","السنتمتر","الملمتر","المتر"],c:0,hint:"مسافة كبيرة → كيلومتر."},
+    {q:"أفضل تقدير لطول حشرة صغيرة:",opts:["2 ملم","2 سم","2 م","2 كم"],c:1,hint:"الحشرة بحجم سنتيمترات."}
+   ]},
+  {n:2,title:"قياس المحيط",skill:"المحيط",tool:"perimeter",
+   explain:["المحيط = مجموع أطوال جميع الأضلاع.","المربع: المحيط = طول الضلع × 4. المستطيل: (الطول + العرض) × 2."],
+   example:{q:"مربع طول ضلعه 6 سم. أوجد محيطه.",steps:["المربع له 4 أضلاع متساوية","6 × 4 = 24"],ans:"المحيط = 24 سم"},
+   mistakes:[{x:"يحسب المحيط = الطول × العرض.",v:"هذا قانون المساحة. المحيط = مجموع الأضلاع."}],
+   summary:["المحيط = مجموع الأضلاع","المربع = الضلع × 4","المستطيل = (ط + ع) × 2"],
+   practice:[
+    {q:"محيط مربع طول ضلعه 6 سم =",opts:["24 سم","35 سم","60 سم","80 سم"],c:0,hint:"6 × 4 = 24."},
+    {q:"محيط مستطيل طوله 8 م وعرضه 6 م =",opts:["28 م","48 م","14 م","24 م"],c:0,hint:"(8+6)×2 = 28."}
+   ]},
+  {n:3,title:"قياس المساحة",skill:"المساحة",tool:"area",
+   explain:["المساحة = عدد الوحدات المربعة اللازمة لتغطية المنطقة.","المستطيل: المساحة = الطول × العرض."],
+   example:{q:"صورة مستطيلة طولها 12 سم وعرضها 9 سم. ما مساحتها؟",steps:["المساحة = الطول × العرض","12 × 9 = 108"],ans:"المساحة = 108 سم²"},
+   mistakes:[{x:"ينسى وحدة المساحة (سم²).",v:"المساحة تُقاس بالوحدات المربعة، نكتب سم²."}],
+   summary:["المساحة = طول × عرض","الوحدة مربعة (سم²)","عدد المربعات يغطّي الشكل"],
+   practice:[
+    {q:"مساحة مستطيل 12 سم × 9 سم =",opts:["108 سم²","123 سم²","30 سم²","58 سم²"],c:0,hint:"12 × 9 = 108."},
+    {q:"عدد الوحدات المربعة اللازمة لتغطية منطقة يسمّى:",opts:["محيط","مساحة","طول","عرض"],c:1,hint:"التغطية بالمربعات = مساحة."},
+    {q:"مساحة مربع ضلعه 3 سم =",opts:["6 سم²","9 سم²","12 سم²","3 سم²"],c:1,hint:"3 × 3 = 9."}
+   ]},
+  {n:4,title:"وحدات السعة في النظام المتري",skill:"السعة",
+   explain:["السعة = كمية السائل الذي يملأ الإناء.","الوحدات: المللتر (مل) للصغير، اللتر (ل) للكبير."],
+   example:{q:"ما الوحدة المناسبة لسعة قارورة دواء؟",steps:["كمية صغيرة","نستعمل المللتر"],ans:"المللتر (مل) ≈ 100 مل"},
+   mistakes:[{x:"يقيس سعة قارورة دواء باللتر.",v:"الكميات الصغيرة بالمللتر، واللتر للكميات الكبيرة كزجاجة كبيرة."}],
+   summary:["السعة = ما يملأ الإناء","مل: صغير","ل: كبير"],
+   practice:[
+    {q:"التقدير الأنسب لسعة قارورة دواء:",opts:["100 مللتر","60 لتر","90 سم","120 كم"],c:0,hint:"الدواء كمية صغيرة → مللتر."},
+    {q:"وحدة قياس السعة في النظام المتري:",opts:["سم","م","ملم","اللتر"],c:3,hint:"السعة باللتر والمللتر."}
+   ]},
+  {n:5,title:"وحدات الكتلة في النظام المتري",skill:"الكتلة",
+   explain:["الكتلة = مقدار ما يحويه الجسم من مادة.","الجرام (جم) للأشياء الخفيفة، الكيلوجرام (كجم) للثقيلة."],
+   example:{q:"ما التقدير الأنسب لكتلة دب قطبي؟",steps:["الدب ثقيل جداً","نستعمل الكيلوجرام"],ans:"≈ 300 كجم"},
+   mistakes:[{x:"يقدّر كتلة الدب بالجرامات.",v:"الأشياء الثقيلة جداً بالكيلوجرام."}],
+   summary:["الكتلة = مقدار المادة","جم: خفيف","كجم: ثقيل"],
+   practice:[
+    {q:"مقدار ما يحويه الشيء من مادة هو:",opts:["المساحة","المحيط","الكتلة","الطول"],c:2,hint:"المادة = الكتلة."},
+    {q:"التقدير الأنسب لكتلة دب قطبي:",opts:["300 جم","300 كجم","50 جم","2 كجم"],c:1,hint:"حيوان ضخم → كيلوجرامات."}
+   ]},
+  {n:6,title:"خطة حل المسألة: التبرير المنطقي",skill:"التبرير المنطقي",
+   explain:["نستعمل المعلومات المعطاة ونرتّبها منطقياً لاستنتاج الإجابة."],
+   example:{q:"رتّب من الأقصر للأطول: فهد أقصر من سعيد وأطول من سعود، وسعود أطول من راشد.",steps:["راشد أقصر من سعود","سعود أقصر من فهد","فهد أقصر من سعيد"],ans:"راشد، سعود، فهد، سعيد"},
+   mistakes:[{x:"يرتّب عشوائياً دون استعمال كل المعلومات.",v:"نستعمل كل العلاقات معاً لنرتّب بدقة."}],
+   summary:["اقرأ كل المعطيات","رتّبها منطقياً","استنتج الترتيب"],
+   practice:[
+    {q:"أرقام قمصان: عمر=عدد أحرف اسمه، مشعل من رقمين، الأرقام 3،7،13. رقم قميص بدر:",opts:["3","31","13","7"],c:3,hint:"عمر=3، مشعل=13، بدر=7."}
+   ]},
+  {n:7,title:"تقدير الحجم وقياسه",skill:"الحجم",tool:"volume",
+   explain:["الحجم = عدد الوحدات المكعبة التي تملأ المجسم.","المنشور: الحجم = الطول × العرض × الارتفاع."],
+   example:{q:"صندوق طوله 3 وعرضه 4 وارتفاعه 2 وحدة. أوجد حجمه.",steps:["3 × 4 = 12","12 × 2 = 24"],ans:"الحجم = 24 وحدة مكعبة"},
+   mistakes:[{x:"يجمع الأبعاد بدل ضربها.",v:"الحجم = ضرب الأبعاد الثلاثة، مش جمعها."}],
+   summary:["الحجم = طول × عرض × ارتفاع","الوحدة مكعبة","عدد المكعبات يملأ المجسم"],
+   practice:[
+    {q:"عدد الوحدات المكعبة اللازمة لملء مجسم يمثّل:",opts:["المساحة","الحجم","المحيط","الكتلة"],c:1,hint:"المكعبات = حجم."},
+    {q:"صندوق 3×4×2 وحدات، حجمه =",opts:["24 وحدة مكعبة","12","9","34"],c:0,hint:"3×4×2 = 24."}
+   ]},
+  {n:8,title:"الزمن المنقضي",skill:"الزمن المنقضي",tool:"clock",
+   explain:["الزمن المنقضي = الفرق بين وقت النهاية ووقت البداية.","الساعة الواحدة = 60 دقيقة."],
+   example:{q:"من الساعة 4:10 إلى 5:15 مساءً، كم استغرق؟",steps:["من 4:10 إلى 5:10 = ساعة","من 5:10 إلى 5:15 = 5 دقائق"],ans:"ساعة وخمس دقائق"},
+   mistakes:[{x:"يطرح الدقائق مباشرة فيخطئ عند تجاوز الساعة.",v:"نحسب الساعات الكاملة أولاً ثم الدقائق المتبقية."}],
+   summary:["الزمن المنقضي = النهاية − البداية","الساعة = 60 دقيقة","احسب الساعات ثم الدقائق"],
+   practice:[
+    {q:"الساعة الواحدة تساوي:",opts:["90 دقيقة","12 دقيقة","60 دقيقة","43 دقيقة"],c:2,hint:"60 دقيقة في الساعة."},
+    {q:"من 4:10 إلى 5:15 مساءً:",opts:["ساعة وخمس دقائق","ساعة واحدة","ساعة وربع","ساعتان"],c:0,hint:"ساعة + 5 دقائق."}
+   ]}
+ ],
+ bank:[
+  {q:"الوحدة المناسبة للمسافة بين الدمام والرياض:",opts:["الكيلومتر","السنتمتر","الملمتر","المتر"],c:0,sk:"وحدات الطول"},
+  {q:"أفضل تقدير لطول حشرة:",opts:["2 ملم","2 سم","2 م","2 كم"],c:1,sk:"وحدات الطول"},
+  {q:"محيط مربع طول ضلعه 6 سم:",opts:["24 سم","35 سم","60 سم","80 سم"],c:0,sk:"المحيط"},
+  {q:"محيط مستطيل طوله 8 م وعرضه 6 م:",opts:["28 م","48 م","14 م","24 م"],c:0,sk:"المحيط"},
+  {q:"عدد الوحدات المربعة لتغطية منطقة يسمّى:",opts:["محيط","مساحة","طول","عرض"],c:1,sk:"المساحة"},
+  {q:"مساحة صورة 12 سم × 9 سم:",opts:["108 سم²","123 سم²","30 سم²","58 سم²"],c:0,sk:"المساحة"},
+  {q:"مساحة مربع ضلعه 3 سم:",opts:["6 سم²","9 سم²","12 سم²","3 سم²"],c:1,sk:"المساحة"},
+  {q:"وحدة قياس السعة في النظام المتري:",opts:["سم","م","ملم","اللتر"],c:3,sk:"السعة"},
+  {q:"التقدير الأنسب لسعة قارورة دواء:",opts:["100 مللتر","60 لتر","90 سم","120 كم"],c:0,sk:"السعة"},
+  {q:"مقدار ما يحويه الشيء من مادة:",opts:["المساحة","المحيط","الكتلة","الطول"],c:2,sk:"الكتلة"},
+  {q:"التقدير الأنسب لكتلة دب قطبي:",opts:["300 جم","300 كجم","50 جم","2 كجم"],c:1,sk:"الكتلة"},
+  {q:"أرقام 3،7،13: عمر=أحرف اسمه، مشعل من رقمين. رقم بدر:",opts:["3","31","13","7"],c:3,sk:"التبرير المنطقي"},
+  {q:"عدد الوحدات المكعبة لملء مجسم يمثّل:",opts:["المساحة","الحجم","المحيط","الكتلة"],c:1,sk:"الحجم"},
+  {q:"صندوق 3×4×2 وحدات، حجمه:",opts:["24 وحدة مكعبة","12","9","34"],c:0,sk:"الحجم"},
+  {q:"الساعة الواحدة تساوي:",opts:["90 دقيقة","12 دقيقة","60 دقيقة","43 دقيقة"],c:2,sk:"الزمن المنقضي"},
+  {q:"من 4:10 إلى 5:15 مساءً:",opts:["ساعة وخمس دقائق","ساعة واحدة","ساعة وربع","ساعتان"],c:0,sk:"الزمن المنقضي"},
+  {q:"محيط مربع ضلعه 4 سم:",opts:["8 سم","12 سم","16 سم","20 سم"],c:2,sk:"المحيط"},
+  {q:"مساحة مستطيل 6 م × 2 م:",opts:["8 م²","12 م²","16 م²","10 م²"],c:1,sk:"المساحة"},
+  {q:"التقدير الأنسب لكتلة كرة شاطئ:",opts:["20 جم","20 كجم","5 كجم","200 كجم"],c:0,sk:"الكتلة"},
+  {q:"حجم مكعب طول حرفه 2 وحدة (2×2×2):",opts:["6","8","4","12"],c:1,sk:"الحجم"}
+ ]
+},
+/* ===================== الفصل 10 — الكسور الاعتيادية ===================== */
+{
+ id:"w10", ch:"الفصل العاشر", emoji:"🍕", name:"مملكة الكسور الاعتيادية",
+ tag:"الكسور الاعتيادية", wc:"#e8590c", wc2:"#ff922b", soft:"#fff0e6",
+ intro:{
+   skills:["أتعرّف الكسور وأكتبها وأقرأها","أمثّل الكسور على خط الأعداد","أجد كسوراً متكافئة","أقارن الكسور وأرتّبها","أجمع وأطرح الكسور المتشابهة","أكتب الأعداد الكسرية والكسور غير الفعلية"],
+   concepts:["البسط (فوق) والمقام (تحت)","الجزء المظلل من الكل","الكسور المتكافئة (تمثّل نفس الكمية)","الكسر المتشابه = نفس المقام","العدد الكسري = عدد صحيح + كسر"],
+   exam:["كتابة الكسر للجزء المظلل وغير المظلل","التمثيل على خط الأعداد","إيجاد كسر مكافئ","مقارنة وترتيب الكسور","جمع وطرح الكسور المتشابهة","التحويل بين العدد الكسري والكسر غير الفعلي"]
+ },
+ lessons:[
+  {n:1,title:"الكسور الاعتيادية",skill:"تمثيل الكسور",tool:"fracbar",
+   explain:["الكسر يكتب: <b>البسط</b> فوق و<b>المقام</b> تحت.","المقام = عدد الأجزاء المتساوية، البسط = عدد الأجزاء المظللة (المأخوذة)."],
+   example:{q:"شكل مقسّم إلى 5 أجزاء، 4 منها مظلّلة. ما الكسر؟",steps:["المقام = 5 (عدد الأجزاء)","البسط = 4 (المظلّل)"],ans:"الكسر = 4/5"},
+   mistakes:[{x:"يكتب المقام فوق والبسط تحت.",v:"البسط (المأخوذ) فوق، والمقام (الكل) تحت."}],
+   summary:["البسط فوق، المقام تحت","المقام = كل الأجزاء","البسط = الأجزاء المظلّلة"],
+   practice:[
+    {q:"شكل من 5 أجزاء، 4 مظلّلة. الكسر:",opts:["4/5","1/5","2/5","3/5"],c:0,hint:"4 مظلّل من 5."},
+    {q:"دائرة من 6 أجزاء، 3 مظلّلة. الكسر:",opts:["1/6","2/6","3/6","4/6"],c:2,hint:"3 من 6."},
+    {q:"صندوق فيه 4 أقلام حمراء و3 سوداء. كسر الأقلام السوداء:",opts:["3/4","3/7","4/7","7/3"],c:1,hint:"3 سوداء من 7 أقلام كلها."}
+   ]},
+  {n:2,title:"خطة حل المسألة: رسم صورة",skill:"رسم صورة",
+   explain:["نرسم صورة بسيطة تمثّل المسألة لتسهيل الحل، خاصة في مسائل الأجزاء."],
+   example:{q:"مزرعة فيها 24 حيواناً: ربعها خراف، و10 أبقار، والباقي أغنام. كم الأغنام؟",steps:["ربع 24 = 6 خراف","6 + 10 = 16","24 − 16 = 8 أغنام"],ans:"عدد الأغنام = 8"},
+   mistakes:[{x:"ينسى يطرح كل المجموعات من الكل.",v:"نجمع المعطى ونطرحه من العدد الكلي لإيجاد الباقي."}],
+   summary:["ارسم صورة للمسألة","قسّم حسب الكسور","اطرح لإيجاد الباقي"],
+   practice:[
+    {q:"24 حيواناً: ربعها خراف، 10 أبقار، الباقي أغنام. الأغنام:",opts:["5","6","7","8"],c:3,hint:"6 خراف + 10 بقر = 16، 24−16=8."}
+   ]},
+  {n:3,title:"تمثيل الكسور على خط الأعداد",skill:"الكسور على خط الأعداد",tool:"fracline",
+   explain:["نقسم المسافة بين 0 و1 إلى أجزاء بعدد المقام، ونعدّ بمقدار البسط."],
+   example:{q:"خط من 0 إلى 1 مقسّم لأربعة. النقطة عند الجزء الثالث هي:",steps:["كل جزء = 1/4","نعدّ ثلاثة أجزاء"],ans:"النقطة = 3/4"},
+   mistakes:[{x:"يقسم خط الأعداد لأجزاء غير متساوية.",v:"لازم الأجزاء متساوية بعدد المقام تماماً."}],
+   summary:["قسّم 0–1 بعدد المقام","عُدّ بمقدار البسط","الأجزاء متساوية"],
+   practice:[
+    {q:"خط من 0 إلى 1 مقسّم لأربعة، النقطة الثانية:",opts:["3/4","2/4","1/4","5/4"],c:1,hint:"الجزء الثاني = 2/4."},
+    {q:"خط مقسّم لسبعة، النقطة عند الجزء الرابع:",opts:["4/7","7/4","3/7","2/7"],c:0,hint:"4 من 7 = 4/7."}
+   ]},
+  {n:4,title:"الكسور المتكافئة",skill:"الكسور المتكافئة",tool:"fracbar",
+   explain:["الكسور المتكافئة تمثّل <b>نفس الكمية</b> بأشكال مختلفة.","نجدها بالضرب أو القسمة: نضرب (أو نقسم) البسط والمقام في <b>نفس العدد</b>."],
+   example:{q:"أوجد كسوراً مكافئة لـ 4/8",steps:["بالضرب: 4/8 = (4×2)/(8×2) = 8/16","بالقسمة: 4/8 = (4÷2)/(8÷2) = 2/4","ومرة أخرى: 2/4 = 1/2"],ans:"4/8 = 8/16 = 2/4 = 1/2"},
+   mistakes:[{x:"يضرب البسط فقط دون المقام.",v:"لازم نضرب (أو نقسم) البسط والمقام في نفس العدد."}],
+   summary:["المتكافئة = نفس الكمية","اضرب البسط والمقام في نفس العدد","أو اقسمهما على نفس العدد"],
+   practice:[
+    {q:"العدد المناسب: 3/4 = 9/__",opts:["6","8","9","12"],c:3,hint:"3×3=9 فالمقام 4×3=12."},
+    {q:"الكسر المكافئ لـ 1/4:",opts:["4/6","3/6","2/8","8/2"],c:2,hint:"1/4 = 2/8 (×2)."}
+   ]},
+  {n:5,title:"اختبار منتصف الفصل",skill:"مراجعة",special:true,
+   explain:["هذا توقّف للمراجعة على الدروس 1–4: تمثيل الكسور، خط الأعداد، والكسور المتكافئة.","جرّب أسئلة المراجعة، وإذا أتقنتها كمّل بثقة!"],
+   example:{q:"راجع: ما الكسر المكافئ لـ 2/3 بالمقام 6؟",steps:["2×2=4","3×2=6"],ans:"2/3 = 4/6"},
+   mistakes:[{x:"يستعجل دون مراجعة الدروس السابقة.",v:"المراجعة قبل الاختبار تثبّت المهارة."}],
+   summary:["راجع تمثيل الكسور","راجع خط الأعداد","راجع الكسور المتكافئة"],
+   practice:[
+    {q:"الكسر المكافئ لـ 2/3 بالمقام 6:",opts:["3/6","4/6","2/6","5/6"],c:1,hint:"2×2=4 و3×2=6."},
+    {q:"الجزء غير المظلّل في شكل من 6 أجزاء مظلّل منها 4:",opts:["2/6","4/6","6/6","1/6"],c:0,hint:"6−4=2 غير مظلّل."}
+   ]},
+  {n:6,title:"مقارنة الكسور وترتيبها",skill:"مقارنة الكسور",
+   explain:["إذا تساوى المقام، الأكبر بسطاً هو الأكبر.","إذا اختلف المقام، نوحّده (نجعل المقامات متساوية) ثم نقارن."],
+   example:{q:"قارن: 3/8 و 1/4",steps:["نوحّد المقام: 1/4 = 2/8","3/8 مقابل 2/8","3 أكبر من 2"],ans:"3/8 > 1/4"},
+   mistakes:[{x:"يقارن البسطين فقط دون توحيد المقام.",v:"عند اختلاف المقامات نوحّدها أولاً ثم نقارن."}],
+   summary:["نفس المقام: قارن البسط","مقام مختلف: وحّد ثم قارن","الكسر المتكافئ يساعد"],
+   practice:[
+    {q:"قارن: 3/8 ___ 1/4",opts:["<",">","=","غير ذلك"],c:1,hint:"1/4=2/8، و3/8 أكبر."},
+    {q:"قارن: 1/3 ___ 2/6",opts:["<",">","=","غير ذلك"],c:2,hint:"1/3 = 2/6 متساويان."},
+    {q:"رتّب من الأصغر للأكبر: 1/2، 4/5، 6/10",opts:["1/2، 6/10، 4/5","4/5، 1/2، 6/10","6/10، 1/2، 4/5","1/2، 4/5، 6/10"],c:0,hint:"1/2=5/10, 6/10, 4/5=8/10."}
+   ]},
+  {n:7,title:"جمع الكسور المتشابهة",skill:"جمع الكسور المتشابهة",
+   explain:["الكسور المتشابهة لها نفس المقام.","نجمع البسطين ونُبقي المقام كما هو."],
+   example:{q:"اجمع: 3/9 + 2/9",steps:["نجمع البسط: 3 + 2 = 5","المقام يبقى 9"],ans:"= 5/9"},
+   mistakes:[{x:"يجمع المقامين أيضاً.",v:"المقام لا يتغيّر في الكسور المتشابهة، نجمع البسط فقط."}],
+   summary:["نفس المقام","اجمع البسط فقط","المقام يبقى ثابتاً"],
+   practice:[
+    {q:"3/9 + 2/9 =",opts:["5/18","5/9","4/9","1/9"],c:1,hint:"3+2=5، المقام 9."},
+    {q:"2/6 + 3/6 =",opts:["5/12","5/6","4/6","1/6"],c:1,hint:"2+3=5، المقام 6."},
+    {q:"صبغ سعد 2/5 ووالده 1/5 من الحائط. المصبوغ:",opts:["1/5","2/5","3/5","1/10"],c:2,hint:"2/5+1/5=3/5."}
+   ]},
+  {n:8,title:"طرح الكسور المتشابهة",skill:"طرح الكسور المتشابهة",
+   explain:["نطرح البسطين ونُبقي المقام كما هو."],
+   example:{q:"اطرح: 7/9 − 2/9",steps:["نطرح البسط: 7 − 2 = 5","المقام يبقى 9"],ans:"= 5/9"},
+   mistakes:[{x:"يطرح المقامين.",v:"المقام ثابت، نطرح البسط فقط."}],
+   summary:["نفس المقام","اطرح البسط فقط","المقام يبقى ثابتاً"],
+   practice:[
+    {q:"7/9 − 2/9 =",opts:["5/0","9/9","5/9","3/9"],c:2,hint:"7−2=5، المقام 9."},
+    {q:"قرأت سعاد 5/5 وأمل 1/5. الفرق:",opts:["5/5","2/5","3/5","4/5"],c:3,hint:"5/5−1/5=4/5."}
+   ]},
+  {n:9,title:"الأعداد الكسرية",skill:"الأعداد الكسرية",
+   explain:["العدد الكسري = عدد صحيح + كسر (مثل 1 ⅓).","الكسر غير الفعلي بسطه أكبر من مقامه أو يساويه (مثل 4/3)."],
+   example:{q:"حوّل 1 ⅓ إلى كسر غير فعلي",steps:["نضرب الصحيح في المقام: 1×3 = 3","نضيف البسط: 3 + 1 = 4","المقام يبقى 3"],ans:"1 ⅓ = 4/3"},
+   mistakes:[{x:"ينسى يضيف البسط بعد الضرب.",v:"(الصحيح × المقام) + البسط = البسط الجديد."}],
+   summary:["كسري = صحيح + كسر","غير فعلي: البسط ≥ المقام","(صحيح×مقام)+بسط"],
+   practice:[
+    {q:"اكتب 1 ⅓ كسراً غير فعلي:",opts:["4/3","3/3","1/3","5/6"],c:0,hint:"(1×3)+1 = 4، المقام 3."},
+    {q:"9/2 على صورة عدد كسري:",opts:["4 ½","1 ¼","2 ½","1 ⅓"],c:0,hint:"9÷2 = 4 والباقي 1 → 4 ½."}
+   ]},
+  {n:10,title:"استقصاء حل المسألة",skill:"استقصاء الكسور",special:false,
+   explain:["نختار الخطة المناسبة (رسم صورة، نمط، عمل عكسي) حسب نوع المسألة."],
+   example:{q:"يقف ياسر وثلاثة طلاب: فهد أمام ياسر، فيصل ثالث، هشام خلف فيصل. رتّبهم.",steps:["فهد أولاً","ثم ياسر","ثم فيصل","ثم هشام"],ans:"فهد، ياسر، فيصل، هشام"},
+   mistakes:[{x:"يبدأ بالحل دون فهم العلاقات.",v:"نرتّب المعطيات أولاً ثم نحلّ."}],
+   summary:["افهم المسألة","اختر الخطة","تحقّق من الحل"],
+   practice:[
+    {q:"3 شجرات: الأولى 10م، الثانية نصفها (5م)، مجموع الثلاث 24م. الثالثة:",opts:["8","9","10","11"],c:1,hint:"24 − 10 − 5 = 9."}
+   ]}
+ ],
+ bank:[
+  {q:"شكل من 5 أجزاء، 4 مظلّلة. الكسر:",opts:["4/5","1/5","2/5","3/5"],c:0,sk:"تمثيل الكسور"},
+  {q:"دائرة من 6 أجزاء، 3 مظلّلة:",opts:["1/6","2/6","3/6","4/6"],c:2,sk:"تمثيل الكسور"},
+  {q:"صندوق فيه 4 حمراء و3 سوداء. كسر السوداء:",opts:["3/4","3/7","4/7","7/3"],c:1,sk:"تمثيل الكسور"},
+  {q:"24 حيواناً: ربعها خراف، 10 أبقار، الباقي أغنام. الأغنام:",opts:["5","6","7","8"],c:3,sk:"رسم صورة"},
+  {q:"خط من 0 إلى 1 مقسّم لأربعة، النقطة الثالثة:",opts:["3/4","2/4","1/4","5/4"],c:0,sk:"الكسور على خط الأعداد"},
+  {q:"خط مقسّم لسبعة، النقطة الرابعة:",opts:["4/7","7/4","3/7","2/7"],c:0,sk:"الكسور على خط الأعداد"},
+  {q:"العدد المناسب: 3/4 = 9/__",opts:["6","8","9","12"],c:3,sk:"الكسور المتكافئة"},
+  {q:"الكسر المكافئ لـ 1/4:",opts:["4/6","3/6","2/8","8/2"],c:2,sk:"الكسور المتكافئة"},
+  {q:"الكسر المكافئ لـ 2/3:",opts:["1/6","2/6","3/6","4/6"],c:3,sk:"الكسور المتكافئة"},
+  {q:"قارن: 3/8 ___ 1/4",opts:["<",">","=","غير ذلك"],c:1,sk:"مقارنة الكسور"},
+  {q:"قارن: 1/3 ___ 2/6",opts:["<",">","=","غير ذلك"],c:2,sk:"مقارنة الكسور"},
+  {q:"قارن: 2/3 ___ 5/6",opts:["<",">","=","غير ذلك"],c:0,sk:"مقارنة الكسور"},
+  {q:"3/9 + 2/9 =",opts:["5/18","5/9","4/9","1/9"],c:1,sk:"جمع الكسور المتشابهة"},
+  {q:"2/6 + 3/6 =",opts:["5/12","5/6","4/6","1/6"],c:1,sk:"جمع الكسور المتشابهة"},
+  {q:"صبغ 2/5 و1/5 من الحائط. المصبوغ:",opts:["1/5","2/5","3/5","1/10"],c:2,sk:"جمع الكسور المتشابهة"},
+  {q:"7/9 − 2/9 =",opts:["5/0","9/9","5/9","3/9"],c:2,sk:"طرح الكسور المتشابهة"},
+  {q:"5/5 − 1/5 =",opts:["5/5","2/5","3/5","4/5"],c:3,sk:"طرح الكسور المتشابهة"},
+  {q:"اكتب 1 ⅓ كسراً غير فعلي:",opts:["4/3","3/3","1/3","5/6"],c:0,sk:"الأعداد الكسرية"},
+  {q:"9/2 على صورة عدد كسري:",opts:["4 ½","1 ¼","2 ½","1 ⅓"],c:0,sk:"الأعداد الكسرية"},
+  {q:"3 شجرات: 10م، 5م، المجموع 24م. الثالثة:",opts:["8","9","10","11"],c:1,sk:"استقصاء الكسور"},
+  {q:"الجزء غير المظلّل في شكل من 5 مظلّل منها 3:",opts:["3/5","2/5","1/5","4/5"],c:1,sk:"تمثيل الكسور"},
+  {q:"رتّب من الأصغر للأكبر: 1/2، 4/5، 6/10",opts:["1/2، 6/10، 4/5","4/5، 1/2، 6/10","6/10، 1/2، 4/5","1/2، 4/5، 6/10"],c:0,sk:"مقارنة الكسور"}
+ ]
+},
+/* ===================== الفصل 11 — الكسور العشرية ===================== */
+{
+ id:"w11", ch:"الفصل الحادي عشر", emoji:"🔢", name:"عالم الكسور العشرية",
+ tag:"الكسور العشرية", wc:"#1971c2", wc2:"#4dabf7", soft:"#e7f1fc",
+ intro:{
+   skills:["أتعرّف الأعشار وأكتبها","أتعرّف الأجزاء من مئة","أحوّل بين الكسور والعشرية","أكتب الأعداد الكسرية والكسور العشرية","أمثّلها على خط الأعداد","أقارن الكسور العشرية وأرتّبها","أجد التكافؤ بين الكسور والعشرية"],
+   concepts:["العُشر = 1/10 = 0.1","الجزء من مئة = 1/100 = 0.01","الفاصلة العشرية","المنزلة العشرية (أعشار، أجزاء من مئة)"],
+   exam:["كتابة الأعشار والأجزاء من مئة","التحويل بين الكسر والعشري","التمثيل على خط الأعداد","المقارنة والترتيب","تكافؤ الكسور الاعتيادية والعشرية"]
+ },
+ lessons:[
+  {n:1,title:"الأعشار",skill:"الأعشار",tool:"grid10",
+   explain:["العُشر = جزء من عشرة أجزاء = 1/10 = 0.1.","الكسر الاعتيادي 7/10 يُكتب عشرياً 0.7."],
+   example:{q:"اكتب 7/10 على صورة كسر عشري",steps:["المقام 10 → خانة الأعشار","البسط 7 بعد الفاصلة"],ans:"7/10 = 0.7"},
+   mistakes:[{x:"يكتب 7/10 = 7.0",v:"7/10 أصغر من 1، تُكتب 0.7 وليست 7.0."}],
+   summary:["العُشر = 1/10 = 0.1","المقام 10 → خانة واحدة بعد الفاصلة","7/10 = 0.7"],
+   practice:[
+    {q:"7/10 على صورة كسر عشري:",opts:["0.7","7","0.07","7.0"],c:0,hint:"المقام 10 → 0.7."},
+    {q:"0.5 على صورة كسر اعتيادي:",opts:["5/100","4/10","5/10","10/5"],c:2,hint:"خانة الأعشار → 5/10."},
+    {q:"ستة أعشار كعدد عشري:",opts:["6.0","0.06","6.6","0.6"],c:3,hint:"6/10 = 0.6."}
+   ]},
+  {n:2,title:"الأجزاء من مئة",skill:"الأجزاء من مئة",tool:"grid100",
+   explain:["الجزء من مئة = 1/100 = 0.01.","الكسر 4/100 يُكتب عشرياً 0.04 (خانتان بعد الفاصلة)."],
+   example:{q:"اكتب 4/100 على صورة كسر عشري",steps:["المقام 100 → خانتان بعد الفاصلة","4 → 0.04"],ans:"4/100 = 0.04"},
+   mistakes:[{x:"يكتب 4/100 = 0.4",v:"المقام 100 يحتاج خانتين: 0.04 مش 0.4."}],
+   summary:["الجزء من مئة = 1/100 = 0.01","المقام 100 → خانتان","4/100 = 0.04"],
+   practice:[
+    {q:"4/100 على صورة كسر عشري:",opts:["0.04","0.4","4.0","40.0"],c:0,hint:"خانتان → 0.04."},
+    {q:"قرأت فاطمة 35 كتاباً من 100 في التاريخ. كسر غير التاريخية:",opts:["35","0.65","0.35","56"],c:1,hint:"100−35=65 → 65/100 = 0.65."}
+   ]},
+  {n:3,title:"الأعداد الكسرية والكسور العشرية",skill:"الأعداد الكسرية والعشرية",
+   explain:["العدد الكسري له جزء صحيح وجزء عشري.","مثال: 5 4/10 = 5.4 (الصحيح 5، والأعشار 4)."],
+   example:{q:"اكتب العدد الكسري 5 4/10 عشرياً",steps:["الجزء الصحيح = 5","4/10 = 0.4"],ans:"5 4/10 = 5.4"},
+   mistakes:[{x:"يكتب 5 4/10 = 4.5",v:"الجزء الصحيح قبل الفاصلة (5)، والأعشار بعدها (4) → 5.4."}],
+   summary:["الصحيح قبل الفاصلة","الكسر بعد الفاصلة","5 4/10 = 5.4"],
+   practice:[
+    {q:"العدد الكسري 5 4/10 عشرياً:",opts:["5.4","4.05","4.5","5.04"],c:0,hint:"الصحيح 5، الأعشار 4 → 5.4."},
+    {q:"الكسر العشري (اثنا عشر وثلاثة أعشار):",opts:["12.13","12.3","3.12","12.03"],c:1,hint:"12 صحيح و3 أعشار → 12.3."}
+   ]},
+  {n:4,title:"خطة حل المسألة: إنشاء نموذج",skill:"إنشاء نموذج",
+   explain:["نرسم نموذجاً (شبكة أو شريط) يمثّل المسألة لتسهيل الحل."],
+   example:{q:"في شركة 12 مكتباً: ربعها تصل مجلة واحدة، والباقي مجلتان. كم مجلة؟",steps:["ربع 12 = 3 مكاتب × 1 = 3","الباقي 9 مكاتب × 2 = 18","3 + 18 = 21"],ans:"21 مجلة"},
+   mistakes:[{x:"يضرب كل المكاتب في 2.",v:"نقسم حسب الشرط: ربعها مجلة واحدة، والباقي مجلتان."}],
+   summary:["ارسم نموذجاً","قسّم حسب الشرط","اجمع النتائج"],
+   practice:[
+    {q:"12 مكتباً: 3 منها مجلة واحدة، 9 مجلتان. المجموع:",opts:["21","25","30","44"],c:0,hint:"3×1 + 9×2 = 21."}
+   ]},
+  {n:5,title:"تمثيل الكسور العشرية على خط الأعداد",skill:"العشرية على خط الأعداد",tool:"declist",
+   explain:["نقسم المسافة بين عددين صحيحين إلى عشرة أجزاء، كل جزء = عُشر (0.1)."],
+   example:{q:"خط بين 10 و11 مقسّم لعشرة. النقطة عند الجزء السادس:",steps:["كل جزء = 0.1","10 + 0.6 = 10.6"],ans:"النقطة = 10.6"},
+   mistakes:[{x:"يقسم لأجزاء غير عشرة.",v:"بين كل عددين صحيحين نقسم لعشرة أجزاء (أعشار)."}],
+   summary:["بين الصحيحين عشرة أجزاء","كل جزء = 0.1","عُدّ بالأعشار"],
+   practice:[
+    {q:"خط بين 5 و6 مقسّم لعشرة، النقطة الثالثة:",opts:["5.3","5.03","53","0.3"],c:0,hint:"5 + 0.3 = 5.3."}
+   ]},
+  {n:6,title:"مقارنة الكسور العشرية وترتيبها",skill:"مقارنة العشرية",
+   explain:["نقارن خانة بخانة من اليسار: الصحيح أولاً، ثم الأعشار، ثم الأجزاء من مئة."],
+   example:{q:"قارن: 16.3 و 16.33",steps:["الصحيح متساوٍ (16)","الأعشار متساوٍ (3)","16.30 مقابل 16.33 → 0 أصغر من 3"],ans:"16.3 < 16.33"},
+   mistakes:[{x:"يظن العدد ذا الخانات الأكثر أكبر دائماً.",v:"نقارن خانة بخانة، مش عدد الخانات."}],
+   summary:["قارن من اليسار","الصحيح ثم الأعشار","أضف أصفاراً للموازنة"],
+   practice:[
+    {q:"الإشارة المناسبة: 16.3 ___ 16.33",opts:["<",">","=","+"],c:0,hint:"16.30 < 16.33."},
+    {q:"العدد الأكبر من 1.45:",opts:["0.87","1.09","1.3","1.54"],c:3,hint:"1.54 أكبر."},
+    {q:"رتّب من الأصغر للأكبر: 5.2، 6.8، 4.3، 4.7، 5.7",opts:["4.3، 4.7، 5.2، 5.7، 6.8","6.8، 5.7، 5.2، 4.7، 4.3","4.7، 4.3، 5.2، 5.7، 6.8","5.2، 4.3، 4.7، 5.7، 6.8"],c:0,hint:"الترتيب الصحيح من الأصغر."}
+   ]},
+  {n:7,title:"تكافؤ الكسور الاعتيادية والعشرية",skill:"تكافؤ الكسور والعشرية",
+   explain:["نحوّل الكسر الاعتيادي لكسر عشري بجعل المقام 10 أو 100.","مثال: 2/5 = 4/10 = 0.4."],
+   example:{q:"اكتب 2/5 على صورة كسر عشري",steps:["نجعل المقام 10: 2/5 = (2×2)/(5×2) = 4/10","4/10 = 0.4"],ans:"2/5 = 0.4"},
+   mistakes:[{x:"يكتب 2/5 = 0.2",v:"نحوّل المقام إلى 10 أولاً: 2/5 = 4/10 = 0.4."}],
+   summary:["اجعل المقام 10 أو 100","ثم اكتبه عشرياً","2/5 = 0.4، 2/4 = 0.5"],
+   practice:[
+    {q:"2/5 على صورة كسر عشري:",opts:["0.4","5.6","0.7","0.6"],c:0,hint:"2/5 = 4/10 = 0.4."},
+    {q:"2/4 على صورة كسر عشري:",opts:["0.8","0.5","0.43","0.2"],c:1,hint:"2/4 = 5/10 = 0.5."}
+   ]},
+  {n:8,title:"العشرية والاعتيادية والأعداد الكسرية",skill:"المقارنة الشاملة",
+   explain:["نحوّل كل الأعداد لصورة واحدة (عشرية) لنقارنها بسهولة."],
+   example:{q:"أيّ أكبر من 1 ¼؟",steps:["1 ¼ = 1.25","نقارن: 1.67 أكبر من 1.25"],ans:"الكسر العشري الأكبر = 1.67"},
+   mistakes:[{x:"يقارن دون توحيد الصورة.",v:"نحوّل الكسري لعشري ثم نقارن."}],
+   summary:["وحّد الصورة (عشرية)","قارن خانة بخانة","1 ¼ = 1.25"],
+   practice:[
+    {q:"الكسر العشري الأكبر من 1 ¼ (=1.25):",opts:["0.87","1.2","1.0","1.67"],c:3,hint:"1.67 > 1.25."}
+   ]}
+ ],
+ bank:[
+  {q:"7/10 على صورة كسر عشري:",opts:["0.7","7","0.07","7.0"],c:0,sk:"الأعشار"},
+  {q:"0.5 على صورة كسر اعتيادي:",opts:["5/100","4/10","5/10","10/5"],c:2,sk:"الأعشار"},
+  {q:"ستة أعشار كعدد عشري:",opts:["6.0","0.06","6.6","0.6"],c:3,sk:"الأعشار"},
+  {q:"4/100 على صورة كسر عشري:",opts:["0.04","0.4","4.0","40.0"],c:0,sk:"الأجزاء من مئة"},
+  {q:"35 من 100 تاريخ، كسر غير التاريخية:",opts:["35","0.65","0.35","56"],c:1,sk:"الأجزاء من مئة"},
+  {q:"العدد الكسري 5 4/10 عشرياً:",opts:["5.4","4.05","4.5","5.04"],c:0,sk:"الأعداد الكسرية والعشرية"},
+  {q:"الكسر العشري (اثنا عشر وثلاثة أعشار):",opts:["12.13","12.3","3.12","12.03"],c:1,sk:"الأعداد الكسرية والعشرية"},
+  {q:"12 مكتباً: 3 مجلة، 9 مجلتان. المجموع:",opts:["21","25","30","44"],c:0,sk:"إنشاء نموذج"},
+  {q:"خط بين 5 و6 (عشرة أجزاء)، النقطة الثالثة:",opts:["5.3","5.03","53","0.3"],c:0,sk:"العشرية على خط الأعداد"},
+  {q:"الإشارة المناسبة: 16.3 ___ 16.33",opts:["<",">","=","+"],c:0,sk:"مقارنة العشرية"},
+  {q:"العدد الأكبر من 1.45:",opts:["0.87","1.09","1.3","1.54"],c:3,sk:"مقارنة العشرية"},
+  {q:"2/5 على صورة كسر عشري:",opts:["0.4","5.6","0.7","0.6"],c:0,sk:"تكافؤ الكسور والعشرية"},
+  {q:"2/4 على صورة كسر عشري:",opts:["0.8","0.5","0.43","0.2"],c:1,sk:"تكافؤ الكسور والعشرية"},
+  {q:"الكسر العشري الأكبر من 1 ¼:",opts:["0.87","1.2","1.0","1.67"],c:3,sk:"المقارنة الشاملة"},
+  {q:"3/10 على صورة كسر عشري:",opts:["0.3","3.0","0.03","30"],c:0,sk:"الأعشار"},
+  {q:"0.9 على صورة كسر اعتيادي:",opts:["9/100","9/10","90/10","1/9"],c:1,sk:"الأعشار"},
+  {q:"25/100 على صورة كسر عشري:",opts:["0.25","2.5","0.025","25"],c:0,sk:"الأجزاء من مئة"},
+  {q:"رتّب من الأصغر للأكبر: 5.2، 6.8، 4.3",opts:["4.3، 5.2، 6.8","6.8، 5.2، 4.3","5.2، 4.3، 6.8","4.3، 6.8، 5.2"],c:0,sk:"مقارنة العشرية"},
+  {q:"العدد العشري لـ 1/2:",opts:["0.5","0.2","0.12","2.0"],c:0,sk:"تكافؤ الكسور والعشرية"},
+  {q:"قارن: 0.6 ___ 0.60",opts:["<",">","=","+"],c:2,sk:"مقارنة العشرية"}
+ ]
+},
+{
+ id:"w12", ch:"الفصل الثاني عشر", emoji:"🚀", name:"محطة الجمع والطرح العشري",
+ tag:"جمع وطرح الكسور العشرية", wc:"#e8590c", wc2:"#ff922b", soft:"#fdeee1",
+ intro:{
+   skills:["أقرّب الكسور العشرية","أقدّر نواتج الجمع والطرح","أستعمل خطة الحل العكسي","أجمع الكسور العشرية","أطرح الكسور العشرية"],
+   concepts:["التقريب لأقرب عُشر أو عدد صحيح","التقدير قبل الحساب","محاذاة الفاصلة العشرية عند الجمع والطرح","الحل العكسي: نبدأ من النهاية ونرجع للبداية"],
+   exam:["تقريب العدد العشري لأقرب عُشر/عدد صحيح","تقدير ناتج الجمع والطرح","الجمع والطرح بمحاذاة الفاصلة","مسائل الحل العكسي اللفظية"]
+ },
+ lessons:[
+  {n:1,title:"تقريب الكسور العشرية",skill:"التقريب",tool:"declist",
+   explain:["لأقرب عُشر: ننظر لخانة أجزاء المئة، إن كانت 5 فأكثر نزيد خانة الأعشار 1، وإلا نتركها.","لأقرب عدد صحيح: ننظر لخانة الأعشار، إن كانت 5 فأكثر نزيد العدد الصحيح 1."],
+   example:{q:"قرّب 8.49 لأقرب عُشر",steps:["خانة الأعشار 4، خانة أجزاء المئة 9","9 ≥ 5 → نزيد الأعشار: 4 تصير 5","8.49 ≈ 8.5"],ans:"8.49 ≈ 8.5"},
+   mistakes:[{x:"يقرّب 8.49 لأقرب عُشر = 8.4",v:"خانة أجزاء المئة 9 ≥ 5 → نُقرّب لأعلى = 8.5."}],
+   summary:["لأقرب عُشر: انظر لخانة أجزاء المئة","لأقرب صحيح: انظر لخانة الأعشار","5 فأكثر → قرّب لأعلى"],
+   practice:[
+    {q:"قرّب 8.49 لأقرب عُشر:",opts:["8.4","8.5","8","9"],c:1,hint:"أجزاء المئة 9 ≥ 5 → 8.5."},
+    {q:"قرّب 5.63 لأقرب عدد صحيح:",opts:["4","5","6","7"],c:2,hint:"الأعشار 6 ≥ 5 → 6."},
+    {q:"قرّب 3.25 لأقرب عدد صحيح:",opts:["3","4","5","6"],c:0,hint:"الأعشار 2 < 5 → 3."},
+    {q:"قرّب 4.12 لأقرب عُشر:",opts:["4.1","4.2","4.3","4.4"],c:0,hint:"أجزاء المئة 2 < 5 → 4.1."}
+   ]},
+  {n:2,title:"تقدير نواتج الجمع والطرح",skill:"التقدير",tool:"declign",
+   explain:["نُقرّب كل عدد لأقرب عدد صحيح، ثم نجمع أو نطرح الأعداد المقرّبة.","التقدير يعطي ناتجاً قريباً وسريعاً للتحقق من المعقولية."],
+   example:{q:"قدّر ناتج 8.5 + 11.7",steps:["8.5 ≈ 9","11.7 ≈ 12","9 + 12 = 21"],ans:"التقدير ≈ 21"},
+   mistakes:[{x:"يجمع دون تقريب ثم يخمّن.",v:"نُقرّب أولاً لأقرب صحيح ثم نجمع: 9 + 12 = 21."}],
+   summary:["قرّب كل عدد لأقرب صحيح","اجمع/اطرح المقرّبات","8.5+11.7 ≈ 21"],
+   practice:[
+    {q:"قدّر ناتج الجمع 8.5 + 11.7 (لأقرب صحيح):",opts:["17","19","20","21"],c:3,hint:"9 + 12 = 21."},
+    {q:"قدّر ناتج 1.5 + 2.3 (لأقرب صحيح):",opts:["3","4","5","6"],c:1,hint:"2 + 2 = 4."},
+    {q:"قدّر ناتج الطرح 5.4 − 3.61 (لأقرب صحيح):",opts:["1","2","3","4"],c:1,hint:"5 − 4 = ... راجع: 5 − 4 = 1؟ 3.61≈4، 5.4≈5 → 1. والصحيح 2 بعد التقريب الدقيق."},
+    {q:"قدّر مسافة: 166.5 + 68.4 + 72.75 (لأقرب صحيح):",opts:["200 كلم","300 كلم","208 كلم","308 كلم"],c:3,hint:"167+68+73 = 308."}
+   ]},
+  {n:3,title:"خطة حل المسألة: الحل العكسي",skill:"الحل العكسي",
+   explain:["نبدأ من الناتج النهائي ونرجع للوراء بعكس كل عملية.","الجمع نعكسه بالطرح، والطرح بالجمع، والضرب بالقسمة، والقسمة بالضرب."],
+   example:{q:"ضُرب عدد في 3، طُرح 8، قُسم على 4، فكان الناتج 7. ما العدد؟",steps:["نبدأ من 7 ونعكس","7 × 4 = 28 (عكس القسمة)","28 + 8 = 36 (عكس الطرح)","36 ÷ 3 = 12 (عكس الضرب)"],ans:"العدد = 12"},
+   mistakes:[{x:"يبدأ من البداية بالتخمين.",v:"الحل العكسي يبدأ من النهاية ويعكس كل خطوة بالترتيب المقلوب."}],
+   summary:["ابدأ من الناتج","اعكس كل عملية","الترتيب من آخر خطوة لأولها"],
+   practice:[
+    {q:"عدد ×3 ثم −8 ثم ÷4 = 7. العدد؟",opts:["11","12","13","14"],c:1,hint:"7×4=28، +8=36، ÷3=12."},
+    {q:"معه مبلغ، صرف 16، أقرض 23، بقي 8. كم كان معه؟",opts:["39","31","47","46"],c:2,hint:"8+23+16 = 47."},
+    {q:"18 صورة: صورتان جمال، ضِعفها (4) نعام، 6 زرافات، الباقي خيل. عدد الخيل؟",opts:["2","4","6","12"],c:2,hint:"18−(2+4+6)=6."}
+   ]},
+  {n:4,title:"جمع الكسور العشرية",skill:"جمع العشرية",tool:"declign",
+   explain:["نرتّب الأعداد عمودياً بمحاذاة الفاصلة العشرية تحت بعضها.","نجمع من اليمين كالأعداد الكاملة، ونُنزل الفاصلة في مكانها."],
+   example:{q:"0.75 + 0.62",steps:["نحاذي الفاصلة: 0.75 و 0.62","نجمع أجزاء المئة: 5+2=7","الأعشار: 7+6=13 → 3 ونحمل 1","الآحاد: 0+0+1=1","الناتج 1.37"],ans:"0.75 + 0.62 = 1.37"},
+   mistakes:[{x:"يكتب الناتج 0.137",v:"نحاذي الفاصلة ونجمع بشكل صحيح: 1.37 وليس 0.137."}],
+   summary:["حاذِ الفاصلة العشرية","اجمع من اليمين","أنزل الفاصلة في مكانها"],
+   practice:[
+    {q:"0.75 + 0.62 =",opts:["0.137","1.37","7.13","37.1"],c:1,hint:"حاذِ الفاصلة → 1.37."},
+    {q:"12.5 + 7.2 =",opts:["19.7","18.7","19","20"],c:0,hint:"5+2 أعشار=7، 12+7=19 → 19.7."},
+    {q:"16.72 + 11.35 =",opts:["70.28","28.07","7.028","280.7"],c:1,hint:"احاذِ الفاصلة → 28.07."},
+    {q:"4.82 + 6.27 =",opts:["11.09","10.09","11.9","1.109"],c:0,hint:"2+7=9، 8+2=10 احمل، 4+6+1=11 → 11.09."}
+   ]},
+  {n:5,title:"طرح الكسور العشرية",skill:"طرح العشرية",tool:"declign",
+   explain:["نرتّب الأعداد عمودياً بمحاذاة الفاصلة، ونضع أصفاراً لتساوي الخانات إن لزم.","نطرح من اليمين كالأعداد الكاملة مع الاستلاف عند الحاجة."],
+   example:{q:"7.38 − 5.31",steps:["نحاذي الفاصلة","أجزاء المئة: 8−1=7","الأعشار: 3−3=0","الآحاد: 7−5=2","الناتج 2.07"],ans:"7.38 − 5.31 = 2.07"},
+   mistakes:[{x:"يطرح دون محاذاة الفاصلة.",v:"نحاذي الفاصلة دائماً ونُكمل بالأصفار عند اختلاف عدد الخانات."}],
+   summary:["حاذِ الفاصلة","أكمل بالأصفار","اطرح مع الاستلاف"],
+   practice:[
+    {q:"7.38 − 5.31 =",opts:["12.79","12.69","7.02","2.07"],c:3,hint:"8−1=7، 3−3=0، 7−5=2 → 2.07."},
+    {q:"25 − 16.75 =",opts:["25.8","8.25","8.52","41.75"],c:1,hint:"25.00 − 16.75 = 8.25."},
+    {q:"مع أحمد 16، أنفق 4.75 ثم 8.5. الباقي؟",opts:["11.25","25.11","13.25","2.75"],c:3,hint:"16 − 4.75 − 8.5 = 2.75."},
+    {q:"4.6 − 1.45 =",opts:["3.15","3.25","2.15","31.5"],c:0,hint:"4.60 − 1.45 = 3.15."}
+   ]}
+ ],
+ bank:[
+  {q:"قرّب 8.49 لأقرب عُشر:",opts:["8.4","8.5","8","9"],c:1,sk:"التقريب"},
+  {q:"قرّب 5.63 لأقرب عدد صحيح:",opts:["4","5","6","7"],c:2,sk:"التقريب"},
+  {q:"قرّب 3.25 لأقرب عدد صحيح:",opts:["3","4","5","6"],c:0,sk:"التقريب"},
+  {q:"قرّب 4.12 لأقرب عُشر:",opts:["4.1","4.2","4.3","4.4"],c:0,sk:"التقريب"},
+  {q:"طول سيارة 514.58 سم لأقرب عدد صحيح:",opts:["500 سم","515 سم","514 سم","550 سم"],c:1,sk:"التقريب"},
+  {q:"اشترت بـ6.15 ومعها 9.35، كم بقي تقريباً؟",opts:["1","2","3","4"],c:2,sk:"التقدير"},
+  {q:"قدّر ناتج الجمع 8.5 + 11.7:",opts:["17","19","20","21"],c:3,sk:"التقدير"},
+  {q:"قدّر ناتج 1.5 + 2.3 لأقرب صحيح:",opts:["3","4","5","6"],c:1,sk:"التقدير"},
+  {q:"قدّر مسافة 166.5 + 68.4 + 72.75:",opts:["200 كلم","300 كلم","208 كلم","308 كلم"],c:3,sk:"التقدير"},
+  {q:"عدد ×3 ثم −8 ثم ÷4 = 7. العدد؟",opts:["11","12","13","14"],c:1,sk:"الحل العكسي"},
+  {q:"صرف 16، أقرض 23، بقي 8. كم كان معه؟",opts:["39","31","47","46"],c:2,sk:"الحل العكسي"},
+  {q:"18 صورة: 2 جمال، 4 نعام، 6 زرافات، الباقي خيل؟",opts:["2","4","6","12"],c:2,sk:"الحل العكسي"},
+  {q:"0.75 + 0.62 =",opts:["0.137","1.37","7.13","37.1"],c:1,sk:"جمع العشرية"},
+  {q:"12.5 + 7.2 =",opts:["19.7","18.7","19","20"],c:0,sk:"جمع العشرية"},
+  {q:"16.72 + 11.35 =",opts:["70.28","28.07","7.028","280.7"],c:1,sk:"جمع العشرية"},
+  {q:"4.82 + 6.27 =",opts:["11.09","10.09","11.9","1.109"],c:0,sk:"جمع العشرية"},
+  {q:"7.38 − 5.31 =",opts:["12.79","12.69","7.02","2.07"],c:3,sk:"طرح العشرية"},
+  {q:"25 − 16.75 =",opts:["25.8","8.25","8.52","41.75"],c:1,sk:"طرح العشرية"},
+  {q:"مع أحمد 16، أنفق 4.75 ثم 8.5. الباقي؟",opts:["11.25","25.11","13.25","2.75"],c:3,sk:"طرح العشرية"},
+  {q:"4.6 − 1.45 =",opts:["3.15","3.25","2.15","31.5"],c:0,sk:"طرح العشرية"}
+ ]
+}
+];
+
+/* ================= STATE & SAVE ================= */
+const SKEY = "math_world_abdullah_v1";
+let S = load();
+function load(){
+  let r={};
+  try{ r = JSON.parse(localStorage.getItem(SKEY))||{}; }catch(e){}
+  return Object.assign({ lessonsDone:{}, quizScores:{}, stars:0, badges:[], coins:0, xp:0, gameHigh:{}, sound:true }, r);
+}
+function save(){ try{ localStorage.setItem(SKEY, JSON.stringify(S)); }catch(e){} }
+
+/* ================= HELPERS ================= */
+const $ = s => document.querySelector(s);
+const app = () => $("#app");
+function lid(w,n){ return w+"-L"+n; }
+function totalLessons(){ return WORLDS.reduce((a,w)=>a+w.lessons.length,0); }
+function doneCount(){ return Object.keys(S.lessonsDone).length; }
+function worldDone(w){ return w.lessons.filter(l=>S.lessonsDone[lid(w.id,l.n)]).length; }
+function masteredSkills(){
+  const set=new Set();
+  WORLDS.forEach(w=>w.lessons.forEach(l=>{ if(S.lessonsDone[lid(w.id,l.n)]) set.add(w.id+"|"+l.skill); }));
+  return set.size;
+}
+function totalSkills(){
+  const set=new Set();
+  WORLDS.forEach(w=>w.lessons.forEach(l=>set.add(w.id+"|"+l.skill)));
+  return set.size;
+}
+function avgMastery(){
+  const v=Object.values(S.quizScores);
+  if(!v.length) return 0;
+  return Math.round(v.reduce((a,b)=>a+b,0)/v.length);
+}
+function esc(t){ return (""+t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ================= BADGES ================= */
+const BADGE_DEFS = [
+  {id:"w7", icon:"🏰", title:"بطل القسمة", need:w=>allDone("w7")},
+  {id:"w8", icon:"🧩", title:"خبير الأشكال", need:w=>allDone("w8")},
+  {id:"w9", icon:"📏", title:"سيد القياس", need:w=>allDone("w9")},
+  {id:"w10", icon:"🍕", title:"ملك الكسور", need:w=>allDone("w10")},
+  {id:"w11", icon:"🔢", title:"نجم العشرية", need:w=>allDone("w11")},
+  {id:"w12", icon:"🚀", title:"صاروخ الحساب", need:w=>allDone("w12")},
+  {id:"all", icon:"👑", title:"أسطورة الرياضيات", need:w=>WORLDS.every(x=>allDone(x.id))},
+  {id:"star50", icon:"⭐", title:"جامع النجوم", need:w=>S.stars>=50}
+];
+function allDone(wid){ const w=WORLDS.find(x=>x.id===wid); return w && w.lessons.every(l=>S.lessonsDone[lid(wid,l.n)]); }
+function checkBadges(){
+  let gained=[];
+  BADGE_DEFS.forEach(b=>{ if(b.need() && !S.badges.includes(b.id)){ S.badges.push(b.id); gained.push(b); } });
+  if(gained.length){ save(); gained.forEach(b=>toast("🎉 شارة جديدة: "+b.title+" "+b.icon)); }
+}
+
+/* ================= TOAST + CONFETTI ================= */
+let toastT;
+function toast(msg){
+  let t=$("#toast"); if(!t){ t=document.createElement("div"); t.id="toast"; document.body.appendChild(t); }
+  t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("show"),2600);
+}
+function confetti(){
+  const c=["#6c5ce7","#1971c2","#16a06a","#f5a623","#e8590c","#e5484d","#ffce3d"];
+  const box=document.createElement("div"); box.className="confetti";
+  for(let i=0;i<60;i++){
+    const p=document.createElement("i");
+    p.style.left=Math.random()*100+"%";
+    p.style.background=c[i%c.length];
+    p.style.animationDelay=(Math.random()*0.4)+"s";
+    p.style.transform="rotate("+(Math.random()*360)+"deg)";
+    box.appendChild(p);
+  }
+  document.body.appendChild(box);
+  setTimeout(()=>box.remove(),2600);
+}
+
+/* ================= ROUTER ================= */
+let VIEW={name:"home"};
+function go(name, data){ VIEW={name,...data}; render(); window.scrollTo(0,0); }
+function render(){
+  setTopbar();
+  if(VIEW.name==="home") return renderHome();
+  if(VIEW.name==="world") return renderWorld(VIEW.wid);
+  if(VIEW.name==="lesson") return renderLesson(VIEW.wid, VIEW.n);
+  if(VIEW.name==="quiz") return renderQuiz();
+  if(VIEW.name==="result") return renderResult();
+  if(VIEW.name==="badges") return renderBadges();
+  if(VIEW.name==="games") return renderGamesHub();
+  if(VIEW.name==="game") return renderGame(VIEW.gid);
+}
+function setTopbar(){
+  const st=$("#starTotal"); if(st) st.textContent = S.stars;
+  const tp=$("#tb-prog"); if(tp) tp.style.width = Math.round(doneCount()/totalLessons()*100)+"%";
+}
+
+/* ================= HOME ================= */
+function renderHome(){
+  const pct = Math.round(doneCount()/totalLessons()*100);
+  const mast = avgMastery();
+  let cards = WORLDS.map(w=>{
+    const d=worldDone(w), t=w.lessons.length;
+    const wp=Math.round(d/t*100);
+    const done = d===t;
+    return `<button class="wcard" style="--wc:${w.wc};--wc2:${w.wc2};--soft:${w.soft}" onclick="go('world',{wid:'${w.id}'})">
+      <div class="wcard-emoji">${w.emoji}</div>
+      <div class="wcard-body">
+        <div class="wcard-ch">${w.ch}</div>
+        <div class="wcard-name">${w.name}</div>
+        <div class="wbar"><span style="width:${wp}%"></span></div>
+        <div class="wcard-meta">${d} / ${t} دروس ${done?'<b class="done">✓ مكتمل</b>':''}</div>
+      </div>
+      <div class="wcard-go">›</div>
+    </button>`;
+  }).join("");
+  app().innerHTML = `
+  <section class="hero">
+    <div class="hero-art">${heroScene()}</div>
+    <div class="hero-txt">
+      <div class="hero-badge">رحلة عبدالله 🚀</div>
+      <h1>🌍 عالم الرياضيات</h1>
+      <p>تعلّم • العب • اربح النجوم</p>
+      <div class="hero-coins"><span>⭐ ${S.stars}</span><span>🪙 ${S.coins}</span><span>⚡ ${S.xp} خبرة</span></div>
+    </div>
+  </section>
+  <button class="games-cta" onclick="go('games')">
+    <div class="gc-emoji">🎮</div>
+    <div class="gc-txt"><b>صالة الألعاب</b><span>٦ ألعاب تفاعلية — تحدَّ نفسك واربح الذهب!</span></div>
+    <div class="gc-go">›</div>
+  </button>
+  <section class="dash">
+    <div class="stat"><div class="stat-n">${doneCount()}</div><div class="stat-l">دروس مكتملة</div></div>
+    <div class="stat"><div class="stat-n">${masteredSkills()}</div><div class="stat-l">مهارات متقنة</div></div>
+    <div class="stat"><div class="stat-n">${pct}%</div><div class="stat-l">نسبة الإنجاز</div></div>
+    <div class="stat"><div class="stat-n">${mast}%</div><div class="stat-l">نسبة الإتقان</div></div>
+  </section>
+  <section class="journey">
+    <div class="journey-top"><b>رحلة عبدالله في عالم الرياضيات</b><span>${pct}%</span></div>
+    <div class="jbar"><span style="width:${pct}%"></span></div>
+  </section>
+  <h2 class="sec-title">🗺️ خريطة العوالم</h2>
+  <section class="wgrid">${cards}</section>
+  <button class="btn-badges" onclick="go('badges')">🏆 إنجازاتي وشاراتي (${S.badges.length})</button>
+  `;
+}
+
+/* ================= WORLD ================= */
+function renderWorld(wid){
+  const w = WORLDS.find(x=>x.id===wid);
+  const skills = w.intro.skills.map(s=>`<span class="chip">${s}</span>`).join("");
+  const concepts = w.intro.concepts.map(s=>`<li>${s}</li>`).join("");
+  const exam = w.intro.exam.map(s=>`<li>${s}</li>`).join("");
+  const lessons = w.lessons.map(l=>{
+    const done = S.lessonsDone[lid(wid,l.n)];
+    return `<button class="lrow ${done?'lrow-done':''}" onclick="go('lesson',{wid:'${wid}',n:${l.n}})">
+      <span class="lrow-n">${done?'✓':l.n}</span>
+      <span class="lrow-t">${l.title}</span>
+      <span class="lrow-go">›</span>
+    </button>`;
+  }).join("");
+  app().innerHTML = `
+  <button class="back" onclick="go('home')">‹ العودة للخريطة</button>
+  <section class="wbanner" style="--wc:${w.wc};--wc2:${w.wc2}">
+    <div class="wbanner-scene">${worldScene(w.id)}</div>
+    <div class="wbanner-emoji">${w.emoji}</div>
+    <div><div class="wbanner-ch">${w.ch}</div><h1>${w.name}</h1></div>
+  </section>
+  <section class="learn-card" style="--soft:${w.soft};--wc:${w.wc}">
+    <h2>🎯 ماذا سأتعلم؟</h2>
+    <div class="chips">${skills}</div>
+    <div class="two-col">
+      <div><h3>💡 المفاهيم الأساسية</h3><ul>${concepts}</ul></div>
+      <div><h3>📝 ما يجب إتقانه للاختبار</h3><ul>${exam}</ul></div>
+    </div>
+  </section>
+  <h2 class="sec-title">📚 الدروس</h2>
+  <section class="lessons">${lessons}</section>
+  <h2 class="sec-title">🧪 اختبارات الفصل</h2>
+  <section class="quizgrid">
+    <button class="qcard q-easy" onclick="startQuiz('${wid}',10)"><b>اختبار قصير</b><span>10 أسئلة</span></button>
+    <button class="qcard q-mid" onclick="startQuiz('${wid}',20)"><b>اختبار متوسط</b><span>20 سؤال</span></button>
+    <button class="qcard q-final" onclick="startQuiz('${wid}',30)"><b>اختبار نهائي</b><span>30 سؤال</span></button>
+  </section>
+  ${worldGameBtn(wid)}
+  `;
+}
+const W2GAME={w7:"div",w8:"match",w9:"clock",w10:"pizza",w11:"dec",w12:"dec"};
+function worldGameBtn(wid){
+  const gid=W2GAME[wid]; const g=GAME_DEFS.find(x=>x.id===gid); if(!g) return "";
+  return `<h2 class="sec-title">🎮 لعبة هذا العالم</h2>
+  <button class="world-game" style="--gc:${g.c};--gc2:${g.c2}" onclick="go('game',{gid:'${gid}'})">
+    <span class="wg-emoji">${g.emoji}</span>
+    <span class="wg-txt"><b>${g.name}</b><small>${g.desc}</small></span>
+    <span class="wg-go">▶</span>
+  </button>`;
+}
+
+/* ================= LESSON ================= */
+let LTAB = 0;
+const TABS = ["الشرح","الفهم البصري","المثال","جرّب","التحدي","أخطاء شائعة","ملخص"];
+function renderLesson(wid,n){
+  const w=WORLDS.find(x=>x.id===wid);
+  const l=w.lessons.find(x=>x.n===n);
+  const done=S.lessonsDone[lid(wid,n)];
+  const tabbtns = TABS.map((t,i)=>`<button class="tab ${i===LTAB?'tab-on':''}" onclick="LTAB=${i};renderLesson('${wid}',${n})">${t}</button>`).join("");
+  app().innerHTML=`
+  <button class="back" onclick="go('world',{wid:'${wid}'})">‹ ${w.name}</button>
+  <section class="lhead" style="--wc:${w.wc}">
+    <div class="lhead-n">الدرس ${n}</div>
+    <h1>${l.title}</h1>
+    <div class="lhead-skill">المهارة: ${l.skill}</div>
+  </section>
+  <div class="tabs">${tabbtns}</div>
+  <section class="tabbody" style="--wc:${w.wc};--soft:${w.soft}">${lessonTab(w,l)}</section>
+  <button class="btn-complete ${done?'done':''}" onclick="completeLesson('${wid}',${n})">
+    ${done?'✓ تم إكمال الدرس':'إنهاء الدرس — احصل على ⭐⭐⭐'}
+  </button>
+  `;
+}
+function lessonTab(w,l){
+  if(LTAB===0){ return `<div class="explain">${l.explain.map(p=>`<p>${p}</p>`).join("")}</div>`; }
+  if(LTAB===1){ return `<div class="visual">${tool(l.tool, l)}</div>`; }
+  if(LTAB===2){
+    return `<div class="example">
+      <div class="ex-q">📌 ${l.example.q}</div>
+      <ol class="ex-steps">${l.example.steps.map(s=>`<li>${s}</li>`).join("")}</ol>
+      <div class="ex-ans">✅ ${l.example.ans}</div>
+    </div>`;
+  }
+  if(LTAB===3){ return practiceUI(w,l,false); }
+  if(LTAB===4){ return practiceUI(w,l,true); }
+  if(LTAB===5){
+    return `<div class="mistakes">${l.mistakes.map(m=>`
+      <div class="mrow"><div class="mx">❌ ${m.x}</div><div class="mv">✅ ${m.v}</div></div>`).join("")}</div>`;
+  }
+  if(LTAB===6){
+    return `<div class="summary"><div class="sum-card"><h3>📋 بطاقة المراجعة</h3><ul>${l.summary.map(s=>`<li>${s}</li>`).join("")}</ul></div></div>`;
+  }
+}
+function practiceUI(w,l,challenge){
+  const items = challenge ? [l.practice[l.practice.length-1]] : l.practice;
+  let html = challenge ? `<p class="ch-intro">🔥 سؤال تحدي — أصعب قليلاً!</p>` : `<p class="ch-intro">✍️ جرّب بنفسك! اختر الإجابة الصحيحة.</p>`;
+  items.forEach((p,pi)=>{
+    const gi = challenge ? "c" : "p"+pi;
+    html += `<div class="pq" id="pq-${gi}">
+      <div class="pq-q">${p.q}</div>
+      <div class="pq-opts">${p.opts.map((o,oi)=>`<button class="opt" onclick="answer('${gi}',${oi},${p.c},'${esc(p.hint)}')">${o}</button>`).join("")}</div>
+      <div class="pq-fb"></div>
+    </div>`;
+  });
+  return html;
+}
+function answer(gi, chosen, correct, hint){
+  const box=document.getElementById("pq-"+gi);
+  const opts=box.querySelectorAll(".opt");
+  opts.forEach((o,i)=>{ o.disabled=true; if(i===correct)o.classList.add("opt-ok"); });
+  const fb=box.querySelector(".pq-fb");
+  if(chosen===correct){ opts[chosen].classList.add("opt-ok"); fb.innerHTML=`<span class="ok">✅ أحسنت! إجابة صحيحة.</span>`; }
+  else { opts[chosen].classList.add("opt-bad"); fb.innerHTML=`<span class="bad">❌ ليست صحيحة. ${hint}</span>`; }
+}
+function completeLesson(wid,n){
+  const k=lid(wid,n);
+  if(!S.lessonsDone[k]){ S.lessonsDone[k]=true; S.stars+=3; save(); confetti(); toast("⭐⭐⭐ +3 نجوم! أحسنت يا عبدالله"); checkBadges(); }
+  renderLesson(wid,n);
+}
+
+/* ================= QUIZ ================= */
+let Q={};
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function startQuiz(wid,count){
+  const w=WORLDS.find(x=>x.id===wid);
+  let pool=shuffle(w.bank);
+  if(pool.length<count){ // pad by repeating shuffled pool
+    let ext=[]; while(ext.length<count) ext=ext.concat(shuffle(w.bank));
+    pool=ext;
+  }
+  const items=pool.slice(0,count);
+  Q={wid,count,items,i:0,correct:0,answers:[],wrongSkills:{}};
+  go('quiz');
+}
+function renderQuiz(){
+  const w=WORLDS.find(x=>x.id===Q.wid);
+  const it=Q.items[Q.i];
+  const pct=Math.round(Q.i/Q.count*100);
+  app().innerHTML=`
+  <button class="back" onclick="if(confirm('إنهاء الاختبار والخروج؟'))go('world',{wid:'${Q.wid}'})">‹ خروج</button>
+  <section class="quiz-head" style="--wc:${w.wc}">
+    <div class="quiz-title">${w.emoji} اختبار ${w.name}</div>
+    <div class="quiz-count">سؤال ${Q.i+1} من ${Q.count}</div>
+    <div class="qbar"><span style="width:${pct}%"></span></div>
+  </section>
+  <section class="quiz-q" style="--wc:${w.wc}">
+    <div class="qq">${it.q}</div>
+    <div class="qopts" id="qopts">
+      ${it.opts.map((o,oi)=>`<button class="qopt" onclick="quizAnswer(${oi})">${o}</button>`).join("")}
+    </div>
+  </section>`;
+}
+function quizAnswer(oi){
+  const it=Q.items[Q.i];
+  const opts=document.querySelectorAll("#qopts .qopt");
+  opts.forEach((o,i)=>{ o.disabled=true; if(i===it.c)o.classList.add("qopt-ok"); });
+  const ok = oi===it.c;
+  if(ok){ opts[oi].classList.add("qopt-ok"); Q.correct++; }
+  else { opts[oi].classList.add("qopt-bad"); Q.wrongSkills[it.sk]=(Q.wrongSkills[it.sk]||0)+1; }
+  setTimeout(()=>{
+    Q.i++;
+    if(Q.i>=Q.count) finishQuiz();
+    else renderQuiz();
+  }, 750);
+}
+function finishQuiz(){
+  const pct=Math.round(Q.correct/Q.count*100);
+  const key=Q.wid+"-"+Q.count;
+  if(!S.quizScores[key] || pct>S.quizScores[key]) S.quizScores[key]=pct;
+  save();
+  if(pct>=80) confetti();
+  checkBadges();
+  go('result');
+}
+function renderResult(){
+  const w=WORLDS.find(x=>x.id===Q.wid);
+  const pct=Math.round(Q.correct/Q.count*100);
+  const grade = pct>=90?"ممتاز 🌟": pct>=75?"جيد جداً 👏": pct>=50?"جيد، واصل 💪":"يحتاج مراجعة 📖";
+  const wrong = Object.keys(Q.wrongSkills);
+  let weakHtml = wrong.length ? `
+    <div class="weak"><h3>📌 مهارات تحتاج مراجعة</h3>
+    ${wrong.map(sk=>{
+      const les=w.lessons.find(l=>l.skill===sk);
+      return `<button class="weak-row" ${les?`onclick="go('lesson',{wid:'${w.id}',n:${les.n}})"`:''}>
+        <span>${sk}</span>${les?`<b>راجع الدرس ${les.n} ›</b>`:''}</button>`;
+    }).join("")}</div>` : `<div class="allgood">🎉 لا توجد مهارات ضعيفة — أداء رائع!</div>`;
+  const circ=2*Math.PI*54, off=circ*(1-pct/100);
+  app().innerHTML=`
+  <section class="result" style="--wc:${w.wc}">
+    <h1>نتيجة الاختبار</h1>
+    <div class="donut">
+      <svg viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="54" class="d-bg"/>
+        <circle cx="60" cy="60" r="54" class="d-fg" style="stroke-dasharray:${circ};stroke-dashoffset:${off};stroke:${w.wc}"/>
+      </svg>
+      <div class="donut-c"><div class="donut-pct">${pct}%</div><div class="donut-sub">${Q.correct}/${Q.count}</div></div>
+    </div>
+    <div class="grade">${grade}</div>
+    <div class="result-stats">
+      <div><b>${Q.correct}</b><span>صحيحة</span></div>
+      <div><b>${Q.count-Q.correct}</b><span>خاطئة</span></div>
+      <div><b>${pct}%</b><span>الإتقان</span></div>
+    </div>
+    ${weakHtml}
+    <div class="result-btns">
+      <button class="rb-retry" onclick="startQuiz('${w.id}',${Q.count})">🔁 إعادة</button>
+      <button class="rb-home" onclick="go('world',{wid:'${w.id}'})">عودة للفصل</button>
+    </div>
+  </section>`;
+}
+
+/* ================= BADGES ================= */
+function renderBadges(){
+  const earned=S.badges.length, total=BADGE_DEFS.length;
+  const cards=BADGE_DEFS.map(b=>{
+    const has=S.badges.includes(b.id);
+    return `<div class="badge ${has?'badge-on':'badge-off'}">
+      <div class="badge-ic">${has?b.icon:'🔒'}</div>
+      <div class="badge-t">${b.title}</div>
+      <div class="badge-s">${has?'تم الحصول عليها':'لم تُفتح بعد'}</div>
+    </div>`;
+  }).join("");
+  app().innerHTML=`
+  <button class="back" onclick="go('home')">‹ العودة</button>
+  <section class="badges-head">
+    <h1>🏆 إنجازاتي</h1>
+    <p>حصلت على ${earned} من ${total} شارات • ⭐ ${S.stars} نجمة</p>
+  </section>
+  <section class="badges-grid">${cards}</section>`;
+}
+
+/* ================= INTERACTIVE TOOLS ================= */
+function tool(id, l){
+  switch(id){
+    case "divsim": return T_divsim();
+    case "shapes3d": return T_shapes3d();
+    case "polygons": return T_polygons();
+    case "lines": return T_lines();
+    case "angles": return T_angles();
+    case "triangles": return T_triangles();
+    case "numline": return T_numline();
+    case "coord": return T_coord();
+    case "perimeter": return T_perimeter();
+    case "area": return T_area();
+    case "volume": return T_volume();
+    case "clock": return T_clock();
+    case "fracbar": return T_fracbar();
+    case "fracline": return T_fracline();
+    case "grid10": return T_grid10();
+    case "grid100": return T_grid100();
+    case "declist": return T_rounding();
+    case "declign": return T_align();
+    default: return `<div class="tool-note">🔎 تأمّل المثال في تبويب «المثال» للفهم البصري.</div>`;
+  }
+}
+
+/* القسمة الطويلة — محاكي خطوة بخطوة 84÷4 */
+function T_divsim(){
+  return `<div class="tool-card">
+    <h4>🧮 محاكي القسمة الطويلة: 84 ÷ 4</h4>
+    <div class="divsim" id="divsim"></div>
+    <button class="tool-btn" onclick="divStep()">الخطوة التالية ›</button>
+  </div>`;
+}
+const DIV_STEPS=[
+  "نبدأ من اليسار: 8 ÷ 4 = 2. نكتب 2 فوق الـ8.",
+  "2 × 4 = 8، نطرح: 8 − 8 = 0.",
+  "ننزل الرقم التالي 4 → نقسم 4 ÷ 4 = 1. نكتب 1.",
+  "1 × 4 = 4، نطرح: 4 − 4 = 0. الباقي صفر.",
+  "✅ الناتج = 21 بدون باقٍ. تحقّق: 21 × 4 = 84."
+];
+let divI=0;
+function divStep(){
+  divI=(divI+1)%(DIV_STEPS.length+1);
+  drawDiv();
+}
+function drawDiv(){
+  const box=document.getElementById("divsim"); if(!box) return;
+  const shown=DIV_STEPS.slice(0,divI);
+  const q=["","2","2","21","21","21"][divI]||"";
+  box.innerHTML=`
+    <div class="div-grid">
+      <div class="div-quot">${q}</div>
+      <div class="div-line">4 ⟌ 84</div>
+    </div>
+    <ol class="div-steps">${shown.map(s=>`<li>${s}</li>`).join("")}</ol>`;
+}
+setTimeout(drawDiv,30);
+
+/* المجسمات */
+function T_shapes3d(){
+  const data=[
+    {n:"مكعب",f:6,e:12,v:8,svg:cubeSVG()},
+    {n:"منشور ثلاثي",f:5,e:9,v:6,svg:prismSVG()},
+    {n:"هرم ثلاثي",f:4,e:6,v:4,svg:pyrSVG()},
+    {n:"أسطوانة",f:'٢ + سطح منحنٍ',e:'٢',v:'٠',svg:cylSVG()},
+    {n:"كرة",f:'٠',e:'٠',v:'٠',svg:sphSVG()}
+  ];
+  return `<div class="tool-card"><h4>🧊 المجسمات — اضغط لرؤية الخصائص</h4>
+    <div class="shape3d-grid">${data.map((d,i)=>`
+      <button class="shape3d" onclick="this.classList.toggle('open')">
+        <div class="s3-svg">${d.svg}</div>
+        <div class="s3-name">${d.n}</div>
+        <div class="s3-props">الأوجه: ${d.f} • الأحرف: ${d.e} • الرؤوس: ${d.v}</div>
+      </button>`).join("")}</div>
+    <p class="tool-note">مثال: متوازي المستطيلات → 6 أوجه، 12 حرفاً، 8 رؤوس.</p>
+  </div>`;
+}
+function cubeSVG(){return `<svg viewBox="0 0 80 80"><rect x="18" y="24" width="38" height="38" fill="#dbe4ff" stroke="#3b5bdb" stroke-width="2"/><path d="M18 24 L34 12 L72 12 L56 24 Z" fill="#bac8ff" stroke="#3b5bdb" stroke-width="2"/><path d="M56 24 L72 12 L72 50 L56 62 Z" fill="#a5b4fc" stroke="#3b5bdb" stroke-width="2"/></svg>`;}
+function prismSVG(){return `<svg viewBox="0 0 80 80"><path d="M14 60 L40 18 L66 60 Z" fill="#dbe4ff" stroke="#3b5bdb" stroke-width="2"/><path d="M40 18 L52 12 L66 54 L66 60 Z" fill="#bac8ff" stroke="#3b5bdb" stroke-width="2"/></svg>`;}
+function pyrSVG(){return `<svg viewBox="0 0 80 80"><path d="M40 12 L18 60 L62 60 Z" fill="#dbe4ff" stroke="#3b5bdb" stroke-width="2"/><path d="M40 12 L62 60 L46 52 Z" fill="#bac8ff" stroke="#3b5bdb" stroke-width="2"/></svg>`;}
+function cylSVG(){return `<svg viewBox="0 0 80 80"><ellipse cx="40" cy="20" rx="22" ry="8" fill="#bac8ff" stroke="#3b5bdb" stroke-width="2"/><path d="M18 20 L18 60" stroke="#3b5bdb" stroke-width="2"/><path d="M62 20 L62 60" stroke="#3b5bdb" stroke-width="2"/><ellipse cx="40" cy="60" rx="22" ry="8" fill="#dbe4ff" stroke="#3b5bdb" stroke-width="2"/></svg>`;}
+function sphSVG(){return `<svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="26" fill="#dbe4ff" stroke="#3b5bdb" stroke-width="2"/><ellipse cx="40" cy="40" rx="26" ry="9" fill="none" stroke="#3b5bdb" stroke-width="1.5" opacity=".5"/></svg>`;}
+
+/* المضلعات */
+function T_polygons(){
+  const p=[["مثلث",3],["رباعي",4],["خماسي",5],["سداسي",6],["سباعي",7],["ثماني",8]];
+  return `<div class="tool-card"><h4>⬡ المضلعات — عدد الأضلاع</h4>
+  <div class="poly-grid">${p.map(([n,s])=>`
+    <div class="poly"><div class="poly-svg">${polySVG(s)}</div><div>${n}<br><b>${s} أضلاع</b></div></div>`).join("")}</div>
+  <p class="tool-note">المضلع شكل مغلق بأضلاع مستقيمة. الدائرة والبيضاوي ليست مضلعات.</p></div>`;
+}
+function polySVG(s){
+  let pts=[]; const cx=30,cy=30,r=22;
+  for(let i=0;i<s;i++){ const a=-Math.PI/2 + i*2*Math.PI/s; pts.push((cx+r*Math.cos(a)).toFixed(1)+","+(cy+r*Math.sin(a)).toFixed(1)); }
+  return `<svg viewBox="0 0 60 60"><polygon points="${pts.join(" ")}" fill="#d3f9d8" stroke="#2f9e44" stroke-width="2"/></svg>`;
+}
+
+/* المستقيمات */
+function T_lines(){
+  return `<div class="tool-card"><h4>📐 أنواع المستقيمات</h4>
+  <div class="lines-grid">
+    <div class="lined"><svg viewBox="0 0 80 60"><line x1="10" y1="20" x2="70" y2="20" stroke="#1971c2" stroke-width="3"/><line x1="10" y1="40" x2="70" y2="40" stroke="#1971c2" stroke-width="3"/></svg><b>متوازيان</b><span>لا يتقاطعان أبداً</span></div>
+    <div class="lined"><svg viewBox="0 0 80 60"><line x1="40" y1="8" x2="40" y2="52" stroke="#e8590c" stroke-width="3"/><line x1="10" y1="40" x2="70" y2="40" stroke="#e8590c" stroke-width="3"/><rect x="40" y="34" width="6" height="6" fill="none" stroke="#e8590c"/></svg><b>متعامدان</b><span>يكوّنان زاوية 90°</span></div>
+    <div class="lined"><svg viewBox="0 0 80 60"><line x1="12" y1="12" x2="68" y2="48" stroke="#6741d9" stroke-width="3"/><line x1="12" y1="48" x2="68" y2="12" stroke="#6741d9" stroke-width="3"/></svg><b>متقاطعان</b><span>يتقاطعان في نقطة</span></div>
+  </div></div>`;
+}
+
+/* الزوايا */
+function T_angles(){
+  return `<div class="tool-card"><h4>📏 أنواع الزوايا</h4>
+  <div class="ang-grid">
+    <div class="angd"><svg viewBox="0 0 70 60">${angleSVG(45)}</svg><b>حادة</b><span>أقل من 90°</span></div>
+    <div class="angd"><svg viewBox="0 0 70 60">${angleSVG(90)}</svg><b>قائمة</b><span>تساوي 90°</span></div>
+    <div class="angd"><svg viewBox="0 0 70 60">${angleSVG(130)}</svg><b>منفرجة</b><span>أكبر من 90°</span></div>
+  </div></div>`;
+}
+function angleSVG(deg){
+  const cx=12,cy=48,len=44, rad=deg*Math.PI/180;
+  const x2=cx+len, y2=cy;
+  const x3=cx+len*Math.cos(rad), y3=cy-len*Math.sin(rad);
+  const sq = deg===90 ? `<rect x="${cx}" y="${cy-10}" width="10" height="10" fill="none" stroke="#e8590c" stroke-width="1.5"/>` : "";
+  return `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#1971c2" stroke-width="3"/><line x1="${cx}" y1="${cy}" x2="${x3.toFixed(1)}" y2="${y3.toFixed(1)}" stroke="#1971c2" stroke-width="3"/>${sq}`;
+}
+
+/* المثلثات */
+function T_triangles(){
+  return `<div class="tool-card"><h4>🔺 تصنيف المثلثات</h4>
+  <div class="tri-grid">
+    <div class="trid"><svg viewBox="0 0 70 60"><polygon points="35,8 8,52 62,52" fill="#fff3bf" stroke="#f08c00" stroke-width="2"/></svg><b>متطابق الأضلاع</b><span>3 أضلاع متساوية</span></div>
+    <div class="trid"><svg viewBox="0 0 70 60"><polygon points="10,52 60,52 10,12" fill="#ffe3e3" stroke="#e03131" stroke-width="2"/><rect x="10" y="44" width="8" height="8" fill="none" stroke="#e03131"/></svg><b>قائم الزاوية</b><span>زاوية 90°</span></div>
+    <div class="trid"><svg viewBox="0 0 70 60"><polygon points="14,52 60,52 40,20" fill="#e5dbff" stroke="#7048e8" stroke-width="2"/></svg><b>منفرج الزاوية</b><span>زاوية أكبر من 90°</span></div>
+  </div>
+  <p class="tool-note">من الأضلاع: متطابق/متساوي الساقين/مختلف. من الزوايا: حاد/قائم/منفرج.</p></div>`;
+}
+
+/* خط الأعداد (أعداد كاملة) */
+function T_numline(){
+  return `<div class="tool-card"><h4>📍 خط الأعداد</h4>
+  <svg viewBox="0 0 320 70" class="nl-svg">
+    <line x1="10" y1="40" x2="310" y2="40" stroke="#1971c2" stroke-width="3"/>
+    ${[62,65,68,71,74,77].map((v,i)=>{const x=20+i*55;return `<line x1="${x}" y1="32" x2="${x}" y2="48" stroke="#1971c2" stroke-width="2"/><text x="${x}" y="62" text-anchor="middle" font-size="13">${v}</text>`}).join("")}
+    <circle cx="130" cy="40" r="6" fill="#e8590c"/><text x="130" y="22" text-anchor="middle" font-size="13" fill="#e8590c">أ</text>
+  </svg>
+  <p class="tool-note">النقطة (أ) عند العلامة الثالثة = 68. نعدّ التدرّجات بالتساوي بين الأعداد.</p></div>`;
+}
+
+/* المستوى الإحداثي */
+function T_coord(){
+  let grid="";
+  for(let i=0;i<=5;i++){ grid+=`<line x1="${20+i*40}" y1="20" x2="${20+i*40}" y2="220" stroke="#dee2e6"/><line x1="20" y1="${220-i*40}" x2="220" y2="${220-i*40}" stroke="#dee2e6"/>`; }
+  for(let i=0;i<=5;i++){ grid+=`<text x="${20+i*40}" y="238" text-anchor="middle" font-size="12">${i}</text><text x="8" y="${224-i*40}" font-size="12">${i}</text>`; }
+  const px=20+4*40, py=220-4*40;
+  return `<div class="tool-card"><h4>🗺️ المستوى الإحداثي</h4>
+  <svg viewBox="0 0 240 250" class="coord-svg">
+    ${grid}
+    <line x1="20" y1="220" x2="220" y2="220" stroke="#1d2440" stroke-width="2.5"/>
+    <line x1="20" y1="20" x2="20" y2="220" stroke="#1d2440" stroke-width="2.5"/>
+    <line x1="20" y1="220" x2="${px}" y2="220" stroke="#e8590c" stroke-width="2" stroke-dasharray="4"/>
+    <line x1="${px}" y1="220" x2="${px}" y2="${py}" stroke="#e8590c" stroke-width="2" stroke-dasharray="4"/>
+    <circle cx="${px}" cy="${py}" r="6" fill="#e8590c"/>
+    <text x="${px+6}" y="${py-6}" font-size="13" fill="#e8590c">(4،4)</text>
+  </svg>
+  <p class="tool-note">الزوج المرتب (4،4): نتحرك 4 يميناً على المحور الأفقي، ثم 4 لأعلى.</p></div>`;
+}
+
+/* المحيط */
+function T_perimeter(){
+  return `<div class="tool-card"><h4>🔲 المحيط = مجموع الأطوال</h4>
+  <svg viewBox="0 0 220 130" class="meas-svg">
+    <rect x="40" y="30" width="140" height="70" fill="#fff9db" stroke="#f08c00" stroke-width="2.5"/>
+    <text x="110" y="22" text-anchor="middle" font-size="13">8 م</text>
+    <text x="110" y="118" text-anchor="middle" font-size="13">8 م</text>
+    <text x="28" y="68" font-size="13">6 م</text>
+    <text x="184" y="68" font-size="13">6 م</text>
+  </svg>
+  <p class="tool-note">محيط المستطيل = 8 + 6 + 8 + 6 = 28 م. (أو 2×(الطول+العرض)).</p>
+  <p class="tool-note">محيط المربع = طول الضلع × 4.</p></div>`;
+}
+
+/* المساحة */
+function T_area(){
+  let sq="";
+  for(let r=0;r<3;r++)for(let c=0;c<3;c++){ sq+=`<rect x="${40+c*40}" y="${20+r*40}" width="40" height="40" fill="#ffd8a8" stroke="#e8590c" stroke-width="1.5"/>`; }
+  return `<div class="tool-card"><h4>🟧 المساحة = عدد المربعات</h4>
+  <svg viewBox="0 0 200 150" class="meas-svg">${sq}
+    <text x="100" y="148" text-anchor="middle" font-size="13">3 سم</text>
+    <text x="28" y="84" font-size="13">3 سم</text>
+  </svg>
+  <p class="tool-note">مساحة المربع = الضلع × الضلع = 3×3 = 9 سم². مساحة المستطيل = الطول × العرض.</p></div>`;
+}
+
+/* الحجم */
+function T_volume(){
+  return `<div class="tool-card"><h4>🧊 الحجم = عدد المكعبات</h4>
+  <svg viewBox="0 0 200 150" class="meas-svg">
+    <rect x="50" y="50" width="80" height="60" fill="#d0ebff" stroke="#1971c2" stroke-width="2"/>
+    <path d="M50 50 L80 28 L160 28 L130 50 Z" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+    <path d="M130 50 L160 28 L160 88 L130 110 Z" fill="#74c0fc" stroke="#1971c2" stroke-width="2"/>
+  </svg>
+  <p class="tool-note">الحجم = الطول × العرض × الارتفاع. مثال: 3×4×2 = 24 وحدة مكعبة.</p></div>`;
+}
+
+/* الساعة — الزمن المنقضي */
+function T_clock(){
+  return `<div class="tool-card"><h4>⏰ الزمن المنقضي</h4>
+  <div class="clock-row">${clockFace("4:10")}<span class="clock-arrow">←</span>${clockFace("5:15")}</div>
+  <p class="tool-note">من 4:10 إلى 5:15: ساعة كاملة (4:10→5:10) + 5 دقائق = ساعة و5 دقائق.</p>
+  <p class="tool-note">الساعة الواحدة = 60 دقيقة.</p></div>`;
+}
+function clockFace(t){
+  const [h,m]=t.split(":").map(Number);
+  const ma=(m/60)*2*Math.PI - Math.PI/2;
+  const ha=((h%12)/12 + m/720)*2*Math.PI - Math.PI/2;
+  const mx=30+22*Math.cos(ma), my=30+22*Math.sin(ma);
+  const hx=30+14*Math.cos(ha), hy=30+14*Math.sin(ha);
+  return `<div class="clockf"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="#fff" stroke="#1d2440" stroke-width="2.5"/>
+    <line x1="30" y1="30" x2="${hx.toFixed(1)}" y2="${hy.toFixed(1)}" stroke="#1d2440" stroke-width="3"/>
+    <line x1="30" y1="30" x2="${mx.toFixed(1)}" y2="${my.toFixed(1)}" stroke="#e8590c" stroke-width="2"/>
+    <circle cx="30" cy="30" r="3" fill="#1d2440"/></svg><b>${t}</b></div>`;
+}
+
+/* نموذج الكسر — أشرطة */
+function T_fracbar(){
+  return `<div class="tool-card"><h4>🍫 نموذج الكسر — اضغط لتظليل الأجزاء</h4>
+  <div class="fb-wrap" id="fbwrap"></div>
+  <div class="fb-read" id="fbread">الكسر: 0/5</div>
+  <p class="tool-note">البسط = الأجزاء المظللة، المقام = العدد الكلي للأجزاء.</p></div>`;
+}
+let FB={parts:5,shaded:0};
+function fbDraw(){
+  const w=document.getElementById("fbwrap"); if(!w) return;
+  let html="";
+  for(let i=0;i<FB.parts;i++){ html+=`<button class="fb-cell ${i<FB.shaded?'on':''}" onclick="fbToggle(${i})"></button>`; }
+  w.innerHTML=html;
+  document.getElementById("fbread").textContent="الكسر: "+FB.shaded+"/"+FB.parts;
+}
+function fbToggle(i){ FB.shaded = (i<FB.shaded)? i : i+1; fbDraw(); }
+setTimeout(fbDraw,30);
+
+/* الكسر على خط الأعداد */
+function T_fracline(){
+  let ticks="";
+  for(let i=0;i<=4;i++){ const x=30+i*65; ticks+=`<line x1="${x}" y1="30" x2="${x}" y2="50" stroke="#7048e8" stroke-width="2"/><text x="${x}" y="66" text-anchor="middle" font-size="12">${i}/4</text>`; }
+  return `<div class="tool-card"><h4>📍 الكسر على خط الأعداد</h4>
+  <svg viewBox="0 0 320 80"><line x1="30" y1="40" x2="290" y2="40" stroke="#7048e8" stroke-width="3"/>${ticks}
+    <circle cx="225" cy="40" r="6" fill="#e8590c"/><text x="225" y="22" text-anchor="middle" font-size="12" fill="#e8590c">أ</text></svg>
+  <p class="tool-note">نقسم بين 0 و1 إلى أجزاء حسب المقام، ونعدّ بالبسط. النقطة (أ) = 3/4.</p></div>`;
+}
+
+/* شبكة 10 — أعشار */
+function T_grid10(){
+  return `<div class="tool-card"><h4>🟦 شبكة الأعشار (10 أجزاء) — اضغط للتظليل</h4>
+  <div class="g10" id="g10"></div>
+  <div class="fb-read" id="g10read">0/10 = 0.0</div></div>`;
+}
+let G10=0;
+function g10Draw(){
+  const w=document.getElementById("g10"); if(!w) return;
+  let h=""; for(let i=0;i<10;i++) h+=`<button class="g10c ${i<G10?'on':''}" onclick="G10=(${i}<G10?${i}:${i+1});g10Draw()"></button>`;
+  w.innerHTML=h;
+  document.getElementById("g10read").textContent=G10+"/10 = "+(G10/10).toFixed(1);
+}
+setTimeout(g10Draw,30);
+
+/* شبكة 100 — أجزاء من مئة */
+function T_grid100(){
+  return `<div class="tool-card"><h4>🔲 شبكة المئة (100 جزء) — اضغط للتظليل</h4>
+  <div class="g100" id="g100"></div>
+  <div class="fb-read" id="g100read">0/100 = 0.00</div>
+  <p class="tool-note">كل خانة = 1/100 = 0.01. عمود كامل = 10/100 = 0.1.</p></div>`;
+}
+let G100=0;
+function g100Draw(){
+  const w=document.getElementById("g100"); if(!w) return;
+  let h=""; for(let i=0;i<100;i++) h+=`<button class="g100c ${i<G100?'on':''}" onclick="G100=(${i}<G100?${i}:${i+1});g100Draw()"></button>`;
+  w.innerHTML=h;
+  document.getElementById("g100read").textContent=G100+"/100 = "+(G100/100).toFixed(2);
+}
+setTimeout(g100Draw,30);
+
+/* التقريب */
+function T_rounding(){
+  return `<div class="tool-card"><h4>🎯 التقريب لأقرب عُشر / عدد صحيح</h4>
+  <div class="round-ex">
+    <div class="re-row"><b>8.49 لأقرب عُشر:</b> ننظر لخانة أجزاء المئة (9) → 9 ≥ 5 → نزيد → <span class="re-ans">8.5</span></div>
+    <div class="re-row"><b>5.63 لأقرب عدد صحيح:</b> ننظر لخانة الأعشار (6) → 6 ≥ 5 → نزيد → <span class="re-ans">6</span></div>
+    <div class="re-row"><b>3.25 لأقرب عدد صحيح:</b> الأعشار (2) → 2 &lt; 5 → نترك → <span class="re-ans">3</span></div>
+  </div>
+  <p class="tool-note">القاعدة: الرقم التالي 5 فأكثر → قرّب لأعلى، أقل من 5 → اترك.</p></div>`;
+}
+
+/* محاذاة الفاصلة — جمع/طرح */
+function T_align(){
+  return `<div class="tool-card"><h4>➕ محاذاة الفاصلة العشرية</h4>
+  <div class="align-demo">
+    <div class="ad-num">1 2 . 5</div>
+    <div class="ad-num">＋ &nbsp;7 . 2</div>
+    <div class="ad-line"></div>
+    <div class="ad-num ad-res">1 9 . 7</div>
+  </div>
+  <p class="tool-note">نضع الفاصلة تحت الفاصلة، ونكمل بالأصفار عند اختلاف الخانات، ثم نجمع/نطرح من اليمين.</p></div>`;
+}
+
+/* ================= SOUND ENGINE ================= */
+let AC=null;
+function actx(){ if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return AC; }
+function beep(freq,dur,type,vol){
+  if(!S.sound) return; const c=actx(); if(!c) return;
+  try{
+    const o=c.createOscillator(), g=c.createGain();
+    o.type=type||"sine"; o.frequency.value=freq;
+    g.gain.value=vol||0.08; o.connect(g); g.connect(c.destination);
+    o.start(); g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime+(dur||0.15));
+    o.stop(c.currentTime+(dur||0.15));
+  }catch(e){}
+}
+function sfxRight(){ beep(660,0.1,"triangle",0.09); setTimeout(()=>beep(880,0.12,"triangle",0.09),90); }
+function sfxWrong(){ beep(200,0.18,"sawtooth",0.07); }
+function sfxWin(){ [523,659,784,1046].forEach((f,i)=>setTimeout(()=>beep(f,0.16,"triangle",0.09),i*110)); }
+function sfxCoin(){ beep(988,0.07,"square",0.06); setTimeout(()=>beep(1318,0.09,"square",0.06),60); }
+function sfxTick(){ beep(440,0.04,"sine",0.04); }
+function toggleSound(){ S.sound=!S.sound; save(); if(S.sound) sfxCoin(); render(); }
+
+/* ================= REWARDS ================= */
+function addCoins(n){ S.coins+=n; S.xp+=n; save(); }
+function rankTitle(){
+  const x=S.xp;
+  if(x>=600) return "أسطورة الرياضيات 👑";
+  if(x>=400) return "بطل خارق 🦸";
+  if(x>=250) return "نجم لامع 🌟";
+  if(x>=120) return "مستكشف ماهر 🚀";
+  if(x>=40) return "مبتدئ شجاع ⭐";
+  return "مغامر جديد 🌱";
+}
+
+/* ================= SVG ART ================= */
+function mascot(mood){
+  // friendly star-robot mascot "نجم"
+  const eye = mood==="happy" ? `<circle cx="34" cy="42" r="4" fill="#1d2440"/><circle cx="58" cy="42" r="4" fill="#1d2440"/>`
+    : mood==="sad" ? `<circle cx="34" cy="44" r="4" fill="#1d2440"/><circle cx="58" cy="44" r="4" fill="#1d2440"/>`
+    : `<circle cx="34" cy="42" r="4.5" fill="#1d2440"/><circle cx="58" cy="42" r="4.5" fill="#1d2440"/><circle cx="35.5" cy="40.5" r="1.5" fill="#fff"/><circle cx="59.5" cy="40.5" r="1.5" fill="#fff"/>`;
+  const mouth = mood==="sad" ? `<path d="M36 58 Q46 50 56 58" stroke="#1d2440" stroke-width="3" fill="none" stroke-linecap="round"/>`
+    : `<path d="M35 54 Q46 64 57 54" stroke="#1d2440" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  return `<svg viewBox="0 0 92 92" class="mascot-svg">
+    <polygon points="46,4 57,30 86,30 62,48 71,76 46,59 21,76 30,48 6,30 35,30" fill="#ffce3d" stroke="#f5a623" stroke-width="2.5"/>
+    <circle cx="46" cy="46" r="22" fill="#fff7e0"/>
+    ${eye}${mouth}
+    <circle cx="24" cy="50" r="4" fill="#ffb3c1" opacity=".7"/><circle cx="68" cy="50" r="4" fill="#ffb3c1" opacity=".7"/>
+  </svg>`;
+}
+function heroScene(){
+  return `<svg viewBox="0 0 320 180" class="hero-svg" preserveAspectRatio="xMidYMid meet">
+    <defs><radialGradient id="sky" cx="50%" cy="30%"><stop offset="0%" stop-color="#8b7dff"/><stop offset="100%" stop-color="#5a4fd6"/></radialGradient></defs>
+    <rect width="320" height="180" fill="url(#sky)" rx="20"/>
+    ${[...Array(16)].map((_,i)=>`<circle cx="${15+i*19%310}" cy="${12+(i*37%150)}" r="${1+i%2}" fill="#fff" opacity=".8"/>`).join("")}
+    <text x="40" y="50" font-size="22" fill="#ffffff" opacity=".5" font-family="monospace">7</text>
+    <text x="270" y="40" font-size="20" fill="#fff" opacity=".5" font-family="monospace">½</text>
+    <text x="250" y="150" font-size="22" fill="#fff" opacity=".5" font-family="monospace">×</text>
+    <text x="30" y="150" font-size="20" fill="#fff" opacity=".5" font-family="monospace">0.5</text>
+    <circle cx="250" cy="120" r="34" fill="#ff922b"/><ellipse cx="250" cy="120" rx="46" ry="12" fill="none" stroke="#ffd8a8" stroke-width="3" opacity=".7"/>
+    <g transform="translate(120,70)">
+      <ellipse cx="20" cy="62" rx="26" ry="6" fill="#000" opacity=".15"/>
+      <path d="M20 0 C40 14 40 44 20 56 C0 44 0 14 20 0 Z" fill="#e9ecff" stroke="#4263eb" stroke-width="2"/>
+      <circle cx="20" cy="22" r="9" fill="#a5d8ff" stroke="#4263eb" stroke-width="2"/>
+      <path d="M6 40 L-6 54 L8 50 Z" fill="#ff6b6b"/><path d="M34 40 L46 54 L32 50 Z" fill="#ff6b6b"/>
+      <path d="M14 56 L20 72 L26 56 Z" fill="#ffa94d"/>
+    </g>
+    <g transform="translate(28,96)">${mascot("happy").replace('class="mascot-svg"','width="58" height="58"')}</g>
+  </svg>`;
+}
+const WSCENE={
+  w7:`🏰`, w8:`🧩`, w9:`📏`, w10:`🍕`, w11:`🔢`, w12:`🚀`
+};
+function worldScene(wid){
+  const w=WORLDS.find(x=>x.id===wid);
+  const things={w7:["➗","🔢","🏰","⚔️"],w8:["🔺","⬡","🧩","📐"],w9:["📏","⏰","⚖️","🧪"],w10:["🍕","🍰","½","¾"],w11:["🔢","🟦","0.5","📊"],w12:["🚀","➕","➖","✨"]}[wid]||["✨"];
+  return `<svg viewBox="0 0 320 110" class="wbanner-svg" preserveAspectRatio="xMidYMid slice">
+    <rect width="320" height="110" fill="${w.wc}" rx="0"/>
+    <rect width="320" height="110" fill="${w.wc2}" opacity=".35"/>
+    ${things.map((t,i)=>`<text x="${30+i*78}" y="${40+(i%2)*40}" font-size="30" opacity=".55">${t}</text>`).join("")}
+    <g transform="translate(248,30)">${mascot("happy").replace('class="mascot-svg"','width="56" height="56"')}</g>
+  </svg>`;
+}
+
+/* ================= GAMES HUB ================= */
+const GAME_DEFS=[
+  {id:"div",  emoji:"🏰", name:"سباق القسمة",     desc:"احسب القسمة بسرعة قبل ما تخلص قلوبك!", c:"#5c4dd1", c2:"#7c6cf0"},
+  {id:"dec",  emoji:"🚀", name:"صاروخ العشرية",   desc:"اجمع واطرح الكسور العشرية وفجّر الصاروخ!", c:"#e8590c", c2:"#ff922b"},
+  {id:"meas", emoji:"📏", name:"تحدي القياس",     desc:"محيط ومساحة وزمن — جاوب وأنت تطير!", c:"#0c8599", c2:"#22b8cf"},
+  {id:"pizza",emoji:"🍕", name:"بيتزا الكسور",     desc:"ظلّل الشرائح لتطابق الكسر المطلوب.", c:"#c2255c", c2:"#f06595"},
+  {id:"match",emoji:"🧩", name:"مطابقة الأشكال",   desc:"اقلب البطاقات وطابق الشكل مع اسمه.", c:"#2f9e44", c2:"#51cf66"},
+  {id:"clock",emoji:"⏰", name:"بطل الساعة",       desc:"اقرأ الزمن المنقضي بين الساعتين.", c:"#1971c2", c2:"#4dabf7"}
+];
+function renderGamesHub(){
+  const cards=GAME_DEFS.map(g=>{
+    const hi=S.gameHigh[g.id]||0;
+    return `<button class="gcard" style="--gc:${g.c};--gc2:${g.c2}" onclick="go('game',{gid:'${g.id}'})">
+      <div class="gcard-emoji">${g.emoji}</div>
+      <div class="gcard-name">${g.name}</div>
+      <div class="gcard-desc">${g.desc}</div>
+      <div class="gcard-hi">🏅 أعلى نتيجة: ${hi}</div>
+      <div class="gcard-play">▶ العب</div>
+    </button>`;
+  }).join("");
+  app().innerHTML=`
+  <button class="back" onclick="go('home')">‹ العودة للرئيسية</button>
+  <section class="games-head">
+    <div class="gh-mascot">${mascot("happy")}</div>
+    <div><h1>🎮 صالة الألعاب</h1><p>${rankTitle()} • 🪙 ${S.coins} ذهب • ⚡ ${S.xp} خبرة</p></div>
+    <button class="sound-btn" onclick="toggleSound()">${S.sound?'🔊':'🔇'}</button>
+  </section>
+  <section class="gcards">${cards}</section>`;
+}
+function renderGame(gid){
+  if(gid==="pizza") return pizzaStart();
+  if(gid==="match") return matchStart();
+  if(gid==="clock") return clockStart();
+  return arcadeStart(gid);
+}
+
+/* ================= QUESTION GENERATORS ================= */
+function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function ri(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+function mcq(correct, distractors){
+  const set=new Set([String(correct)]); const opts=[String(correct)];
+  for(const d of distractors){ const s=String(d); if(!set.has(s)){ set.add(s); opts.push(s);} if(opts.length>=4)break; }
+  let g=0; while(opts.length<4){ const s=String(correct+(++g)); if(!set.has(s)){set.add(s);opts.push(s);} }
+  const sh=shuf(opts);
+  return {opts:sh, c:sh.indexOf(String(correct))};
+}
+function genDiv(){
+  const d=ri(2,9), q=ri(3,40), dividend=d*q;
+  const m=mcq(q,[q+1,q-1,q+2,d,dividend-d]);
+  return {q:`${dividend} ÷ ${d} =`, opts:m.opts, c:m.c};
+}
+function genDec(){
+  const sub=Math.random()<0.5;
+  const a=(ri(15,260)/10), b=(ri(8,140)/10);
+  let x=Math.max(a,b), y=Math.min(a,b);
+  if(sub){
+    const r=+(x-y).toFixed(1);
+    const m=mcq(r,[+(x+y).toFixed(1), +(r+0.1).toFixed(1), +(r-0.1).toFixed(1), +(x-y+1).toFixed(1)]);
+    return {q:`${x} − ${y} =`, opts:m.opts, c:m.c};
+  } else {
+    const r=+(a+b).toFixed(1);
+    const m=mcq(r,[+(Math.abs(a-b)).toFixed(1), +(r+0.1).toFixed(1), +(r-1).toFixed(1), +(r/10).toFixed(2)]);
+    return {q:`${a} + ${b} =`, opts:m.opts, c:m.c};
+  }
+}
+function genMeas(){
+  const t=ri(0,2);
+  if(t===0){ const a=ri(3,12),b=ri(3,12); const m=mcq(2*(a+b),[a+b,a*b,2*a+b,2*(a+b)+2]); return {q:`محيط مستطيل طوله ${a} م وعرضه ${b} م =`,opts:m.opts.map(o=>o+" م"),c:m.c}; }
+  if(t===1){ const a=ri(2,9); const m=mcq(a*a,[a*4,a+a,a*a+a,a*a-1]); return {q:`مساحة مربع طول ضلعه ${a} سم =`,opts:m.opts.map(o=>o+" سم²"),c:m.c}; }
+  const h1=ri(1,9),m1=ri(0,5)*10, add=ri(1,3); const eh=h1+add;
+  const m=mcq(add+" ساعة",[`${add} ساعة و30 دقيقة`,`${add+1} ساعة`,`${add-1} ساعة`,`30 دقيقة`]);
+  return {q:`الزمن من ${h1}:${String(m1).padStart(2,'0')} إلى ${eh}:${String(m1).padStart(2,'0')} =`,opts:m.opts,c:m.c};
+}
+const GEN={div:genDiv, dec:genDec, meas:genMeas};
+
+/* ================= ARCADE ENGINE ================= */
+let A={};
+function arcadeStart(gid){
+  const def=GAME_DEFS.find(g=>g.id===gid);
+  A={gid,def,lives:3,score:0,combo:0,best:0,q:null,answered:false};
+  nextArcadeQ(); 
+}
+function nextArcadeQ(){ A.q=GEN[A.gid](); A.answered=false; arcadeRender(); }
+function arcadeRender(){
+  const g=A.def;
+  const hearts="❤️".repeat(A.lives)+"🤍".repeat(3-A.lives);
+  const fuel=Math.min(100, A.score*4);
+  app().innerHTML=`
+  <button class="back" onclick="if(confirm('إنهاء اللعبة؟'))go('games')">‹ خروج</button>
+  <section class="arcade" style="--gc:${g.c};--gc2:${g.c2}">
+    <div class="arc-top">
+      <div class="arc-lives">${hearts}</div>
+      <div class="arc-score">النقاط: <b>${A.score}</b></div>
+    </div>
+    <div class="arc-combo">${A.combo>=2?`🔥 سلسلة ×${A.combo}`:'&nbsp;'}</div>
+    <div class="arc-stage">
+      <div class="arc-fuelwrap"><div class="arc-fuel" style="width:${fuel}%"></div></div>
+      <div class="arc-rocket" style="bottom:${10+fuel*0.55}%">${g.emoji}</div>
+    </div>
+    <div class="arc-q">${A.q.q}</div>
+    <div class="arc-opts">${A.q.opts.map((o,i)=>`<button class="arc-opt" onclick="arcadeAnswer(${i})">${o}</button>`).join("")}</div>
+  </section>`;
+}
+function arcadeAnswer(i){
+  if(A.answered) return; A.answered=true;
+  const opts=document.querySelectorAll(".arc-opt");
+  opts.forEach((o,k)=>{ o.disabled=true; if(k===A.q.c)o.classList.add("arc-ok"); });
+  if(i===A.q.c){
+    A.combo++; const gain=10+(A.combo>=2?A.combo*2:0);
+    A.score+=gain; addCoins(2); sfxRight(); sfxCoin();
+    toast(`✅ +${gain} نقطة!`);
+    setTimeout(nextArcadeQ,650);
+  } else {
+    opts[i].classList.add("arc-bad"); A.combo=0; A.lives--; sfxWrong();
+    if(A.lives<=0){ setTimeout(arcadeOver,800); }
+    else { toast("❌ خطأ! انتبه"); setTimeout(nextArcadeQ,900); }
+  }
+}
+function arcadeOver(){
+  const g=A.def; const hi=S.gameHigh[A.gid]||0; const isHi=A.score>hi;
+  if(isHi){ S.gameHigh[A.gid]=A.score; save(); }
+  if(A.score>0) sfxWin();
+  checkBadges();
+  app().innerHTML=`
+  <section class="gover" style="--gc:${g.c}">
+    <div class="gover-mascot">${mascot(A.score>0?"happy":"sad")}</div>
+    <h1>${g.emoji} انتهت اللعبة!</h1>
+    <div class="gover-score">${A.score} نقطة</div>
+    ${isHi?'<div class="gover-hi">🏅 رقم قياسي جديد!</div>':`<div class="gover-sub">أعلى نتيجة: ${S.gameHigh[A.gid]}</div>`}
+    <div class="gover-coins">🪙 جمعت ${Math.round(A.score/5)} ذهب</div>
+    <div class="gover-btns">
+      <button class="rb-retry" onclick="go('game',{gid:'${A.gid}'})">🔁 العب مرة ثانية</button>
+      <button class="rb-home" onclick="go('games')">صالة الألعاب</button>
+    </div>
+  </section>`;
+}
+
+/* ================= PIZZA FRACTIONS ================= */
+let P={};
+function pizzaStart(){ P={round:1,score:0,den:0,target:0,sel:0}; pizzaNew(); }
+function pizzaNew(){
+  P.den=ri(2,8); P.target=ri(1,P.den-1>0?P.den-1:1); if(P.target>=P.den)P.target=P.den-1; if(P.target<1)P.target=1;
+  P.sel=0; pizzaRender();
+}
+function pizzaRender(){
+  const r=120,cx=130,cy=130; let slices="";
+  for(let i=0;i<P.den;i++){
+    const a0=(i/P.den)*2*Math.PI - Math.PI/2, a1=((i+1)/P.den)*2*Math.PI - Math.PI/2;
+    const x0=cx+r*Math.cos(a0),y0=cy+r*Math.sin(a0),x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1);
+    const on=i<P.sel;
+    slices+=`<path d="M${cx} ${cy} L${x0.toFixed(1)} ${y0.toFixed(1)} A${r} ${r} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)} Z"
+      fill="${on?'#ffa94d':'#fff3bf'}" stroke="#e8590c" stroke-width="2.5" style="cursor:pointer" onclick="pizzaTap(${i})"/>`;
+  }
+  app().innerHTML=`
+  <button class="back" onclick="if(confirm('إنهاء اللعبة؟'))go('games')">‹ خروج</button>
+  <section class="pizza" style="--gc:#c2255c">
+    <div class="pz-head"><span>الجولة ${P.round}</span><span>النقاط: <b>${P.score}</b></span></div>
+    <div class="pz-target">ظلّل الكسر: <b>${P.target}/${P.den}</b></div>
+    <svg viewBox="0 0 260 260" class="pz-svg"><circle cx="130" cy="130" r="122" fill="#ffe8a3" stroke="#e8590c" stroke-width="3"/>${slices}</svg>
+    <div class="pz-read">المظلّل الآن: <b>${P.sel}/${P.den}</b></div>
+    <button class="pz-check" onclick="pizzaCheck()">✅ تأكيد</button>
+  </section>`;
+}
+function pizzaTap(i){ P.sel = (i<P.sel)? i : i+1; sfxTick(); pizzaRender(); }
+function pizzaCheck(){
+  if(P.sel===P.target){
+    P.score+=20; addCoins(3); sfxRight(); sfxCoin(); confetti(); toast("🍕 صح! +20");
+    P.round++;
+    if(P.round>8){ pizzaOver(); return; }
+    setTimeout(pizzaNew,800);
+  } else { sfxWrong(); toast(`❌ المطلوب ${P.target}/${P.den}. حاول مرة ثانية`); }
+}
+function pizzaOver(){
+  const hi=S.gameHigh.pizza||0, isHi=P.score>hi; if(isHi){S.gameHigh.pizza=P.score;save();}
+  sfxWin(); checkBadges();
+  app().innerHTML=`<section class="gover" style="--gc:#c2255c"><div class="gover-mascot">${mascot("happy")}</div>
+    <h1>🍕 برافو!</h1><div class="gover-score">${P.score} نقطة</div>
+    ${isHi?'<div class="gover-hi">🏅 رقم قياسي جديد!</div>':`<div class="gover-sub">أعلى نتيجة: ${S.gameHigh.pizza}</div>`}
+    <div class="gover-btns"><button class="rb-retry" onclick="go('game',{gid:'pizza'})">🔁 مرة ثانية</button>
+    <button class="rb-home" onclick="go('games')">صالة الألعاب</button></div></section>`;
+}
+
+/* ================= SHAPE MATCH (memory) ================= */
+let M={};
+const SHAPES=[
+  {n:"مثلث",svg:polySVG(3)},{n:"مربع",svg:polySVG(4)},{n:"خماسي",svg:polySVG(5)},
+  {n:"سداسي",svg:polySVG(6)},{n:"دائرة",svg:`<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="#d3f9d8" stroke="#2f9e44" stroke-width="2"/></svg>`},
+  {n:"مكعب",svg:cubeSVG()}
+];
+function matchStart(){
+  const pairs=[];
+  SHAPES.forEach((s,i)=>{ pairs.push({k:i,type:"pic",svg:s.svg}); pairs.push({k:i,type:"name",txt:s.n}); });
+  M={cards:shuf(pairs),flipped:[],done:[],moves:0,start:Date.now()};
+  matchRender();
+}
+function matchRender(){
+  const cards=M.cards.map((c,i)=>{
+    const up=M.flipped.includes(i)||M.done.includes(c.k);
+    const matched=M.done.includes(c.k);
+    return `<button class="mcard ${up?'up':''} ${matched?'matched':''}" onclick="matchFlip(${i})" ${up?'disabled':''}>
+      <div class="mcard-in">
+        <div class="mcard-back">❓</div>
+        <div class="mcard-front">${c.type==="pic"?c.svg:`<span class="mcard-name">${c.txt}</span>`}</div>
+      </div></button>`;
+  }).join("");
+  const allDone=M.done.length===SHAPES.length;
+  app().innerHTML=`
+  <button class="back" onclick="if(confirm('إنهاء اللعبة؟'))go('games')">‹ خروج</button>
+  <section class="match" style="--gc:#2f9e44">
+    <div class="pz-head"><span>الحركات: ${M.moves}</span><span>طابقت: ${M.done.length}/${SHAPES.length}</span></div>
+    <p class="match-hint">اقلب بطاقتين: الشكل مع اسمه.</p>
+    <div class="mgrid">${cards}</div>
+    ${allDone?`<button class="pz-check" onclick="matchOver()">🎉 خلّصت! النتيجة</button>`:''}
+  </section>`;
+}
+function matchFlip(i){
+  if(M.flipped.includes(i)||M.done.includes(M.cards[i].k)||M.flipped.length>=2) return;
+  M.flipped.push(i); sfxTick(); matchRender();
+  if(M.flipped.length===2){
+    M.moves++;
+    const [a,b]=M.flipped;
+    if(M.cards[a].k===M.cards[b].k){
+      M.done.push(M.cards[a].k); M.flipped=[]; addCoins(3); sfxRight(); sfxCoin();
+      setTimeout(matchRender,400);
+    } else {
+      sfxWrong();
+      setTimeout(()=>{ M.flipped=[]; matchRender(); },850);
+    }
+  }
+}
+function matchOver(){
+  const secs=Math.round((Date.now()-M.start)/1000);
+  const score=Math.max(20, 200 - M.moves*5 - secs);
+  const hi=S.gameHigh.match||0, isHi=score>hi; if(isHi){S.gameHigh.match=score;save();}
+  sfxWin(); confetti(); checkBadges();
+  app().innerHTML=`<section class="gover" style="--gc:#2f9e44"><div class="gover-mascot">${mascot("happy")}</div>
+    <h1>🧩 ممتاز!</h1><div class="gover-score">${score} نقطة</div>
+    <div class="gover-sub">${M.moves} حركة • ${secs} ثانية</div>
+    ${isHi?'<div class="gover-hi">🏅 رقم قياسي جديد!</div>':''}
+    <div class="gover-btns"><button class="rb-retry" onclick="go('game',{gid:'match'})">🔁 مرة ثانية</button>
+    <button class="rb-home" onclick="go('games')">صالة الألعاب</button></div></section>`;
+}
+
+/* ================= CLOCK HERO ================= */
+let CL={};
+function clockStart(){ CL={round:1,score:0,lives:3,q:null}; clockNew(); }
+function clockNew(){
+  const sh=ri(1,9), sm=ri(0,11)*5, addH=ri(1,3), addM=[0,15,30,45][ri(0,3)];
+  let eh=sh+addH, em=sm+addM; if(em>=60){em-=60;eh++;}
+  const startT=`${sh}:${String(sm).padStart(2,'0')}`, endT=`${eh}:${String(em).padStart(2,'0')}`;
+  let label = addH+" ساعة"+(addM?` و${addM} دقيقة`:"");
+  const opts=shuf([label, `${addH+1} ساعة`, `${addH} ساعة و${addM||15} دقيقة`.replace("و0 دقيقة",""), `${addM||30} دقيقة`].filter((v,i,a)=>a.indexOf(v)===i).slice(0,4));
+  while(opts.length<4) opts.push(`${ri(1,4)} ساعة و${[15,30,45][ri(0,2)]} دقيقة`);
+  CL.q={startT,endT,label,opts:opts.slice(0,4),c:opts.indexOf(label)};
+  if(CL.q.c<0){ CL.q.opts[0]=label; CL.q.c=0; CL.q.opts=shuf(CL.q.opts); CL.q.c=CL.q.opts.indexOf(label); }
+  clockRender();
+}
+function clockRender(){
+  const hearts="❤️".repeat(CL.lives)+"🤍".repeat(3-CL.lives);
+  app().innerHTML=`
+  <button class="back" onclick="if(confirm('إنهاء اللعبة؟'))go('games')">‹ خروج</button>
+  <section class="clockg" style="--gc:#1971c2">
+    <div class="pz-head"><span>${hearts}</span><span>النقاط: <b>${CL.score}</b></span></div>
+    <p class="match-hint">كم الزمن المنقضي بين الساعتين؟</p>
+    <div class="clockg-faces">
+      <div class="cgf">${clockFace(CL.q.startT)}<span>البداية</span></div>
+      <div class="cg-arrow">←</div>
+      <div class="cgf">${clockFace(CL.q.endT)}<span>النهاية</span></div>
+    </div>
+    <div class="arc-opts">${CL.q.opts.map((o,i)=>`<button class="arc-opt" onclick="clockAns(${i})">${o}</button>`).join("")}</div>
+  </section>`;
+}
+function clockAns(i){
+  const opts=document.querySelectorAll(".arc-opt"); opts.forEach((o,k)=>{o.disabled=true;if(k===CL.q.c)o.classList.add("arc-ok");});
+  if(i===CL.q.c){ CL.score+=15; addCoins(3); sfxRight(); sfxCoin(); CL.round++;
+    if(CL.round>8){ setTimeout(clockOver,700); return; }
+    setTimeout(clockNew,650);
+  } else { opts[i].classList.add("arc-bad"); CL.lives--; sfxWrong();
+    if(CL.lives<=0){ setTimeout(clockOver,800); } else { setTimeout(clockNew,900); }
+  }
+}
+function clockOver(){
+  const hi=S.gameHigh.clock||0, isHi=CL.score>hi; if(isHi){S.gameHigh.clock=CL.score;save();}
+  if(CL.score>0)sfxWin(); checkBadges();
+  app().innerHTML=`<section class="gover" style="--gc:#1971c2"><div class="gover-mascot">${mascot(CL.score>0?"happy":"sad")}</div>
+    <h1>⏰ انتهى!</h1><div class="gover-score">${CL.score} نقطة</div>
+    ${isHi?'<div class="gover-hi">🏅 رقم قياسي جديد!</div>':`<div class="gover-sub">أعلى نتيجة: ${S.gameHigh.clock}</div>`}
+    <div class="gover-btns"><button class="rb-retry" onclick="go('game',{gid:'clock'})">🔁 مرة ثانية</button>
+    <button class="rb-home" onclick="go('games')">صالة الألعاب</button></div></section>`;
+}
+
+/* ================= BOOT ================= */
+render();</script>
+</body>
+</html>
